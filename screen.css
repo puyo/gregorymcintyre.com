@@ -1,0 +1,38 @@
+body { background-color: #1b1b1b; color: #fff; font-family: "Courier New", Courier, monospace; font-size: 76%/1.1em; margin: 100px auto 100px auto; width: 840px; }
+body { font-size: 1em; }
+
+h1,
+h2,
+h3,
+h4,
+h5 { font-size: 1.2em; margin: 0px 0px 10px 0px; font-weight: normal; color: #f09479; }
+h3 { margin-top: 10px; }
+
+a { color: #8fe779; text-decoration: none; }
+a:hover { color: #bbbb87; }
+
+a[target="_blank"] { padding-right: 13px; background: transparent url(images/external.png) no-repeat scroll right center; }
+
+p { margin-bottom: 10px; }
+
+th, td { text-align: left; padding: 2px 10px; }
+th { font-color:  }
+
+.nav { list-style: none; padding: 0px; text-align: right; font-size: 0.8em; }
+.nav li { margin: 5px; }
+
+.left { float: left; padding: 10px; }
+
+.page { float: right; padding: 10px 10px 10px 20px; width: 590px; background: url(images/dotborder.png) repeat-y scroll left center; }
+
+.shelfari .page { background: transparent none; padding: 0; width: auto; float: none; }
+
+.footer { float: right; padding: 10px 10px 10px 20px; width: 590px; height: 100px; margin: 0; background: url(images/skylinedots.png) no-repeat scroll left top; }
+
+/* inverse
+.page { float: right; padding: 10px; width: 467px; background-color: #fff; color: #222; font-family: sans-serif; }
+.page a { color: #000; font-weight: normal; }
+.footer { float: right; padding: 10px; width: 467px; height: 100px; margin: 0; background: url(images/skylineinverse.png) no-repeat scroll left top; }
+*/
+
+.mugshot { float: right; margin-left: 10px; border: 2px dashed #fff; }
