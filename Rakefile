@@ -8,3 +8,4 @@ task :upload do
     "--exclude '*.ftp'",
     "./ puyo@gregorymcintyre.com:gregorymcintyre.com/"].join(' ')
 end
+
