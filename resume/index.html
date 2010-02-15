@@ -15,6 +15,7 @@
         margin-right:auto;
         padding-top:10px;
         padding-bottom:10px;
+        font-family:serif;
       }
       body p {
         margin-top:0;
@@ -28,13 +29,14 @@
       }
       h1 { 
         font-size:20pt;
-        padding-bottom:2px;
-        margin-top: 0px;
+        margin-top:0px;
       }
-      h2 { font-size:18pt; margin-top:20px; }
-      h3 { font-size:13pt; }
-      .section > h2 {
-        color:#24a;
+      h2 { 
+        font-size:18pt; 
+        margin-top:20px; 
+      }
+      h3 { 
+        font-size:13pt;
       }
       .info .head, 
       .education .times, 
@@ -90,15 +92,24 @@
         float:left;
         width:500px;
       }
+
+      @media screen {
+        body {
+          font-family:Helvetica, sans-serif;
+          color: #383d40;
+        }
+        h1, h2 {
+          border-left:10px solid #707a80;
+          background: #bdcfe5;
+          padding: 5px 5px;
+        }
+      }
     </style>
   </head>
   <body>
     <h1 id="title">Gregory McIntyre</h1>
     <div class="section personal">
-      <h2>Personal Information</h2>
       <div class="info">
-        <div class="head">Name</div> 
-        <div class="value">Gregory John McIntyre</div>
         <div class="head">D.O.B. </div>
         <div class="value">18th April 1981</div>
         <div class="head">Address</div> 
@@ -107,13 +118,14 @@
         <div class="value">0410276442</div>
         <div class="head">Email</div>
         <div class="value">blue.puyo@gmail.com</div>
-        <div class="head">Web site</div>
+        <div class="head">Web Site</div>
         <div class="value"> <a href="http://gregorymcintyre.com">http://gregorymcintyre.com</a> </div>
       </div>
     </div>
     <div class="section objective">
       <h2>Career Objective</h2>
-      <p>To develop useful Internet oriented software.</p>
+      <p>To develop useful Internet oriented software with beautiful code and
+      state-of-the-art professional practice.</p>
     </div>
     <div class="section skills">
       <h2>Skills</h2>
@@ -252,10 +264,11 @@
       sci-fi and drama novels, computer games, board games, role playing,
       life drawing, cycling, tennis, and being a husband and a father.</p>
       <h3>Ideal Job</h3>
-      <p>My ideal job would involve designing and programming software in
-      a small to medium sized team of technically skilled developers,
-      producing software that is useful, learning and teaching each other new
-      things.</p>
+      <p>My ideal job would involve designing and programming software in a
+      small to medium sized team of technically skilled developers, producing
+      software that is useful, learning and teaching, bettering my software
+      development practices and contributing knowledge back to the profession
+      and industry.</p>
     </div>
     <div class="section references">
       <h2>References</h2>
