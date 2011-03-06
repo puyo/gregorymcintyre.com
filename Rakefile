@@ -1,13 +1,11 @@
-desc "Upload to gregorymcintyre.com"
-task :upload do
-  #sh "lftp -f upload.ftp" # Optarse
-  ruby "update.rb"
-  sh ["rsync -rv",
-    "--exclude '.git'",
-    "--exclude 'download'",
-    "--exclude '*~'",
-    "--exclude 'Rakefile'",
-    "--exclude '*.ftp'",
-    "./ puyo@gregorymcintyre.com:gregorymcintyre.com/"].join(' ')
+task :default => [:upload]
+
+desc 'Upload to gregorymcintyre.com'
+task :upload => :regen do
+  sh 'rsync -rv _site/ puyo@gregorymcintyre.com:gregorymcintyre.com/'
 end
 
+desc 'Regenerate the static site'
+task :regen do
+  sh 'jekyll'
+end

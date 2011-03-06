@@ -1,1 +1,3 @@
 *.ftp
+_site
+.DS_Store
