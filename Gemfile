@@ -1,5 +1,4 @@
-# A sample Gemfile
-source "http://rubygems.org"
+source :rubygems
 
-gem 'jekyll', '~> 0.10'
-gem 'haml', '~> 3.0'
+gem 'middleman', '~>2.0'
+gem 'therubyracer', '~> 0.9'

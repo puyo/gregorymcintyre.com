@@ -1,0 +1,81 @@
+$yellow: #e6db74
+$green: #a6e22e
+$spink: #f92672
+$blue: #66D9EF
+$purple: #AE81FF
+$grey-fg: #F8F8F2
+$orange: #FD971F
+$faded-fg: darken(#BCBCBC, 20)
+$selected: $yellow
+$dark-bg: #1B1D1E
+$light-bg: #293739
+
+$link-color: $blue
+$link-hover-color: $yellow
+$link-focus-color: false
+$link-active-color: false
+$link-visited-color: false
+
+$font-color: #888
+$font-family: Garamond, serif
+$base-font-size: 16px
+$base-line-height: 24px
+
+$heading-color: $spink
+$text-color: $grey-fg
+$background-color: $dark-bg
+
+@import compass
+@import blueprint/grid
+
++global-reset
+
+body
+  +background-image(radial-gradient(top right, #293739, #1b1d1e))
+  width: 720px
+  overflow: auto
+  background-attachment: fixed
+  background-color: $background-color
+  color: $text-color
+  font-family: "Courier New", Courier, monospace
+  font-size: 16px
+  margin: 0px auto 100px auto
+
+h1, h2, h3, h4, h5
+  &, & a
+    color: $heading-color
+    font-size: 18px
+    font-weight: normal
+    margin-bottom: 10px
+    text-transform: lowercase
+
+a
+  +link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color)
+  text-decoration: none
+
+p
+  margin-bottom: 10px
+
+.page
+  -webkit-transform: rotate(-2deg)
+  background: url(/images/dotborder.png) repeat-y scroll left center
+  padding: 150px 20px 20px 20px
+  position: relative
+  top: -20px
+  width: 100%
+
+  &:after
+    background: url(/images/skylinedots.png) no-repeat scroll left top
+    content: ' '
+    display: block
+    height: 85px
+    margin-left: -20px
+    position: absolute
+    top: 100%
+    width: 100%
+
+  th
+    color: $faded-fg
+    font-weight: normal
+    padding: 0px 20px 10px 0px
+    text-transform: lowercase

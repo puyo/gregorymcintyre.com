@@ -1,1 +1,1 @@
-rvm gemset use jekyll
+rvm --create gemset use middleman
