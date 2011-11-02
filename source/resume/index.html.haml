@@ -1,0 +1,286 @@
+!!!5
+-# vim: ts=2: sw=2
+%html
+  %head
+    %title Gregory McIntyre
+    %meta(charset="utf-8")
+    %meta(content="IE=edge,chrome=1" http-equiv="X-UA-Compatible")
+    %style
+      :sass
+        body
+          width: 800px
+          margin-top: 0
+          margin-bottom: 0
+          margin-left: auto
+          margin-right: auto
+          padding-top: 10px
+          padding-bottom: 10px
+          font-family: serif
+          p
+            margin-top: 0
+            margin-bottom: 0.5em
+
+        h1, h2, h3, h4, h5
+          font-family: verdana, helvetica, sans-serif
+          clear: both
+          margin-top: 1em
+          margin-bottom: 0.5em
+
+        h1
+          font-size: 20pt
+          margin-top: 0px
+
+        h2
+          font-size: 18pt
+          margin-top: 20px
+
+        h3
+          font-size: 13pt
+
+        .info .head, .education .times, .employment .times, .reference .head
+          display: block
+          float: left
+          width: 110px
+          clear: left
+          font-weight: bold
+          margin-bottom: 10px
+          margin-right: 10px
+
+        .info .value, .education .qualification, .employment .position, .reference .value
+          display: block
+          margin-bottom: 10px
+          width: 600px
+
+        .info, .employment .times, .education .times
+          font-size: 10pt
+
+        .info
+          margin: 10px 20px
+          &:after
+            content: "."
+            display: block
+            height: 0
+            clear: both
+            visibility: hidden
+
+        .education > .qualification, .employment > .position
+          font-weight: bold
+
+        .education > .description, .employment > .description
+          display: block
+          margin-left: 120px
+          margin-bottom: 10px
+
+        .skills
+          .head
+            width: 200px
+            float: left
+          .value
+            float: left
+            width: 500px
+
+        @media screen
+          body
+            font-family: Helvetica, sans-serif
+            color: #383d40
+          h1, h2
+            border-left: 10px solid #707a80
+            background: #bdcfe5
+            padding: 5px 5px
+
+  %body
+    %h1#title Gregory McIntyre
+    .section.personal
+      .info
+        .head D.O.B.
+        .value 18th April 1981
+        .head Address
+        .value 35 Railway Terrace, Lewisham NSW, 2049
+        .head Mobile
+        .value 0410276442
+        .head Email
+        .value blue.puyo@gmail.com
+        .head Web Site
+        .value
+          %a(href="http://gregorymcintyre.com") http://gregorymcintyre.com
+    .section.objective
+      %h2 Career Objective
+      %p
+        To develop useful Internet oriented software with beautiful code and
+        state-of-the-art professional practice.
+    .section.skills
+      %h2 Skills
+      %p
+        I have filled various roles as needed in technical teams within
+        small businesses, including programmer, project manager, systems
+        administrator and software architect. I have a well developed sense
+        of the roles, responsibilities and behaviours that constitute a
+        productive software team.
+      %h3 Project Management
+      %p
+        I have a focus on effective communication mediation, and an interest
+        in team energy, project visibility, accountability, time budgeting and
+        retaining the independence, autonomy and momentum of developers. I have
+        set up and managed issue tracking systems.
+      %h3 Software Architecture
+      %p
+        At Symbio Networks Pty Ltd, I helped architect a telephone
+        billing system to calculate call costs and reverse lookups for
+        prepaid mobile billing. At Tilefile Ltd, I was lead architect on a
+        media rich web application.
+      %h3 Programming
+      %p
+        I enjoy learning programming languages, libraries and frameworks, with
+        a tendency toward open source and freely available technologies that I
+        can obtain and learn at home. I am comfortable with making technology
+        adoption decisions.
+      %h4 Languages, Frameworks and Tools
+      .info
+        .head C/C++
+        .value 3+ years of side projects.
+        .head HTML, CSS
+        .value HTML5, CSS3, Canvas and active interest.
+        .head Javascript
+        .value Commercial experience and active interest.
+        .head Rails, Ruby
+        .value 3+ years commercial experience and active interest.
+        .head Lean development
+        .value Commercial experience in a self-directed team, pair programming and delivering incrementally. I have an ongoing interest in software development best practices.
+      %p
+        I also have experience with Java, Python, Perl, CoverMe, MetricFu,
+        Ferret, Slack, Capistrano, Hudson, Bash, Vim, Emacs, TextMate, BASIC,
+        Eiffel, Pascal, Prolog, Tcl/Tk, x86 assembly, m68k assembly, Perl, PHP,
+        haXe, Lisp, Haskall, OCaml, Subversion, Git, file sharing, web hosting,
+        etc.
+    .section.employment
+      %h2 Employment
+      .employment
+        .times Since February 2010
+        .position
+          Software Developer for REA Group Ltd
+        .description
+          %p
+            I helped build a small agile team within the REA Sydney office
+            (HubOnline) and worked within it to produce HubStudio, a DIY website
+            product for real estate agencies, written in Ruby on Rails.
+          %p
+            I
+            received training in agile software development from several
+            ThoughtWorks consultants and REA Melbourne software developers and
+            became a convert to lean software development principles.
+          %p
+            This
+            job introduced me to card walls, pair programming, CI servers, the
+            red-green-refactor cycle, and BDD with Cucumber.
+      .employment
+        .times
+          September 2009
+          %br>/
+          to October 2009
+        .position
+          Software Developer for Snepo Research Pty Ltd
+        .description
+          %p
+            I completed the feature set, fixed the outstanding issues, and
+            delivered a Ruby on Rails Facebook project to a client. In the
+            process, I replaced an Erlang server backend component with some Ruby
+            code and the Facebook API that behaved faster and more reliably.
+      .employment
+        .times
+          May 2005
+          %br>/
+          to April 2009
+        .position
+          Software Engineer for TileFile Ltd
+        .description
+          %p
+            I designed and developed multimedia web applications involving
+            Ruby on Rails, Python and integration with various web services. I
+            worked with several teams comprising programmers, designers,
+            managers, business development and marketing.
+          %p I received excellent peer review results.
+      .employment
+        .times
+          March 2004
+          %br>/
+          to March 2005
+        .position
+          Software Engineer for Symbio Networks Pty Ltd
+        .description
+          %p
+            I developed reporting and billing software for Excel and Emergent
+            brand telephone switches. I performed contracted work for Telecorp to
+            improve their telephone record transfer system. I worked in a team of
+            5-6 developers and 2 systems testers with languages such as PHP,
+            Java, Ruby, C, WSDL, Bash script and SQL.
+          %p
+            I managed the source code management system and build procedure
+            for all the company's projects (hundreds of thousands of lines of
+            Java, JSP and C).
+          %p I was given a glowing annual review.
+      .employment
+        .times
+          Feb 2003
+          %br>/
+          to June 2003
+        .position
+          Lab Supervisor for UNSW CSE
+        .description
+          %p
+            I co-supervised two lab classes of around 20 students each. I
+            helped students understand the lab material and marked labs and
+            assignments.
+          %p
+            I ran a consultation session popular with students having
+            difficulties with C++ and Python.
+          %p
+            I gave a lecture in the course on the Ruby programming
+            language.
+    .section.education
+      %h2 Education
+      .education
+        .times 1999 to 2004
+        .qualification
+          Bachelor of Engineering (Software Engineering)
+        .description
+          I started at the Australian National University and
+          finished at University of New South Wales with second class
+          honours first division. Academic transcripts are available
+          by request.
+      .education
+        .times 1997 to 1998
+        .qualification
+          Year 12 Certificate, Narrabundah College, ACT
+        .description
+          University Admission Index (UAI) 97.8, Best in Computing Studies.
+    .section.personal
+      %h2 Personal Profile
+      %h3 Interests
+      %p
+        Designing, documenting and implementing my own small software
+        projects, contributing to open source software projects, reading
+        sci-fi and drama novels, computer games, board games, role playing,
+        life drawing, cycling, tennis, and being a husband and a father.
+      %h3 Ideal Job
+      %p
+        My ideal job would involve designing and programming software in a
+        small team of technically skilled developers, producing software
+        that is useful, learning and teaching, bettering my software development
+        practices and contributing knowledge back to the profession and
+        industry.
+    .section.references
+      %h2 References
+      .reference
+        %h3 James Woods
+        .head Relationship
+        .value Development Manager, Symbio Networks Pty. Ltd.
+        .head Email
+        .value james.woods (at) symbionetworks.com
+        .head Work Phone
+        .value +612 9994 8577
+      .reference
+        %h3 David Bolliger
+        .head Relationship
+        .value CEO, Tilefile Pty Ltd.
+        .head Mobile Phone
+        .value +61433 838 077
