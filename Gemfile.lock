@@ -106,6 +106,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  middleman (~> 2.0)
-  rake (~> 0.8)
-  therubyracer (~> 0.9)
+  middleman (~> 2.0.12)
+  rake (~> 0.8.7)
+  therubyracer (~> 0.9.8)
