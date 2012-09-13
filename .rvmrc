@@ -1,1 +1,1 @@
-rvm --create use ruby-1.8.7@middleman
+rvm --create gemset use middleman
