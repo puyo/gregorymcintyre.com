@@ -134,8 +134,20 @@
 
         // --------------------------------------------------
 
+        .last-updated
+          text-align: right
+          color: $faded
+          height: $gap
+          line-height: $gap
+          font-weight: bold
+          @media print
+            position: absolute
+            top: 25px
+            right: 0
+
         .section
           +rainbow-heading-container
+          clear: both
 
         .info
           .head
@@ -195,7 +207,12 @@
           p, .job, .qualification, .recommendation, .reference
             page-break-inside: avoid
 
+  // --------------------------------------------------
+
   %body
+    .last-updated
+      Last updated #{Time.now.strftime('%d %B %Y')}
+
     .section.personal-section.vcard
       %h1.name.fn Gregory McIntyre
       .info
@@ -491,7 +508,7 @@
         .recommendation
           %blockquote
             %p
-              Greg is the best developer I have ever worked with.
+              Greg is the best developer I have worked with.
             %p.attribution
               Sharon Gray, Production Manager, 2012
 
