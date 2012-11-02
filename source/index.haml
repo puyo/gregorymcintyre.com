@@ -1,11 +1,38 @@
----
-pageable: true
-per_page: 10
----
+.info
+  %section.about_me
+    %p I program web sites. View my #{link_to 'code', 'https://github.com/puyo'} and #{link_to 'resume', 'resume/index.html'}.
+    %p I have two very clever and lovely daughters.
+    %p I write #{link_to 'poetry', '/poetry.html'}.
+    %p I read #{link_to 'books', 'http://www.goodreads.com/user/show/3341724-gregory-mcintyre'}.
+    %p I listen to #{link_to 'music', 'http://www.last.fm/user/blue_puyo/charts?rangetype=3month&subtype=artists'}.
+    %p I live in Sydney.
+    %p I ride a bicycle.
+    %p I can #{link_to 'draw', 'http://www.flickr.com/photos/blue_puyo/tags/art/'}.
 
-- page_articles.each_with_index do |article, i|
-  %h1.article-heading
-    = link_to article.title, article
-
-  = article.body
-
+  %section.contact_details
+    %table
+      %tbody
+        %tr
+          %th Email
+          %td
+            %a(href='mailto:greg@gregorymcintyre.com') greg@gregorymcintyre.com
+        %tr
+          %th Skype
+          %td
+            %a(href='skype:blue_puyo?call') blue_puyo
+        %tr
+          %th Facebook
+          %td
+            %a(href='http://www.facebook.com/gregory.mcintyre') gregory.mcintyre
+        %tr
+          %th Flickr
+          %td
+            %a(href='http://flickr.com/photos/blue_puyo') blue_puyo
+        %tr
+          %th Twitter
+          %td
+            %a(href='http://twitter.com/gregmcintyre') gregmcintyre
+        %tr
+          %th LinkedIn
+          %td
+            %a(href='http://au.linkedin.com/in/gregmcintyre') gregmcintyre

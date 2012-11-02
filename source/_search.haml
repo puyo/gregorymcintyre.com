@@ -1,0 +1,5 @@
+%form.search-form(action="http://google.com/search" method="get" role="search")
+  %input(type="hidden" name="q" value="site:#{data['site']['domain']}")
+  %span.search-input-span
+    %input.search-input(type="text" name="q" results="0" placeholder="Search")
+    %button.search-button

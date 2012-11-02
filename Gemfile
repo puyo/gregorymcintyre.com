@@ -1,14 +1,13 @@
-source :rubygems
+source 'https://rubygems.org'
 
-#gem 'builder'      # for RSS feed
-gem 'middleman'
-gem 'middleman-blog'
-gem 'middleman-livereload'
-gem 'middleman-smusher'
-gem 'oj'           # faster JSON
-gem 'rake'
-gem 'rb-fsevent'   # for livereload without polling
-gem 'redcarpet'    # faster ExecJS
-gem 'therubyracer' # faster ExecJS
-gem 'liquid'
-gem 'builder'      # RSS feed
+gem 'builder'              # RSS feed
+gem 'liquid'               # for slipping things under markdown's radar
+gem 'middleman'            # static site generator
+gem 'middleman-blog'       # blogging functionality
+gem 'middleman-livereload' # reloads the web browser when a file changes
+gem 'middleman-smusher'    # compress images
+gem 'oj'                   # faster JSON
+gem 'rake'                 # convenient build commands
+gem 'rb-fsevent'           # for livereload without polling
+gem 'redcarpet'            # markdown rendering
+gem 'therubyracer'         # faster ExecJS
