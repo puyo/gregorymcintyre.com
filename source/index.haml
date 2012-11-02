@@ -1,0 +1,11 @@
+---
+pageable: true
+per_page: 10
+---
+
+- page_articles.each_with_index do |article, i|
+  %h1.article-heading
+    = link_to article.title, article
+
+  = article.body
+

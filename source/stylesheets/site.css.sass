@@ -1,0 +1,231 @@
+
+$blue: hsl(200, 100, 80)
+$pink: hsl(300, 100, 80)
+$dark-grey: hsl(0, 0, 30)
+$faded: hsl(0, 0, 80%)
+$faded-transparent: hsla(0, 0, 0, 0.5)
+$faded-transparent-bg: hsla(0, 0, 0, 0.25)
+$faded-bg: hsl(0, 0, 90%)
+$dark-blue: darken($blue, 50%)
+$dark-dark-blue: darken($blue, 70%)
+$dark-pink: darken($pink, 50%)
+$charcoal: #444
+
+$link-color: darken($blue, 60%)
+$focus-color: lighten(desaturate($blue, 50%), 10%)
+
+$base-font-family: serif
+$base-font-size: 18px
+$base-line-height: 30px
+$gap: 30px
+$blueprint-grid-columns: 13
+$blueprint-grid-width: 30px
+$blueprint-grid-margin: $gap
+$grid-background-baseline-height: $gap
+$grid-background-baseline-color: hsla(0, 0, 0, 0.1)
+$grid-background-column-width: $blueprint-grid-width
+$grid-background-gutter-width: $blueprint-grid-margin
+$grid-background-total-columns: $blueprint-grid-columns
+$show-grid-backgrounds: false
+$main-cols: 9
+$sidebar-cols: 4
+
+// ----------------------------------------------------------------------
+
+@import compass
+@import blueprint
+
+// ----------------------------------------------------------------------
+
+=reset
+  padding: 0
+  margin: 0
+
+=heading
+  font-family: "Alegreya SC", Palatino, Georgia, serif
+  font-weight: normal
+
+=big-heading
+  +heading
+  font-size: 150%
+  @media screen and (min-width: 481px)
+    font-size: 200%
+
+=small-heading
+  +heading
+  margin-top: 0
+  margin-bottom: 0
+  font-size: 125%
+  @media screen and (min-width: 481px)
+    font-size: 150%
+
+=sans
+  font-family: "PT Sans", "Helvetica Neue", Arial, sans-serif
+
+=serif
+  font-family: "Alegreya", Palatino, Georgia, serif
+
+=mono
+  font-family: $mono
+
+=pie-container
+  padding-left: $gap
+  padding-right: $gap
+  @media screen and (min-width: 811px)
+    +container
+    +pie-clearfix
+    overflow: visible
+
+=big-column
+  @media screen and (min-width: 481px)
+    +column($main-cols)
+    float: none
+  @media screen and (min-width: 811px)
+    +column($main-cols)
+
+=small-column
+  @media screen and (min-width: 811px)
+    +column($sidebar-cols, true)
+
+@function small-column-width()
+  @return span($sidebar-cols)
+
+=search-placeholder
+  +serif
+  color: $faded-transparent
+
+// --------------------------------------------------
+// base
+
+@import normalize
+
+body
+  +serif
+  -webkit-text-rendering: optimizelegibility
+  background-color: white
+  color: $charcoal
+  font-size: $base-font-size
+  line-height: $base-line-height
+
+#{headings(all)}
+  +heading
+  margin: $gap 0
+  &, a
+    color: $dark-blue
+    text-decoration: none
+
+p, ol, ul, dl, menu
+  margin: $gap 0
+
+tbody th
+  text-align: left
+  padding: 0.5em
+
+a
+  text-decoration: none
+  color: $dark-pink
+  &:hover
+    color: $dark-blue
+    text-decoration: underline
+  &:focus
+    background-color: $focus-color
+    outline: none
+
+ol, ul
+  color: $faded
+  padding-left: 22px
+  li
+    list-style-type: square
+
+// --------------------------------------------------
+
+.page-body-and-nav
+  +pie-container
+  +grid-background
+  padding-bottom: 100px // make room for footer
+
+.page-body
+  +big-column
+  #{headings(all)}
+    +big-heading
+
+.page-nav
+  +small-column
+  #{headings(all)}
+    +small-heading
+
+.page-footer
+  +background(image-url("noise.png") top left, linear-gradient(left, $dark-blue, $dark-pink))
+  +box-sizing(border-box)
+  +box-shadow(0 -5px 0 $faded-transparent-bg)
+  +sans
+  border-top: ($gap/3) solid $dark-dark-blue
+  bottom: 0
+  font-size: 90%
+  margin-top: $gap
+  overflow: hidden
+  position: fixed
+  text-transform: lowercase
+  width: 100%
+  z-index: 1000
+  &, a, a:hover, a:visited
+    color: white
+  a
+    +opacity(0.6)
+    &:hover
+      +opacity(1)
+  p
+    margin: 2px
+  @media screen and (min-width: 481px)
+    font-size: 100%
+    p
+      margin: ($gap/2) 0
+
+.search-input
+  +box-sizing(border-box)
+  +serif
+  +border-radius(0)
+  background-color: $faded-bg
+  border: 0
+  display: block
+  height: $gap
+  margin: $gap 0
+  padding: 0 0.5em
+  width: small-column-width()
+  +transition(all 0.1s)
+  outline: 1px solid transparent
+  +search-placeholder
+  &:-moz-placeholder
+    +search-placeholder
+  &::-webkit-input-placeholder
+    +search-placeholder
+  &:focus
+    background-color: $focus-color
+
+.copyright-and-search-form
+  +pie-container
+
+.content
+  .left
+    float: left
+    margin-right: 1.5em
+  .right
+    float: right
+    margin-left: 1.5em
+  .center
+    display: block
+    margin: 0 auto 1.5em
+  .left, .right
+    margin-bottom: 1em
+
+.poem
+  margin: $gap 0
+  white-space: pre-wrap
+  .line
+    background-color: white
+
+.pagination
+  //border-top: 10px solid rgba(0, 0, 0, 0.1)
+  background-color: rgba(0, 0, 0, 0.1)
+  margin: 0
+  padding: 0 0.5em
