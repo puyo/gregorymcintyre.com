@@ -85,15 +85,19 @@ $padleft: 43px
 
 @media handheld, only screen and (max-device-width: 480px)
 
-  $mobile-font-size: 42px
+  $mobile-font-size: 36px
 
   body
     +background-image(radial-gradient(top right, $light-bg, $dark-bg))
     width: auto
     font-size: $mobile-font-size
+    line-height: 40px
     background-repeat: repeat
     background-position: fixed
     font-weight: bold
+
+  #{headings(all)}, p, table
+    margin-bottom: 20px
 
   #{headings(all)}
     &, & a
@@ -101,7 +105,9 @@ $padleft: 43px
       font-weight: bold
 
   .info
-    padding-top: 40px
+    padding-top: 60px
+    padding-right: 60px
+
     table
       th, td
         font-weight: bold
