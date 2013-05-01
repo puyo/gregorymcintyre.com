@@ -31,7 +31,7 @@ $background-color: $dark-bg
 +global-reset
 
 body
-  +background-image(url(/images/fade.jpg))
+  +background-image(image-url('fade.jpg'))
   width: 720px
   overflow: auto
   background-position: top right
@@ -60,14 +60,14 @@ p
 $padleft: 43px
 
 .info
-  background: url(/images/dotborder.png) repeat-y scroll left center
+  background: image-url('dotborder.png') repeat-y scroll left center
   margin-bottom: image-height('skylinedots.png') + 10px
   margin-left: 100px
   padding: 140px 20px 20px $padleft
   top: -20px
 
   &:after
-    background: url(/images/skylinedots.png) no-repeat scroll left top
+    background: image-url('skylinedots.png') no-repeat scroll left top
     content: ' '
     display: block
     float: left
