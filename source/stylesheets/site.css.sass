@@ -1,3 +1,7 @@
+@import compass
+@import responsive
+@import blueprint/grid
+
 $yellow: #e6db74
 $green: #a6e22e
 $spink: #f92672
@@ -18,97 +22,86 @@ $link-visited-color: false
 
 $font-color: #888
 $font-family: "Courier New", Courier, monospace
+
+$gap: 10px
+
 $base-font-size: 18px
-$base-line-height: 24px
+$base-line-height: 2*$gap
 
 $heading-color: $spink
 $text-color: $grey-fg
 $background-color: $dark-bg
 
-@import compass
-@import blueprint/grid
+$padleft: 43px
+$side-image: 'dotborder.png'
+$bottom-image: 'skylinedots.png'
 
-+global-reset
+// ----------------------------------------------------------------------
+
+@import normalize
 
 body
-  +background-image(image-url('fade.jpg'))
-  width: 720px
-  overflow: auto
-  background-position: top right
-  background-repeat: no-repeat
-  background-attachment: fixed
-  background-color: $background-color
   color: $text-color
   font-family: $font-family
   font-size: $base-font-size
+  line-height: $base-line-height
+  +responsive(slow)
+    +background-image(radial-gradient(top right, $light-bg, $dark-bg))
+    background-repeat: repeat
+    background-attachment: fixed
+  +responsive(fast)
+    +background-image(image-url('fade.jpg'))
+    background-position: top right
+    background-repeat: no-repeat
+    background-attachment: fixed
+    background-color: $background-color
 
 #{headings(all)}
+  margin: 0
+  +responsive(medium large)
+    font-weight: normal
   &, & a
     color: $heading-color
-    font-size: 18px
-    font-weight: normal
-    margin-bottom: 10px
+    font-size: $base-font-size
+    margin-bottom: $gap
     text-transform: lowercase
+
+p
+  margin: 0 0 $gap 0
 
 a
   +link-colors($link-color, $link-hover-color, $link-focus-color, $link-active-color, $link-visited-color)
   text-decoration: none
 
-p
-  margin-bottom: 10px
-
-$padleft: 43px
+th
+  color: $faded-fg
+  text-transform: lowercase
+  text-align: left
+  padding-right: 2*$gap
+  +responsive(medium large)
+    font-weight: normal
 
 .info
-  background: image-url('dotborder.png') repeat-y scroll left center
-  margin-bottom: image-height('skylinedots.png') + 10px
-  margin-left: 100px
-  padding: 140px 20px 20px $padleft
-  top: -20px
+  padding: 2*$gap
 
-  &:after
-    background: image-url('skylinedots.png') no-repeat scroll left top
-    content: ' '
-    display: block
-    float: left
-    height: image-height('skylinedots.png')
-    margin-left: -$padleft
-    width: image-width('skylinedots.png')
+  +responsive(large)
+    background: image-url($side-image) repeat-y scroll left center
+    margin-bottom: image-height($bottom-image) + $gap
+    margin-left: 100px
+    padding: 10*$gap 2*$gap $gap $padleft
 
-  th
-    color: $faded-fg
-    font-weight: normal
-    text-transform: lowercase
+    $bottom-height: image-height($bottom-image)
+    &:after
+      background: image-url($bottom-image) no-repeat scroll left top
+      content: ' '
+      display: block
+      height: 0
+      margin-left: -$padleft
+      width: image-width($bottom-image)
+      position: relative
+      height: $bottom-height
+      top: $bottom-height/2
+      overflow: visible
 
-  th, td
-    padding: 0px 20px 10px 0px
-
-@media handheld, only screen and (max-device-width: 480px)
-
-  $mobile-font-size: 36px
-
-  body
-    +background-image(radial-gradient(top right, $light-bg, $dark-bg))
-    width: auto
-    font-size: $mobile-font-size
-    line-height: 40px
-    background-repeat: repeat
-    background-position: fixed
+  +responsive(slow) // probably squinting at a tiny screen
     font-weight: bold
-
-  #{headings(all)}, p, table
-    margin-bottom: 20px
-
-  #{headings(all)}
-    &, & a
-      font-size: $mobile-font-size
-      font-weight: bold
-
-  .info
-    padding-top: 60px
-    padding-right: 60px
-
-    table
-      th, td
-        font-weight: bold
-        font-size: $mobile-font-size

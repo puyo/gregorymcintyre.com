@@ -2,9 +2,8 @@
   %h1 Gregory McIntyre
   %section.about_me
     %p
-      I am a web developer. View my #{link_to 'code', 'https://github.com/puyo'},
-      #{link_to 'resume', '/resume/'} and
-      #{link_to 'recommendations', 'http://www.linkedin.com/profile/view?id=24532876'}.
+      I am a web developer. View my #{link_to 'code', 'https://github.com/puyo'}
+      and #{link_to 'resume', 'resume/index.html'}.
     %p
       I have two very clever and lovely daughters.
     %p
@@ -23,10 +22,12 @@
       %tbody
         %tr
           %th Email
-          %td greg@gregorymcintyre.com
+          %td
+            %a(href='mailto:greg@gregorymcintyre.com') greg@gregorymcintyre.com
         %tr
           %th Skype
-          %td blue_puyo
+          %td
+            %a(href='skype:blue_puyo?call') blue_puyo
         %tr
           %th Facebook
           %td

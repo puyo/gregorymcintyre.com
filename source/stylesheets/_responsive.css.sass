@@ -1,0 +1,57 @@
+$responsive-small-width: 480px !default
+$responsive-medium-width: 768px !default
+$responsive-slow-device-width1: 480px !default
+$responsive-slow-device-width2: 1024px !default
+$responsive-fast-device-width: 1024px !default
+
+// This mixin is to be used a bit like at-breakpoint from Susy [1] or the
+// breakpoint mixin from CSS Tricks [2], however it reduces repetition in the
+// outputted css by allowing you to pass several breakpoint names at once and
+// compiling a media query that matches any of them, for your content.
+//
+// Supported breakpoints are: small medium large
+//
+// You can also pass 'slow' to target devices which are probably low bandwidth
+// devices or 'fast' to target devices that probably have better bandwidth.
+//
+// Example input:
+//
+//   $responsive-small-width: 480px
+//   $responsive-medium-width: 810px
+//   body
+//     +responsive(small)
+//       font-size: 150%
+//     +responsive(medium large)
+//       font-size: 200%
+//
+// Example ouptut:
+//
+//   @media (max-width: 480px) {
+//     body { font-size: 150%; }
+//   }
+//   @media (min-width: 481px) and (max-width: 810px), (min-width: 811px) {
+//     body { font-size: 200%; }
+//   }
+//
+// [1] http://susy.oddbird.net/guides/reference/#ref-at-breakpoint
+// [2] http://css-tricks.com/media-queries-sass-3-2-and-codekit/
+//
+=responsive($media, $medium-width: $responsive-medium-width, $small-width: $responsive-small-width)
+  $result: ''
+  $prefix: ''
+  @each $m in $media
+    @if $m == small
+      $result: "#{$result}#{$prefix}(max-width: #{$responsive-small-width})"
+    @else if $m == medium
+      $result: "#{$result}#{$prefix}(min-width: #{$responsive-small-width + 1}) and (max-width: #{$responsive-medium-width})"
+    @else if $m == large
+      $result: "#{$result}#{$prefix}(min-width: #{$responsive-medium-width + 1})"
+    @else if $m == slow
+      // probably a mobile device
+      $result: "#{$result}#{$prefix}(max-device-width: #{$responsive-slow-device-width1}),(max-device-width: #{$responsive-slow-device-width2})"
+    @else if $m == fast
+      // probably a desktop
+      $result: "#{$result}#{$prefix}(min-device-width: #{$responsive-fast-device-width + 1})"
+    $prefix: ', '
+  @media #{$result}
+    @content
