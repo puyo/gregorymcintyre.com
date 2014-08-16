@@ -58,5 +58,3 @@ configure :build do
   activate :cache_buster
   set :relative_links, true
 end
-
-require './lib/patch-mm-blog'
