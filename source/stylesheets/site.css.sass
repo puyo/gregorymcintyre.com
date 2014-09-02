@@ -37,7 +37,7 @@ $border-radius: 4px
 
 $show-grid-backgrounds: true
 
-$responsive-small-width: 480px
+$responsive-small-width: 580px
 $responsive-medium-width: 1300px
 
 $default-box-shadow-color: hsla(0, 0, 0, 0.2)
@@ -131,10 +131,11 @@ $thick-border-color: $charcoal
 
 =gothic-first
   +responsive(medium large)
+    line-height: 110%
     &::first-letter
       font-family: Gothic !important
-      vertical-align: text-top
-      font-size: 120%
+      vertical-align: top
+      font-size: 110%
 
 =gothic-first-paragraph
   &::first-letter
@@ -217,18 +218,18 @@ h1, h2, h3, h4
 
 .page
   +my-container
-  +responsive(medium large)
-    padding-top: 2em
 
 .page-header
   +my-container
-  padding-top: 4rem
   text-transform: lowercase
+  padding-top: 2rem
+  padding-bottom: 2rem
+  +responsive(medium large)
+    padding-top: 4rem
+    padding-bottom: 4rem
 
 .page-nav
   margin-left: -10px
-  margin-top: 2rem
-  margin-bottom: 4rem
 
 .nav-links
   +pie-clearfix
@@ -250,7 +251,7 @@ h1, h2, h3, h4
   +big-heading
   +gothic-first
   font-weight: bold
-  margin-bottom: 0
+  margin-bottom: 2rem
   sup
     font-size: 50%
     top: -0.5em
