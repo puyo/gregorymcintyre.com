@@ -3,9 +3,49 @@ require './lib/liquid-poem'
 require './lib/liquid-img'
 require './lib/ensmarten'
 
+Time.zone = 'Sydney'
+
+activate :blog do |blog|
+  blog.day_template = nil
+  blog.default_extension = '.markdown.liquid'
+  blog.layout = 'poetry'
+  blog.month_template = nil
+  blog.name = 'poetry'
+  blog.paginate = true
+  blog.per_page = 20
+  blog.prefix = 'poetry'
+  blog.permalink = '{title}.html'
+  blog.sources = 'articles/:year-:month-:day-:title.html'
+  blog.summary_length = 0
+  blog.tag_template = nil
+  blog.year_link = '{year}.html' # middleman-blog has bugs with this
+  blog.year_template = 'poetry/calendar.html'
+end
+
+activate :blog do |blog|
+  blog.day_template = nil
+  blog.default_extension = '.markdown'
+  blog.layout = 'opinion'
+  blog.month_template = nil
+  blog.name = 'opinion'
+  blog.prefix = 'opinion'
+  blog.paginate = true
+  blog.per_page = 10
+  blog.permalink = '{title}.html'
+  blog.sources = 'articles/:title.html'
+  blog.summary_length = 0
+  blog.tag_template = nil
+  blog.year_link = '{year}.html'
+  blog.year_template = 'opinion/calendar.html'
+end
+
+page '/poetry/feed.xml', layout: false
+page '/opinion/feed.xml', layout: false
+
 activate :livereload
 activate :relative_assets
 activate :directory_indexes
+set :relative_links, true
 set :markdown_engine, :redcarpet
 set :markdown, {
   tables: true,
@@ -15,46 +55,9 @@ set :markdown, {
   renderer: EnsmartenedHTML.new,
 }
 
-Time.zone = 'Sydney'
-
-activate :blog do |blog|
-  blog.permalink = 'poetry/{title}'
-  blog.sources = 'poems/{year}-{month}-{day}-{title}.html'
-  blog.year_link = 'poetry/{year}.html' # middleman-blog has bugs with this
-  blog.name = 'poetry'
-  blog.summary_length = 0
-  blog.default_extension = '.markdown.liquid'
-  blog.tag_template = nil
-  blog.year_template = 'calendar.html'
-  blog.paginate = true
-  blog.per_page = 10
-  blog.month_template = nil
-  blog.day_template = nil
-  blog.layout = 'poetry'
-end
-
-activate :blog do |blog|
-  blog.name = 'opinions'
-  blog.prefix = 'opinions'
-  blog.year_link = '{prefix}/{year}'
-  blog.summary_length = 0
-  blog.default_extension = '.markdown.liquid'
-  blog.tag_template = nil
-  blog.year_template = 'calendar.html'
-  blog.sources = "opinions/{title}.html"
-  blog.permalink = "opinions/{category}/{title}.html"
-  blog.paginate = true
-  blog.per_page = 10
-  blog.month_template = nil
-  blog.day_template = nil
-end
-
-page '/poetry-feed.xml', layout: false
-
 configure :build do
   activate :asset_hash
   activate :minify_css
   activate :minify_javascript
   activate :cache_buster
-  set :relative_links, true
 end

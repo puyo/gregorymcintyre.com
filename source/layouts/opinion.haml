@@ -6,16 +6,16 @@
     %title= title
     %script{src: '//use.edgefonts.net/english-small-caps.js'}
     = stylesheet_link_tag 'site.css'
-    %link{href: '/poetry/feed.xml', rel: 'alternate', title: data['site']['title'], type: 'application/atom+xml'}
+    %link{href: '/opinion-feed.xml', rel: 'alternate', title: data['site']['title'], type: 'application/atom+xml'}
     - if paginate # it's content you can find elsewhere on this site
       %meta(content="noindex" name="robots")
-  %body
+  %body.opinion
     .page-header
-      %h1.page-title= link_to 'Poetry <small>by</small><br>Gregory M<sup>c</sup>Intyre', '/poetry/index.html'
+      %h1.page-title= link_to 'Gregory M<sup>c</sup>Intyre<br>Opines', '/opinion/index.html'
       %nav.page-nav(role="navigation")
         .nav-links
-          - blog('poetry').articles.group_by {|a| a.date.year }.each do |year, articles|
-            - url = blog_year_path(year, 'poetry')
+          - blog('opinion').articles.group_by {|a| a.date.year }.each do |year, articles|
+            - url = blog_year_path(year, 'opinion')
             = link_to year, url, class: [(current_page.url == url ? 'current' : nil), 'year-link nav-link'].compact.join(' ')
         = partial 'search'
     .page

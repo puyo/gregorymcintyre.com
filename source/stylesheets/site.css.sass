@@ -17,7 +17,7 @@ $page-bg-color: white
 
 $gap: 30px
 $base-font-size: 20px
-$base-line-height: 1.5
+$base-line-height: 30px
 $small-font-size: 15px
 $small-line-height: 1.5
 $small-gap: 15px
@@ -49,7 +49,7 @@ $thick-border-color: $charcoal
 // ----------------------------------------------------------------------
 
 @import compass
-@import blueprint
+// @import blueprint
 @import responsive
 
 +responsive(medium large)
@@ -106,7 +106,7 @@ $thick-border-color: $charcoal
 
 =big-heading
   +heading
-  font-size: 4em
+  font-size: 3rem
   line-height: 0.85
 
 =small-heading
@@ -212,9 +212,6 @@ h1, h2, h3, h4
   margin: 0 auto
   padding-left: 8vw
   padding-right: 8vw
-  +responsive(large)
-    p
-      text-align: justify
 
 .page
   +my-container
@@ -346,8 +343,11 @@ h1, h2, h3, h4
   margin-bottom: 4rem
   header
     margin-bottom: 1rem
-  h2
-    margin-bottom: 0
+    .title
+      margin-bottom: 0
+  h1, h2, h3, h4
+    margin-top: 3rem
+    margin-bottom: 1rem
   .time
     color: hsl(0, 0, 50)
 
@@ -364,9 +364,6 @@ h1, h2, h3, h4
   //     background-size: 70%
   //     height: 0.7*image-height($image)
   //     width: 0.7*image-width($image)
-
-  header + p
-    +gothic-first
 
 .pagination
   +margined
@@ -480,3 +477,31 @@ body
   white-space: pre-wrap
   .line
     +hanging-indent
+
+.opinion
+  article
+    img
+      +box-shadow
+      margin: 2rem 0
+      max-width: 100%
+      height: auto
+  p
+    +responsive(large)
+      text-align: justify
+
+  .video
+    margin: 2rem
+    border-width: 10px 0
+    border-style: double
+    border-color: black
+    position: relative
+    padding-bottom: 56.25%
+    padding-top: 30px
+    height: 0
+    overflow: hidden
+    iframe, object, embed
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%

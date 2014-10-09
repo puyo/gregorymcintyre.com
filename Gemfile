@@ -11,3 +11,4 @@ gem 'rake'                 # convenient build commands
 gem 'rb-fsevent'           # for livereload without polling
 gem 'redcarpet'            # markdown rendering
 gem 'therubyracer'         # faster ExecJS
+gem 'pry'

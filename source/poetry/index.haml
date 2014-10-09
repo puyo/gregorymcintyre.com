@@ -1,0 +1,8 @@
+---
+pageable: true
+per_page: 20
+layout: poetry
+---
+
+- blog('poetry').articles[page_start - 1, per_page].each_with_index do |article, i|
+  = partial 'article', locals: { article: article, content: article.body }
