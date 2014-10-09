@@ -168,7 +168,7 @@ of the office. Lastly, the best thing, later in life one of the other men
 confessed that my objections had helped initiate his now flourishing feminism.
 
 I find it hard to imagine how female feminists are going to address that kind
-of "underground" sexism. as easily as men. It's not always that bad, but it
+of "underground" sexism as easily as men. It's not always that bad, but it
 seems common to me. Have you heard a woman say, "He's a great boyfriend, except
 when he's around his mates"? I think this is where male feminists can really
 shine.
