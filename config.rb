@@ -32,7 +32,7 @@ activate :blog do |blog|
   blog.paginate = true
   blog.per_page = 10
   blog.permalink = '{title}.html'
-  blog.sources = 'articles/:title.html'
+  blog.sources = 'articles/:title/index.html'
   blog.summary_length = 0
   blog.tag_template = nil
   blog.year_link = '{year}.html'
