@@ -2,7 +2,7 @@
 module Ensmarten
   def self.ensmarten(text)
     text = text.dup
-    text.gsub!(/```/, '___triple__')
+    text.gsub!('```', '___triple___')
     text.gsub!(/``/, '&ldquo;')
     text.gsub!(/''/, '&rdquo;')
     text.gsub!(/`/, '&lsquo;')
@@ -17,16 +17,19 @@ module Ensmarten
     text.gsub!(/\b3\/4/, '&frac34;')
     text.gsub!(/\b1\/4/, '&frac14;')
     text.gsub!(/\b1\/2/, '&frac12;')
-    text.gsub!(/___triple__/, '```')
+    text.gsub!('___triple___', '```')
     text
   end
 end
 
 # ----------------------------------------------------------------------
 
-require 'redcarpet'
+require 'middleman-core/renderers/redcarpet'
+require 'middleman-syntax/extension'
 
-class EnsmartenedHTML < Redcarpet::Render::HTML
+class EnsmartenedHTML < Middleman::Renderers::MiddlemanRedcarpetHTML
+  include Middleman::Syntax::RedcarpetCodeRenderer
+
   def preprocess(text)
     Ensmarten.ensmarten(text)
   end

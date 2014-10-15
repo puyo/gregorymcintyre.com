@@ -45,6 +45,7 @@ page '/opinion/feed.xml', layout: false
 activate :livereload
 activate :relative_assets
 activate :directory_indexes
+activate :syntax, line_numbers: true
 set :relative_links, true
 set :markdown_engine, :redcarpet
 set :markdown, {

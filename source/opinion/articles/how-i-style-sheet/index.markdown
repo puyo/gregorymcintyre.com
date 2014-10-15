@@ -7,6 +7,12 @@ published: false
 
 # Ye Bad Olde Days
 
+This is a ``comment'' on things.
+
+```ruby
+x = 10
+```
+
 ```css
 ul.data_rows { padding: 0px 0px 0px 20px; }
 

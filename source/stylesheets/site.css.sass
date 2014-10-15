@@ -1,3 +1,5 @@
+//= require ./_highlight
+
 $blue: hsl(200, 100, 80)
 $pink: hsl(300, 100, 80)
 $faded: hsl(0, 0, 80%)
@@ -475,6 +477,11 @@ body
   white-space: pre-wrap
   .line
     +hanging-indent
+
+.code
+  pre
+    font-size: 13px
+    line-height: 1.3
 
 =media-inset-margin
   margin-top: 2rem
