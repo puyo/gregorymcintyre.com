@@ -49,7 +49,6 @@ $thick-border-color: $charcoal
 // ----------------------------------------------------------------------
 
 @import compass
-// @import blueprint
 @import responsive
 
 +responsive(medium large)
@@ -194,7 +193,6 @@ a
     color: $dark-pink
     text-decoration: underline
   &:focus
-    // background-color: $focus-color
     outline: none
 
 ol, ul
@@ -478,30 +476,45 @@ body
   .line
     +hanging-indent
 
-.opinion
-  article
-    img
-      +box-shadow
-      margin: 2rem 0
-      max-width: 100%
-      height: auto
+=media-inset-margin
+  margin-top: 2rem
+  margin-bottom: 2rem
+  +responsive(large)
+    margin-left: 2rem
+    margin-right: 2rem
+
+=natural-fit-container
+  position: relative
+  height: 0
+  overflow: hidden
+
+=natural-fit-element
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+=top-bottom-borders
+  border-width: $thick-border-size*2 0
+  border-style: double
+  border-color: $thick-border-color
+
+article
+  img
+    +box-shadow
+    +media-inset-margin
+    max-width: 100%
+    height: auto
   p
     +responsive(large)
       text-align: justify
 
   .video
-    margin: 2rem
-    border-width: 10px 0
-    border-style: double
-    border-color: black
-    position: relative
+    +media-inset-margin
+    +natural-fit-container
+    +top-bottom-borders
     padding-bottom: 56.25%
     padding-top: 30px
-    height: 0
-    overflow: hidden
     iframe, object, embed
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
+      +natural-fit-element
