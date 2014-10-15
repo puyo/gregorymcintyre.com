@@ -24,9 +24,9 @@ versions of themselves.
 People aren't always comfortable with this fact. If more men are going to
 become feminists, we need to normalise feminism amongst men. We need to make it
 pretty mainstream. We probably need more famous strong, proud male feminists to
-point to and say, "I am like that man."
+point to and say, ``I am like that man.''
 
-Most of my life, I labelled myself a "pro-feminist" because calling myself a
+Most of my life, I labelled myself a ``pro-feminist'' because calling myself a
 feminist seemed presumptuous and not necessarily welcome by female feminists.
 My first explicit invitation to feminism came from a man. Here it is:
 
@@ -80,7 +80,7 @@ brown noser, fake feminist, mansplainer. My noble motives get rubbished
 sometimes, I have been ridiculed and hated by certain men and women, feminists
 and not-feminists.
 
-Here's what a search engine predicts when you type in "feminists are" and let
+Here's what a search engine predicts when you type in ``feminists are'' and let
 it guess what comes next:
 
 ![Feminists Are](/opinion/articles/male-feminists/feminists_are.jpg)
@@ -91,8 +91,8 @@ yourself a feminist.
 ## I get it wrong
 
 I do get it wrong sometimes. I may be completely well meaning and come along
-and say something vastly ill considered like, "I think women mistrusting men is
-a problem," and while this may seem like an insightful
+and say something vastly ill considered like, ``I think women mistrusting men is
+a problem,'' and while this may seem like an insightful
 contribution to the conversation about men and women working together to solve
 sexism, the woman standing next to me who was beaten by her husband has just
 been asked to forget it like it was nothing and start trusting the main
@@ -168,9 +168,9 @@ of the office. Lastly, the best thing, later in life one of the other men
 confessed that my objections had helped initiate his now flourishing feminism.
 
 I find it hard to imagine how female feminists are going to address that kind
-of "underground" sexism as easily as men. It's not always that bad, but it
-seems common to me. Have you heard a woman say, "He's a great boyfriend, except
-when he's around his mates"? I think this is where male feminists can really
+of ``underground'' sexism as easily as men. It's not always that bad, but it
+seems common to me. Have you heard a woman say, ``He's a great boyfriend, except
+when he's around his mates''? I think this is where male feminists can really
 shine.
 
 This is a really hard sell. Make no mistake, initiating confrontation is not
@@ -179,8 +179,8 @@ and loss in your own life. Yet, my experience has been that it has always,
 always been worth it in bigger and often unforeseen ways.
 
 If you are going to do something like this, I recommend trying to strike a tone
-that is "firm and kind". Deliver it with warmth or understanding but don't
-compromise on the details. Remember that sentences that start with "I" are a
+that is ``firm and kind''. Deliver it with warmth or understanding but don't
+compromise on the details. Remember that sentences that start with ``I'' are a
 lot less aggressive. If you want further advice, I recommend the book Crucial
 Conversations.
 

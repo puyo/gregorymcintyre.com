@@ -2,6 +2,7 @@
 module Ensmarten
   def self.ensmarten(text)
     text = text.dup
+    text.gsub!(/```/, '___triple__')
     text.gsub!(/``/, '&ldquo;')
     text.gsub!(/''/, '&rdquo;')
     text.gsub!(/`/, '&lsquo;')
@@ -16,6 +17,7 @@ module Ensmarten
     text.gsub!(/\b3\/4/, '&frac34;')
     text.gsub!(/\b1\/4/, '&frac14;')
     text.gsub!(/\b1\/2/, '&frac12;')
+    text.gsub!(/___triple__/, '```')
     text
   end
 end
