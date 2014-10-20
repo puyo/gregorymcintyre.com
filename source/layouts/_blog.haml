@@ -1,0 +1,37 @@
+!!!5
+- site_title = yield_content(:page_title) || data['site']['title']
+- if is_blog_article?
+  - title = [current_article.title, site_title].join(' | ')
+- else
+  - title = site_title
+%html<>
+  %head<>
+    = partial 'header_meta'
+    %title= title
+    %script{src: '//use.edgefonts.net/english-small-caps.js'}
+    = stylesheet_link_tag 'site.css'
+    = partial 'favicon'
+    %link{href: "/#{blog_name}-feed.xml", rel: 'alternate', title: data['site']['title'], type: 'application/atom+xml'}
+    - if paginate # it's content you can find elsewhere on this site
+      %meta(content="noindex" name="robots")
+  %body{class: blog_name}<>
+    .page-header<>
+      %h1.page-title= link_to blog_title, blog(blog_name).options.prefix + '/index.html'
+      %nav.page-nav(role="navigation")<>
+        .nav-links<>
+          - blog(blog_name).articles.group_by {|a| a.date.year }.each do |year, articles|
+            - url = blog_year_path(year, blog_name)
+            = link_to year, url, class: [(current_page.url == url ? 'current' : nil), 'year-link nav-link'].compact.join(' ')
+        = partial 'search'
+    .page<>
+      .main(role="main")<>
+        - if is_blog_article?
+          = partial 'article', locals: { article: current_article, content: page_content }
+        - else # index and other pages
+          = page_content
+          - if paginate
+            = partial 'pagination', locals: { next_link: next_page, prev_link: prev_page, page_number: page_number, num_pages: num_pages }
+
+    = partial 'page_footer'
+    = partial 'ga'
+
