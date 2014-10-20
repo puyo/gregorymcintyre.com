@@ -11,7 +11,7 @@
     %script{src: '//use.edgefonts.net/english-small-caps.js'}
     = stylesheet_link_tag 'site.css'
     = partial 'favicon'
-    %link{href: "/#{blog_name}-feed.xml", rel: 'alternate', title: data['site']['title'], type: 'application/atom+xml'}
+    %link{href: "/#{blog_name}/feed.xml", rel: 'alternate', title: data['site']['title'], type: 'application/atom+xml'}
     - if paginate # it's content you can find elsewhere on this site
       %meta(content="noindex" name="robots")
   %body{class: blog_name}<>
