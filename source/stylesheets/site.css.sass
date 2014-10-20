@@ -396,9 +396,10 @@ h1, h2, h3, h4
   +box-shadow
   +border-radius
   +with-flourish
+  +margined
   display: block
   padding: $gap/2
-  overflow-x: scroll
+  overflow-x: auto
   table
     border-radius: $border-radius
     padding: $gap/2
@@ -508,14 +509,18 @@ body
   border-color: $thick-border-color
 
 article
-  img
+  .image
     +box-shadow
     +media-inset-margin
+    display: block
     max-width: 100%
     height: auto
   p
     +responsive(large)
       text-align: justify
+    .image
+      margin-top: 0
+      margin-bottom: 0
 
   .video
     +media-inset-margin
