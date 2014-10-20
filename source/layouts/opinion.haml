@@ -1,1 +1,1 @@
-= partial 'layouts/blog', locals: { blog_name: 'opinion', blog_title: 'Gregory M<sup>c</sup>Intyre<br>Opines', page_content: yield }
+= partial 'layouts/blog', locals: locals.merge(blog_name: 'opinion', blog_title: 'Gregory M<sup>c</sup>Intyre<br>Opines', page_content: yield)
