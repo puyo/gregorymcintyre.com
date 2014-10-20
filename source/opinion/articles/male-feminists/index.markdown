@@ -1,5 +1,5 @@
 ---
-title: Male feminists
+title: Male Feminists
 date: 2014-09-26 18:39 AEST
 tags:
 ---
