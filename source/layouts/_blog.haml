@@ -17,12 +17,13 @@
   %body{class: blog_name}<>
     .page-header<>
       %h1.page-title= link_to blog_title, blog(blog_name).options.prefix + '/index.html'
-      %nav.page-nav(role="navigation")<>
-        .nav-links<>
-          - blog(blog_name).articles.group_by {|a| a.date.year }.each do |year, articles|
-            - url = blog_year_path(year, blog_name)
-            = link_to year, url, class: [(current_page.url == url ? 'current' : nil), 'year-link nav-link'].compact.join(' ')
-        = partial 'search'
+      - if not is_blog_article?
+        %nav.page-nav(role="navigation")<>
+          .nav-links<>
+            - blog(blog_name).articles.group_by {|a| a.date.year }.each do |year, articles|
+              - url = blog_year_path(year, blog_name)
+              = link_to year, url, class: [(current_page.url == url ? 'current' : nil), 'year-link nav-link'].compact.join(' ')
+          = partial 'search'
     .page<>
       .main(role="main")<>
         - if is_blog_article?
