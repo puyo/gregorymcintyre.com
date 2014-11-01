@@ -86,26 +86,12 @@ $thick-border-color: $charcoal
 =quick-serif
   font-family: Georgia, serif
 
-=serif
-  +responsive(small)
-    +quick-serif
-    font-variant: normal
-  +responsive(medium large)
-    font-family: english-small-caps, Georgia, serif
-    font-variant: small-caps
-    font-weight: normal
-
 =mono
   font-family: monospace
 
 =heading-font
   &, a
     text-decoration: none
-  +responsive(small)
-    +quick-serif
-    font-variant: small-caps
-    font-weight: normal
-  +responsive(medium large)
     font-family: english-small-caps, cursive
     font-variant: small-caps
     font-weight: normal
@@ -254,12 +240,14 @@ h1, h2, h3, h4
   font-weight: bold
   margin-bottom: 0
   margin-left: -0.1em
+  small
+    +responsive(medium large)
+      font-weight: bold
   sup
     font-size: 50%
     top: -0.5em
-    font-weight: bold
-  small
-    font-weight: bold
+    +responsive(medium large)
+      font-weight: bold
   &, a
     color: $charcoal
 
