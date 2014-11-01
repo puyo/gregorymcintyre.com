@@ -15,7 +15,7 @@ activate :blog do |blog|
   blog.per_page = 20
   blog.prefix = 'poetry'
   blog.permalink = '{title}.html'
-  blog.sources = 'articles/:year-:month-:day-:title.html'
+  blog.sources = 'articles/:title.html'
   blog.summary_length = 0
   blog.tag_template = nil
   blog.year_link = '{year}.html' # middleman-blog has bugs with this
