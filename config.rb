@@ -1,7 +1,9 @@
-require './lib/liquid-prompt'
-require './lib/liquid-poem'
-require './lib/liquid-img'
-require './lib/ensmarten'
+$LOAD_PATH << './lib'
+require 'liquid_prompt'
+require 'liquid_poem'
+require 'liquid_img'
+require 'custom_redcarpet_html'
+require 'relative_asset_fix'
 
 Time.zone = 'Sydney'
 
@@ -44,6 +46,7 @@ page '/opinion/feed.xml', layout: false
 
 activate :livereload
 activate :relative_assets
+activate :relative_asset_fix
 activate :directory_indexes
 activate :syntax, line_numbers: true
 set :relative_links, true
@@ -53,8 +56,9 @@ set :markdown, {
   autolink: true,
   gh_blockcode: true,
   fenced_code_blocks: true,
-  renderer: EnsmartenedHTML.new,
+  renderer: CustomRedcarpetHTML.new,
 }
+set :strip_index_file, true
 
 configure :build do
   activate :asset_hash

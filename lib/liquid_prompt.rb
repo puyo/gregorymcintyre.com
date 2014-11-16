@@ -1,5 +1,5 @@
 require 'liquid'
-require_relative './ensmarten'
+require 'ensmarten'
 
 # Writing prompt tag.
 class PromptTag < Liquid::Block
