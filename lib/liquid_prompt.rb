@@ -1,5 +1,5 @@
 require 'liquid'
-require 'ensmarten'
+require 'custom_redcarpet_html'
 
 # Writing prompt tag.
 class PromptTag < Liquid::Block
@@ -8,7 +8,7 @@ class PromptTag < Liquid::Block
   end
 
   def markdown
-    Redcarpet::Markdown.new(EnsmartenedHTML)
+    Redcarpet::Markdown.new(CustomRedcarpetHTML)
   end
 end
 

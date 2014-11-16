@@ -1,7 +1,6 @@
 $LOAD_PATH << './lib'
 require 'liquid_prompt'
 require 'liquid_poem'
-require 'liquid_img'
 require 'custom_redcarpet_html'
 require 'relative_asset_fix'
 
@@ -17,7 +16,7 @@ activate :blog do |blog|
   blog.per_page = 20
   blog.prefix = 'poetry'
   blog.permalink = '{title}.html'
-  blog.sources = 'articles/:title.html'
+  blog.sources = 'articles/:title/index.html'
   blog.summary_length = 0
   blog.tag_template = nil
   blog.year_link = '{year}.html' # middleman-blog has bugs with this
@@ -46,7 +45,6 @@ page '/opinion/feed.xml', layout: false
 
 activate :livereload
 activate :relative_assets
-activate :relative_asset_fix
 activate :directory_indexes
 activate :syntax, line_numbers: true
 set :relative_links, true
@@ -66,3 +64,5 @@ configure :build do
   activate :minify_javascript
   activate :cache_buster
 end
+
+activate :relative_asset_fix
