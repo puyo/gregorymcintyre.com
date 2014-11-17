@@ -2,8 +2,7 @@
 class RelativeAssetFix < ::Middleman::Extension
   def initialize(app, *args)
     app.before_render do |body, path, locs, template_class|
-      #p [path, locs, template_class]
-      app.set :last_template_file, path if File.exist?(path)
+      app.set :current_template_file, path if File.exist?(path)
       body
     end
     super
@@ -11,8 +10,7 @@ class RelativeAssetFix < ::Middleman::Extension
 
   helpers do
     def asset_url(asset_path, prefix='')
-      p asset_path: asset_path, last_template_file: last_template_file
-      if template_path = sitemap.file_to_path(last_template_file)
+      if template_path = sitemap.file_to_path(current_template_file)
         template_directory = Pathname(source_dir).join(template_path).dirname
         relative_asset_file = template_directory.join(asset_path)
         if relative_asset_file.exist?
