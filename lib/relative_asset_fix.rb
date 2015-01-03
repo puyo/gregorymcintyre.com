@@ -1,6 +1,7 @@
 # A fix for the relative assets + blog extension combo
 class RelativeAssetFix < ::Middleman::Extension
   def initialize(app, *args)
+    app.set :current_template_file, nil
     app.before_render do |body, path, locs, template_class|
       app.set :current_template_file, path if File.exist?(path)
       body
@@ -10,7 +11,7 @@ class RelativeAssetFix < ::Middleman::Extension
 
   helpers do
     def asset_url(asset_path, prefix='')
-      if template_path = sitemap.file_to_path(current_template_file)
+      if current_template_file && template_path = sitemap.file_to_path(current_template_file)
         template_directory = Pathname(source_dir).join(template_path).dirname
         relative_asset_file = template_directory.join(asset_path)
         if relative_asset_file.exist?
