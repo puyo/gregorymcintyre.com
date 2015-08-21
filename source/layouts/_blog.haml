@@ -23,7 +23,7 @@
             - blog(blog_name).articles.group_by {|a| a.date.year }.each do |year, articles|
               - url = blog_year_path(year, blog_name)
               = link_to year, url, class: [(current_page.url == url ? 'current' : nil), 'year-link nav-link'].compact.join(' ')
-          = partial 'search'
+          -#= partial 'search'
     .page<>
       .main(role="main")<>
         - if is_blog_article?
