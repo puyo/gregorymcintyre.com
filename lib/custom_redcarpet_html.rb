@@ -8,6 +8,14 @@ class CustomRedcarpetHTML < Middleman::Renderers::MiddlemanRedcarpetHTML
   def preprocess(text)
     Ensmarten.ensmarten(text)
   end
+
+  def image(link, title, alt_text)
+    resource = scope.current_resource.children.find{|x| File.basename(x.source_file) == link }
+    if resource
+      link = resource.request_path
+    end
+    super(link, title, alt_text)
+  end
 end
 
 module Middleman

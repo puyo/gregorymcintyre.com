@@ -2,7 +2,6 @@ $LOAD_PATH << './lib'
 require 'liquid_prompt'
 require 'liquid_poem'
 require 'custom_redcarpet_html'
-require 'relative_asset_fix'
 
 Time.zone = 'Sydney'
 
@@ -64,5 +63,3 @@ configure :build do
   activate :minify_javascript
   activate :cache_buster
 end
-
-activate :relative_asset_fix

@@ -12,7 +12,7 @@
     %script{src: '//use.edgefonts.net/english-small-caps.js'}
     = partial 'favicon'
     %link{href: "/#{blog_name}/feed.xml", rel: 'alternate', title: data['site']['title'], type: 'application/atom+xml'}
-    - if not is_blog_article? # not the canonical url for this content
+    - if defined?(page_type) && page_type == 'year'
       %meta(content="noindex" name="robots")
   %body{class: blog_name}<>
     .page-header<>
@@ -20,9 +20,9 @@
       - if not is_blog_article?
         %nav.page-nav(role="navigation")<>
           .nav-links<>
-            - blog(blog_name).articles.group_by {|a| a.date.year }.each do |year, articles|
-              - url = blog_year_path(year, blog_name)
-              = link_to year, url, class: [(current_page.url == url ? 'current' : nil), 'year-link nav-link'].compact.join(' ')
+            - blog(blog_name).articles.group_by {|a| a.date.year }.each do |y, articles|
+              - url = blog_year_path(y, blog_name)
+              = link_to y, url, class: [(if defined?(year) && year == y then 'current' end), 'year-link nav-link'].compact.join(' ')
           -#= partial 'search'
     .page<>
       .main(role="main")<>
