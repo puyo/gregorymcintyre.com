@@ -1,7 +1,7 @@
 task default: [:upload]
 
 desc 'Upload to gregorymcintyre.com'
-task upload: :build do
+task publish: :build do
   sh 'rsync -rvP --delete build/ gregorymcintyre.com:gregorymcintyre.com/'
 end
 
