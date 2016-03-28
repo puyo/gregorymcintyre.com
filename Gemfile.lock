@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git@github.com:puyo/middleman.git
-  revision: e584cc1c7a7560cca8c50b8cec4bcfffa7403fbd
+  revision: 7f7fb65dc272daa4b7c2a53721779db509e5cfd1
   branch: master
   specs:
     middleman (4.1.2)
@@ -76,7 +76,7 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
-    eventmachine (1.2.0)
+    eventmachine (1.2.0.1)
     execjs (2.6.0)
     fast_blank (1.0.0)
     fastimage (1.8.1)
@@ -111,14 +111,14 @@ GEM
     minitest (5.8.4)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
-    oj (2.14.6)
+    oj (2.15.0)
     padrino-helpers (0.13.1)
       i18n (~> 0.6, >= 0.6.7)
       padrino-support (= 0.13.1)
       tilt (~> 1.4.1)
     padrino-support (0.13.1)
       activesupport (>= 3.1)
-    parallel (1.6.2)
+    parallel (1.8.0)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -128,7 +128,7 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
-    rake (11.1.1)
+    rake (11.1.2)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
