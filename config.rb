@@ -6,32 +6,34 @@ require 'custom_redcarpet_html'
 Time.zone = 'Sydney'
 
 activate :blog do |blog|
+  blog.name = 'poetry'
+
   blog.day_template = nil
   blog.default_extension = '.markdown.liquid'
   blog.layout = 'poetry'
   blog.month_template = nil
-  blog.name = 'poetry'
   blog.paginate = true
   blog.per_page = 20
-  blog.prefix = 'poetry'
   blog.permalink = '{title}.html'
+  blog.prefix = 'poetry'
   blog.sources = 'articles/:title/index.html'
   blog.summary_length = 0
   blog.tag_template = nil
-  blog.year_link = '{year}.html' # middleman-blog has bugs with this
+  blog.year_link = '{year}.html'
   blog.year_template = 'poetry/calendar.html'
 end
 
 activate :blog do |blog|
+  blog.name = 'opinion'
+
   blog.day_template = nil
   blog.default_extension = '.markdown'
   blog.layout = 'opinion'
   blog.month_template = nil
-  blog.name = 'opinion'
-  blog.prefix = 'opinion'
   blog.paginate = true
   blog.per_page = 10
   blog.permalink = '{title}.html'
+  blog.prefix = 'opinion'
   blog.sources = 'articles/:title/index.html'
   blog.summary_length = 0
   blog.tag_template = nil
