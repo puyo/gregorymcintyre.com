@@ -28,9 +28,10 @@ end
 Liquid::Template.register_tag('poem', LiquidPoem::PoemTag)
 
 if $0 == __FILE__
-  require 'test/unit'
+  require 'minitest'
+  require 'minitest/autorun'
 
-  class TestLiquidPoem < Test::Unit::TestCase
+  class TestLiquidPoem < MiniTest::Test
     def test_lines
       input = "A\nB\nC"
       expected = "<span class=\"line\">A</span><br/><span class=\"line\">B</span><br/><span class=\"line\">C</span><br/>"
