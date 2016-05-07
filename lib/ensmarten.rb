@@ -9,6 +9,8 @@ module Ensmarten
       i += 1
       key
     end
+    text.gsub!(/\*\*(.*?)\*\*/, '<strong>\1</strong>')
+    text.gsub!(/\*(.*?)\*/, '<em>\1</em>')
     text.gsub!(/``/, '&ldquo;')
     text.gsub!(/''/, '&rdquo;')
     text.gsub!(/`(.*?)`/m, '__RQUO__\1__RQUO__')
