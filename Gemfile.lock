@@ -40,7 +40,6 @@ GEM
     json (1.8.3)
     kramdown (1.11.1)
     libv8 (3.16.14.15)
-    liquid (3.0.6)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -132,7 +131,6 @@ PLATFORMS
 
 DEPENDENCIES
   builder
-  liquid
   middleman
   middleman-blog
   middleman-livereload

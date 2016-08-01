@@ -24,7 +24,7 @@ task :poem do
   end
   date = Time.now.strftime('%Y-%m-%d %H:%M %Z')
   slug = safe_parameterize(title)
-  path = "source/poetry/articles/#{slug}/index.html.md.liquid"
+  path = "source/poetry/articles/#{slug}/index.html.md"
 
   FileUtils.mkpath(File.dirname(path))
 
@@ -35,9 +35,9 @@ title: #{title}
 date: #{date}
 ---
 
-{%poem%}
+```poem
 
-{%endpoem%}
+```
     END
   end
 

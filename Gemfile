@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'builder'              # RSS feed
-gem 'liquid'               # for slipping things under markdown's radar
 gem 'middleman'            # static site generator
 gem 'middleman-blog'       # blogging functionality
 gem 'middleman-livereload' # reloads the web browser when a file changes

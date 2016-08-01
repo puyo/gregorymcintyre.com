@@ -1,6 +1,4 @@
 $LOAD_PATH << './lib'
-require 'liquid_prompt'
-require 'liquid_poem'
 require 'custom_redcarpet_html'
 
 Time.zone = 'Sydney'
@@ -9,7 +7,6 @@ activate :blog do |blog|
   blog.name = 'poetry'
 
   blog.day_template = nil
-  blog.default_extension = '.markdown.liquid'
   blog.layout = 'poetry'
   blog.month_template = nil
   blog.paginate = true
@@ -27,7 +24,6 @@ activate :blog do |blog|
   blog.name = 'opinion'
 
   blog.day_template = nil
-  blog.default_extension = '.markdown'
   blog.layout = 'opinion'
   blog.month_template = nil
   blog.paginate = true
@@ -55,13 +51,13 @@ set :markdown, {
   autolink: true,
   gh_blockcode: true,
   fenced_code_blocks: true,
-  renderer: CustomRedcarpetHTML.new,
+  renderer: CustomRedcarpetHTML,
 }
 set :strip_index_file, true
 
 configure :build do
   activate :asset_hash
   activate :minify_css
-  activate :minify_javascript
+  # activate :minify_javascript # can't handle ES6 classes :-(
   activate :cache_buster
 end
