@@ -3,42 +3,25 @@ require 'custom_redcarpet_html'
 
 Time.zone = 'Sydney'
 
-activate :blog do |blog|
-  blog.name = 'poetry'
-
+def config_blog(blog, name)
   blog.day_template = nil
-  blog.layout = 'poetry'
+  blog.layout = name
   blog.month_template = nil
+  blog.name = name
   blog.paginate = true
   blog.per_page = 20
   blog.permalink = '{title}.html'
-  blog.prefix = 'poetry'
+  blog.prefix = name
   blog.sources = ':title/index.html'
   blog.summary_length = 0
   blog.tag_template = nil
   blog.year_link = '{year}.html'
-  blog.year_template = 'poetry/calendar.html'
+  blog.year_template = name + '/calendar.html'
+  page '/' + name + '/feed.xml', layout: false
 end
 
-activate :blog do |blog|
-  blog.name = 'opinion'
-
-  blog.day_template = nil
-  blog.layout = 'opinion'
-  blog.month_template = nil
-  blog.paginate = true
-  blog.per_page = 10
-  blog.permalink = '{title}.html'
-  blog.prefix = 'opinion'
-  blog.sources = ':title/index.html'
-  blog.summary_length = 0
-  blog.tag_template = nil
-  blog.year_link = '{year}.html'
-  blog.year_template = 'opinion/calendar.html'
-end
-
-page '/poetry/feed.xml', layout: false
-page '/opinion/feed.xml', layout: false
+activate(:blog) { |blog| config_blog(blog, 'poetry') }
+activate(:blog) { |blog| config_blog(blog, 'opinion') }
 
 activate :livereload
 # activate :relative_assets # too many bugs :-(
