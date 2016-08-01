@@ -41,7 +41,7 @@ page '/poetry/feed.xml', layout: false
 page '/opinion/feed.xml', layout: false
 
 activate :livereload
-activate :relative_assets
+# activate :relative_assets # too many bugs :-(
 activate :directory_indexes
 activate :syntax, line_numbers: true
 set :relative_links, true
