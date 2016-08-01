@@ -1,17 +1,13 @@
 require 'middleman-core/renderers/redcarpet'
 require 'middleman-syntax/extension'
-require 'ensmarten'
 
 class CustomRedcarpetHTML < Middleman::Renderers::MiddlemanRedcarpetHTML
   include Middleman::Syntax::RedcarpetCodeRenderer
+  include Redcarpet::Render::SmartyPants
 
   def initialize
     @r = Redcarpet::Markdown.new(Middleman::Renderers::MiddlemanRedcarpetHTML)
     super
-  end
-
-  def preprocess(text)
-    Ensmarten.ensmarten(text)
   end
 
   def block_code(code, language)
@@ -43,14 +39,13 @@ class CustomRedcarpetHTML < Middleman::Renderers::MiddlemanRedcarpetHTML
       %{<span class="line">#{line}</span><br/>}
     end.join
   end
-
 end
 
 module Middleman
   module Blog
     module BlogArticle
       def smart_title
-        Ensmarten.ensmarten(title)
+        Redcarpet::Render::SmartyPants.render(title)
       end
     end
   end

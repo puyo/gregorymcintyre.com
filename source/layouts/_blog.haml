@@ -1,7 +1,7 @@
 !!!5
 - site_title = yield_content(:page_title) || data['site']['title']
 - if is_blog_article?
-  - title = [current_article.title, site_title].join(' | ')
+  - title = [current_article.smart_title, site_title].join(' | ')
 - else
   - title = site_title
 %html(lang="en")<>
