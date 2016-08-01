@@ -28,7 +28,8 @@
     .page<>
       .main(role="main")<>
         - if is_blog_article?
-          = partial 'article', locals: { article: current_article, content: page_content }
+          = partial 'article', locals: { article: current_article } do
+            = page_content
         - else # index and other pages
           = page_content
           - if paginate

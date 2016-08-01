@@ -83,7 +83,7 @@ and not-feminists.
 Here's what a search engine predicts when you type in ``feminists are'' and let
 it guess what comes next:
 
-<img class="image" src="/opinion/articles/male-feminists/feminists_are.jpg" alt="Feminists are search results">
+![Feminists are search results](feminists_are.jpg)
 
 Yep, that's pretty much what you'll encounter if you walk around calling
 yourself a feminist.

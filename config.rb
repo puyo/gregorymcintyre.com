@@ -13,7 +13,7 @@ activate :blog do |blog|
   blog.per_page = 20
   blog.permalink = '{title}.html'
   blog.prefix = 'poetry'
-  blog.sources = 'articles/:title/index.html'
+  blog.sources = ':title/index.html'
   blog.summary_length = 0
   blog.tag_template = nil
   blog.year_link = '{year}.html'
@@ -30,7 +30,7 @@ activate :blog do |blog|
   blog.per_page = 10
   blog.permalink = '{title}.html'
   blog.prefix = 'opinion'
-  blog.sources = 'articles/:title/index.html'
+  blog.sources = ':title/index.html'
   blog.summary_length = 0
   blog.tag_template = nil
   blog.year_link = '{year}.html'

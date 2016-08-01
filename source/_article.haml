@@ -1,5 +1,10 @@
 %article.article<>
   %header<>
     %h2.title= link_to article.title, article
-    %time.time(pubdate="pubdate")= article.date.strftime('%e %b %Y')
-  = content
+    %time.time(pubdate="pubdate")
+      = article.date.strftime('%e %b %Y')
+  - if article.metadata[:page][:centered]
+    .centered
+      = yield
+  - else
+    = yield

@@ -5,4 +5,5 @@ layout: poetry
 ---
 
 - page_articles.each_with_index do |article, i|
-  = partial 'article', locals: { article: article, content: article.body }
+  = partial 'article', locals: { article: article } do
+    = article.body
