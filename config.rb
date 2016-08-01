@@ -17,7 +17,7 @@ def config_blog(blog, name)
   blog.tag_template = nil
   blog.year_link = '{year}.html'
   blog.year_template = name + '/calendar.html'
-  page '/' + name + '/feed.xml', layout: false
+  #page '/' + name + '/feed.xml', layout: false
 end
 
 activate(:blog) { |blog| config_blog(blog, 'poetry') }

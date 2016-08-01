@@ -3,4 +3,5 @@ layout: opinion
 ---
 
 - blog('opinion').articles[0, 5].each_with_index do |article, i|
-  = partial 'article-item', locals: { article: article, content: article.body }
+  = partial 'article-item', locals: { article: article } do
+    = article.body
