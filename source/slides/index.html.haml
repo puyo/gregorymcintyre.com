@@ -1,0 +1,42 @@
+---
+layout: false
+---
+
+!!!5
+- blog_title = 'Slides'
+- blog_name = 'slides'
+- site_title = yield_content(:page_title) || data['site']['title']
+- if is_blog_article?
+  - title = [current_article.smart_title, site_title].join(' | ')
+- else
+  - title = site_title
+%html(lang="en")<>
+  %head<>
+    = partial 'header_meta'
+    = stylesheet_link_tag 'site.css'
+    = stylesheet_link_tag 'highlight.css'
+    %title= title
+    %script{src: '//use.edgefonts.net/english-small-caps.js'}
+    = partial 'favicon'
+    %link{href: "/#{blog_name}/feed.xml", rel: 'alternate', title: data['site']['title'], type: 'application/atom+xml'}
+    - if defined?(page_type) && page_type == 'year'
+      %meta(content="noindex" name="robots")
+  %body{class: blog_name}<>
+    .page-header<>
+      %h1.page-title= link_to blog_title, blog(blog_name).options.prefix + '/index.html'
+      - if not is_blog_article?
+        %nav.page-nav(role="navigation")<>
+          .nav-links<>
+            - blog(blog_name).articles.group_by {|a| a.date.year }.each do |y, articles|
+              - url = blog_year_path(y, blog_name)
+              = link_to y, url, class: [(if defined?(year) && year == y then 'current' end), 'year-link nav-link'].compact.join(' ')
+    .page<>
+      .main(role="main")<>
+        - blog('slides').articles.each_with_index do |a, i|
+          = partial 'slides-item', locals: { article: a } do
+            = link_to a.smart_title, a
+
+    = partial 'page_footer'
+    = partial 'ga'
+
+

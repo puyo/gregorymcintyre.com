@@ -1,0 +1,9 @@
+---
+pageable: true
+per_page: 20
+layout: slides-cal
+---
+
+- page_articles('slides').each_with_index do |article, i|
+  = partial 'slide', locals: { article: article } do
+    = article.body

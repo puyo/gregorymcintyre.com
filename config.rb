@@ -22,6 +22,7 @@ end
 
 activate(:blog) { |blog| config_blog(blog, 'poetry') }
 activate(:blog) { |blog| config_blog(blog, 'opinion') }
+activate(:blog) { |blog| config_blog(blog, 'slides') }
 
 activate :livereload
 # activate :relative_assets # too many bugs :-(

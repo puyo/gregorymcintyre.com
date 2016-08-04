@@ -1,0 +1,827 @@
+---
+title: Command Prompt
+date: 2016-08-01 20:00 AEST
+layout: slides
+---
+
+<div class="slides">
+    <section data-markdown=''>
+        <script type='text/template'>
+            Your frenemy
+
+            # The Command Prompt
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## The Command Prompt
+
+            - Purpose
+            - Anatomy
+            - Get unstuck
+            - Get happier
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Purpose
+
+            What do I use the command prompt for?
+
+            I don't know, let's ask it.
+
+            ```small
+            man cut   # manual page for cut
+            man uniq
+            man sort
+            man head
+            cut -f1,2 -d ' ' ~/.bash_history \
+                | sort | uniq -c | sort -nr | head -n 30
+            ```
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Purpose
+
+            Honest answer time:
+
+            ```small
+            git status
+            ls
+            git add
+            git diff
+            git grep
+            git commit
+            git push
+            cd ..
+            git log
+            git checkout
+            cd
+            npm i
+            git pull
+            git rebase
+            git stash
+            git reset
+            ```
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Purpose
+
+            Mostly: Git
+
+            ```small
+            git status (gs)
+            git add
+            git diff
+            git grep
+            git commit
+            git push
+            git log
+            git checkout
+            git pull
+            git rebase
+            git stash
+            git reset
+            ```
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Purpose
+
+            Frequently: Development Framework Commands
+
+            ```
+            rails new myapp
+            rails g model Blog title:string
+            rails console
+            rails db
+            rails s
+            rails routes
+            rails db:setup
+            rails db:migrate
+            ```
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Purpose
+
+            Frequently: Development Framework Commands
+
+            ```
+            node .
+            nodemon
+            npm start
+            gulp
+            yo
+            sequelize
+            deargodwhy
+            ```
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Purpose
+
+            Less Frequently: Package Management
+
+            ```
+            bundle init
+            bundle upgrade
+            gem install
+
+            npm init
+            npm install
+            ```
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Purpose
+
+            Less Frequently: Package Management
+
+            ```
+            brew update
+            brew upgrade
+            brew install
+
+            apt-get install
+            yum install
+            ```
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Purpose
+
+            Rarely: Deal With It
+
+            <pre style="font-size: 0.6em"><code>git log $(git merge-base master branch)..branch
+
+cut -f1,2 -d ' ' ~/.bash_history \
+    | sort | uniq -c | sort -nr | head -n 30
+
+wget -mk http://www.stuff.to/read/on/the/train/
+
+rsync -rvP myproject/ username@myhost/myproject.com/
+
+pg_dump --clean -Z 9 app_master | \
+    ssh user@apphost 'zcat | psql -h localhost -U app appdb'</code></pre>
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## The Command Prompt
+
+            - ~~Purpose~~
+            - Anatomy
+            - Get unstuck
+            - Get happier
+
+        </script>
+    </section>
+
+    <section>
+        <code>
+        $ middleman
+        </code>
+        <img style="border: 0; box-shadow: none" src="command-prompt/term-running-middleman.png" alt="Terminal running middleman">
+    </section>
+
+    <section>
+        <img style="border: 0; box-shadow: none" src="command-prompt/anatomy.svg" alt="Anatomy">
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            <code>$ pstree</code>
+            ```
+
+              \-+= 73533 greg iTerm2 --server login -fp greg
+                \-+= 73534 root login -fp greg
+                  \-+= 73535 greg -bash
+                    \-+= 73987 greg ruby middleman
+
+            # <pid> <user> <program> <arguments>
+            ```
+
+            (`brew install pstree`)
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Terminal Emulator
+
+            - AKA terminal or just "term"
+            - GUI app
+            - Runs programs that use only text for input & output
+            - By default, runs a **shell**
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Terminal Emulators
+
+            - Terminal
+            - iTerm
+            - cmd.exe
+            - xfce4-terminal
+            - gnome-terminal
+            - konsole
+            - xterm
+            - rxvt
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Emulator?
+
+            ![BIOS](command-prompt/bios.jpg)
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## TTY
+
+            ```
+            Last login: Thu Aug  4 10:40:25 on ttys002
+            -----------------------------------^^^^^^^---
+            ```
+
+            TTY = **tele-typewriter**, a word used for the input/output
+            portion of early computing devices
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Bash
+
+            - sh (Bourne shell)
+                - bash (Bourne**-Again** shell)
+                    - zsh (from author Zhong Shao)
+            - csh (Bourne shell with C language syntax, pronounced seashell)
+                - tcsh (TENEX OS version of csh)
+            - cmd.exe
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Shell?
+
+            Have... program pearls... inside of them?
+
+            1. Print prompt
+            2. Wait for you to type a command
+            3. Run a program (e.g. `rails s`)
+            4. Send output back out to terminal emulator until program exits
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Types of Shells
+
+            - Login shells
+            - Non-login shells
+            - Interactive shells
+            - Non-interactive shells
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            - **Login Shells**
+
+              - Run your terminal emulator app
+              - Load once-off configuration from files
+                like `.bash_profile`
+
+            ```
+                \-+= 73535 greg -bash
+            ```
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            - **Non-Login Shells**
+
+              - Run `bash` at the command prompt
+              - Spun off the login shell such that the configuration
+                is already loaded
+
+            ```
+                \-+= 82172 greg -bash
+                  \-+= 85560 greg bash
+                    \-+= 85833 greg bash
+                      \-+= 86106 greg bash
+
+            ```
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            - **Interactive Shells**
+
+              - Run `bash` at the command prompt
+              - Load extra config like `.bashrc` that is often
+                configuration for the command prompt
+
+            - **Non-Interactive Shells**
+
+              - Run a `.sh` or `.rb` file straight out of
+                Finder or Windows Explorer
+              - Don't have a prompt, don't need one
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## .bash_profile?
+
+            I actually have no idea why it's called that
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## .bashrc?
+
+            `bash` is the program and `-rc` is a suffix
+            that means configuration.
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## You're bashitting me
+
+            `-rc` means configuration?
+
+            It's short for `runcom` which was a configuration tool in an
+            OS precursor to Unix/Linux/MacOS.
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Command Prompt
+
+            Just text that a **shell** prints before it waits for your input
+
+            ```
+            greg@rascal ~$ # bash
+            rascal%        # zsh
+            C:\>           # cmd.exe
+            ```
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Commands
+
+            ```small
+            man rsync
+
+            rsync -avuzb --exclude '*~' samba:samba/ .
+
+            'rsync'        # argument 0, the executable
+            '-avuzb'       # argument 1
+            '--exclude'    # argument 2
+            '*~'           # argument 3
+            'samba:samba/' # argument 4
+            '.'           # argument 5
+            ```
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Quoting
+
+            `cut -f1,2 -d ' ' ~/.bash_history`
+
+            `cd 'VirtualBox VMs'`
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Quoting and Escaping
+
+            ```small
+            man find
+            $ find . -name *.js -exec cat {} ;      # 1st attempt
+            find: -exec: no terminating "" or "+"
+            $ find . -name *.js -exec cat {} \;     # escape ;
+            find: reveal.js: unknown primary or operator
+            $ find . -name '*.js' -exec cat {} \;   # quote *
+            $ find . -name \*.js -exec cat {} \;    # escape *
+            ```
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Pipes and redirects
+
+            - **stdin**: Input (e.g. your keyboard)
+            - **stdout**: The good news
+            - **stderr**: The bad news
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Pipes
+
+            Connect the output stream of one program to the input stream of another
+
+            `cut -f1,2 -d ' ' ~/.bash_history | sort | uniq -c | sort -nr | head -n 30`
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Redirect
+
+            Connect the output stream of a program to a file
+
+            `unicorn > unicorn.log`
+
+            `unicorn 2> unicorn_errors.log`
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Redirect to another stream
+
+            Send errors into the output stream
+
+            `(rspec 2>&1) | less -R`
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## The Command Prompt
+
+            - ~~Purpose~~
+            - ~~Anatomy~~
+            - Get unstuck
+            - Get happier
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            **I ran `rails s` and now I don't have a prompt anymore**
+
+            - `Control-C` sends an **interrupt signal** to the currently running program
+            asking it politely to stop
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            **What if my program doesn't exit?**
+
+            - `Control-Z` suspends the program and puts you back on the command prompt
+            - Then run this
+
+            `kill -9 %`
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            `kill -9 %`
+
+            - Signal 9 AKA KILL tells the OS to force-quit the program
+            - `%` is a bash code for the "pid of the last program you suspended"
+            - `man kill`
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            **I ran `psql/irb/pry/node` and I can't get out!**
+
+            - `Control-D` sends the **hangup signal** to an interactive prompt
+            program and is the most universal way to exit any prompt
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            **I press keys and nothing happens or garbage gets printed**
+
+            - Some programs print special codes that move the cursor or change
+            colour
+            - Interrupting such programs can leave your terminal in a broken state
+            - Quit your terminal emulator and start a new one
+            - Examine `ps ax` output and `kill` anything you don't want running
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            **Where do I get help?**
+
+            - Read the manual (man = manual, spacebar for next page, q to quit)
+
+              `man wget`
+
+            - Ask a program to print help for you
+
+              `rails --help`
+
+            - Universal solution:
+                - Google "wget command" or "rails command"
+        </script>
+    </section>
+
+    <section>
+        <img src="command-prompt/xkcd-flowchart.png" alt="XKCD Flowchart">
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## The Command Prompt
+
+            - ~~Purpose~~
+            - ~~Anatomy~~
+            - ~~Get unstuck~~
+            - Get happier
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Nicer Prompts
+
+            <pre style="font-size: 0.6em"><code>red="\[\033[01;31m\]"
+green="\[\033[01;32m\]"
+yellow="\[\033[01;33m\]"
+blue="\[\033[01;34m\]"
+pink="\[\033[01;35m\]"
+cyan="\[\033[0;36m\]"
+gray="\[\033[01;30m\]"
+reset="\[\033[00m\]"
+user_and_host='\u@\h'
+rvm='$([ -f .rvmrc ] && [ $PWD != $HOME ] && echo "" $(~/.rvm/bin/rvm-prompt i v g))'
+git='$(/usr/bin/ruby -e '\''print `git branch 2> /dev/null`.match(/\*(.+)$/).to_a.last.to_s'\'')'
+dir=' \w'
+date='$(date +%T)'
+PS1="${green}${user_and_host}${cyan}${rvm}${yellow}${git}${blue}${dir}${reset}\n${gray}${date}${reset} \$ "</code></pre>
+
+            ![Custom prompt](command-prompt/custom-prompt.png)
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Aliases
+
+            `echo "alias gs='git status'" >> ~/.profile`
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Colour
+
+            `echo "alias ls='ls -ohG'" >> ~/.profile`
+
+            ![Ls Colour](command-prompt/ls-color.png)
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Colour ALL the programs \o/
+
+            `git config --global color.ui true`
+
+            ![Git Colour](command-prompt/git-color.png)
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Level 1 Magic
+
+            - Don't panic
+            - Commands: cd, cd .., pwd, ls
+            - Keys: Up, Down, Tab
+
+            ```
+            $ atom ind<Tab>
+            $ atom index.html
+            ```
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Level 2 Magic
+
+            - **Control-A**: start of the line 
+            - **Control-E**: end of the line 
+            - **Alt-Delete**: delete previous word
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Level 2 Magic
+
+            Terminal, Chrome, Sublime, Evernote, Keynote, XCode, Pages,
+            LibreOffice, System Preferences, Gnome, KDE, XFCE5, Windows
+
+            ![Alt-Delete-Wow](command-prompt/alt-delete-wow.png)
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Level 2 Magic
+
+            - **Alt-B**: move back one word
+            - **Alt-F**: move forwards one word
+            - **Alt-D**: delete next word
+            - **Control-K**: delete to the end of the line
+            - **Control-R**: search for a previous command
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Control-R
+
+            - Control-R to start
+            - Start typing (e.g. type “git r”)
+            - Control-R to jump to next oldest match
+            - Control-S to jump to next newest match
+            - Return to run, Esc to cancel
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Configure Terminal
+
+            ![Terminal Meta Key](command-prompt/terminal-option-meta-key.png)
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Configure iTerm
+
+            ![iTerm Meta Key](command-prompt/iterm2-option-meta-key.png)
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Level 3 Magic
+
+            - Configure your OS file extension associations
+            - Command-click on filenames and URLs
+
+            ![Command Click in iTerm](command-prompt/command-click-iterm.png)
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Level 3 Magic
+
+            - Write a script to ask your fav editor what file/line the cursor is on
+            - Use script output in arguments to commands like rspec, cucumber, mocha
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Level 3 Magic
+
+            ```
+            $ cat ~/bin/v
+            #!/bin/sh
+            exec gvim --remote-expr "expand('%').':'.line('.')"
+            $ rspec `v`
+            ```
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Level 3 Magic
+
+            You can configure iTerm to type "\`v`&lt;Enter&gt;" really conveniently...
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Level 3 Magic
+
+            ![Command-R in iTerm](command-prompt/command-r-iterm-trick.png)
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Level 3 Magic
+
+            Or you can get bash or zsh to evaluate it...
+
+            ```
+            $ rspec <Command-R>
+            $ rspec `v`<Control-Alt-E>
+            $ rspec killer_feature_spec.rb:28
+            % rspec <Command-R>
+            % rspec `v`<Tab>
+            % rspec killer_feature_spec.rb:28
+            ```
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## Level 3 Magic
+
+            I've been doing this trick for years with different combinations of
+            editors shells and programming languages and it *still works*
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            ## The Command Prompt
+
+            - ~~Purpose~~
+            - ~~Anatomy~~
+            - ~~Get unstuck~~
+            - ~~Get happier~~
+
+        </script>
+    </section>
+
+    <section data-markdown=''>
+        <script type='text/template'>
+            @gregmcintyre
+
+            greg@small.mu
+
+            2016
+        </script>
+    </section>
+
+
+</div>
