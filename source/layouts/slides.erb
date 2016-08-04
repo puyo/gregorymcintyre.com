@@ -4,15 +4,16 @@
 <meta charset="utf-8">
 <title><%= current_article.smart_title %></title>
 <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-<meta name="author" content="Hakim El Hattab">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <%= stylesheet_link_tag 'slides/reveal' %>
 <%= stylesheet_link_tag 'slides/theme/beige' %>
 <!-- Theme used for syntax highlighting of code -->
 <%= stylesheet_link_tag 'slides/zenburn' %>
 <!-- Printing and PDF exports -->
+
 <script>
 var link = document.createElement( 'link' )
 link.rel = 'stylesheet'
@@ -22,6 +23,7 @@ link.href = window.location.search.match( /print-pdf/gi ) ?
     '/stylesheets/slides/print/paper.css'
 document.getElementsByTagName( 'head' )[0].appendChild( link )
 </script>
+
 <style>
  .reveal pre { box-shadow: none !important; font-size: 1em; }
  .reveal pre code { font-weight: normal; }
@@ -39,12 +41,14 @@ document.getElementsByTagName( 'head' )[0].appendChild( link )
      font-weight: normal;
      color: #333;
  }
-
 </style>
+
 <!--[if lt IE 9]>
-<script src="js/html5shiv.js"></script>
+<%= javascript_include_tag 'slides/html5shiv' %>
 <![endif]-->
+
 </head>
+
 <body>
 <div class="reveal">
 <div class="slides">
@@ -52,13 +56,12 @@ document.getElementsByTagName( 'head' )[0].appendChild( link )
 </div> <!-- .slides -->
 </div> <!-- .reveal -->
 
-
-<%= javascript_include_tag 'head.min' %>
-<%= javascript_include_tag 'reveal' %>
+<%= javascript_include_tag 'slides/head.min' %>
+<%= javascript_include_tag 'slides/reveal' %>
 
 <script>
 
-// More info https://github.com/hakimel/reveal.js#configuration
+ // More info https://github.com/hakimel/reveal.js#configuration
  Reveal.initialize({
      controls: true,
      progress: true,
@@ -69,14 +72,14 @@ document.getElementsByTagName( 'head' )[0].appendChild( link )
 
      // More info https://github.com/hakimel/reveal.js#dependencies
      dependencies: [
-         { src: '/javascripts/classList.js', condition: function() { return !document.body.classList } },
-         { src: '/javascripts/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ) } },
-         { src: '/javascripts/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ) } },
-         /* { src: '/javascripts/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad() } },*/
-         { src: '/javascripts/plugin/zoom-js/zoom.js', async: true },
-         { src: '/javascripts/plugin/notes/notes.js', async: true }
+         { src: '/javascripts/slides/classList.js', condition: function() { return !document.body.classList } },
+         { src: '/javascripts/slides/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ) } },
+         { src: '/javascripts/slides/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ) } },
+         { src: '/javascripts/slides/plugin/highlight/highlight.js', condition: function() { return !!document.querySelector( '[data-highlight]' ) }, async: true, callback: function() { hljs.initHighlightingOnLoad() } },
+         { src: '/javascripts/slides/plugin/zoom-js/zoom.js', async: true },
+         { src: '/javascripts/slides/plugin/notes/notes.js', async: true }
      ]
-})
+ })
 
 </script>
 </body>
