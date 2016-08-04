@@ -288,10 +288,10 @@ layout: slides
     <script type='text/template'>
         ## Bash
 
-        - sh (Bourne shell)
+        - sh (Ye Olde Bourne shell)
             - bash (Bourne**-Again** shell)
                 - zsh (from author Zhong Shao)
-        - csh (Bourne shell with C language syntax, pronounced seashell)
+        - csh (shell with C language syntax)
             - tcsh (TENEX OS version of csh)
         - cmd.exe
     </script>
@@ -301,19 +301,19 @@ layout: slides
     <script type='text/template'>
         ## Shell?
 
-        Have... program pearls... inside of them?
-
-        1. Print prompt
-        2. Wait for you to type a command
-        3. Run a program (e.g. `rails s`)
-        4. Send output back out to terminal emulator until program exits
+        - Have... program pearls... inside of them?
+        - Usually
+            1. Print prompt
+            2. Wait for you to type a command
+            3. Run a program (e.g. `rails s`)
+            4. Send output back out to terminal emulator until program exits
 
     </script>
 </section>
 
 <section data-markdown=''>
     <script type='text/template'>
-        ## Types of Shells
+        ## Shell modes
 
         - Login shells
         - Non-login shells
@@ -327,8 +327,7 @@ layout: slides
         - **Login Shells**
 
             - Run your terminal emulator app
-            - Load once-off configuration from files
-            like `.bash_profile`
+            - Loads config from `~/.bash_profile`
 
         ```
         \-+= 73535 greg -bash
@@ -340,9 +339,8 @@ layout: slides
     <script type='text/template'>
         - **Non-Login Shells**
 
-            - Run `bash` at the command prompt
-            - Spun off the login shell such that the configuration
-            is already loaded
+            - Run `bash` at the bash prompt
+            - Loads config from `~/.bashrc`
 
         ```small
         $ bash
@@ -362,15 +360,13 @@ layout: slides
     <script type='text/template'>
         - **Interactive Shells**
 
-            - Run `bash` at the command prompt
-            - Load extra config like `.bashrc` that is often
-            configuration for the command prompt
+            - `bash`
+            - Print prompt, read from keyboard, etc.
 
         - **Non-Interactive Shells**
 
-            - Run a `.sh` or `.rb` file straight out of
-            Finder or Windows Explorer
-            - Don't have a prompt, don't need one
+            - `bash myscript.sh`
+            - No prompts, still loads `.bashrc`
     </script>
 </section>
 
