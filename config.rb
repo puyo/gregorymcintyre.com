@@ -15,8 +15,11 @@ def config_blog(blog, name)
   blog.sources = ':title/index.html'
   blog.summary_length = 0
   blog.tag_template = nil
-  blog.year_link = '{year}.html'
-  blog.year_template = name + '/calendar.html'
+  cal = name + '/calendar.html'
+  if Dir['source/' + cal + '*'].any?
+    blog.year_link = '{year}.html'
+    blog.year_template = cal
+  end
   #page '/' + name + '/feed.xml', layout: false
 end
 

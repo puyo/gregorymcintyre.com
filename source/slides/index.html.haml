@@ -24,17 +24,11 @@ layout: false
   %body{class: blog_name}<>
     .page-header<>
       %h1.page-title= link_to blog_title, blog(blog_name).options.prefix + '/index.html'
-      - if not is_blog_article?
-        %nav.page-nav(role="navigation")<>
-          .nav-links<>
-            - blog(blog_name).articles.group_by {|a| a.date.year }.each do |y, articles|
-              - url = blog_year_path(y, blog_name)
-              = link_to y, url, class: [(if defined?(year) && year == y then 'current' end), 'year-link nav-link'].compact.join(' ')
     .page<>
       .main(role="main")<>
-        - blog('slides').articles.each_with_index do |a, i|
-          = partial 'slides-item', locals: { article: a } do
-            = link_to a.smart_title, a
+        %ul
+          - blog('slides').articles.each_with_index do |a, i|
+            %li= partial 'slides-item', locals: { article: a }
 
     = partial 'page_footer'
     = partial 'ga'
