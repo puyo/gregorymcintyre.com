@@ -220,14 +220,14 @@ layout: slides
     <script type='text/template'>
         `$ pstree`
 
-        ```
+        ```small
 
-            \-+= 73533 greg iTerm2 --server login -fp greg
-            \-+= 73534 root login -fp greg
-                \-+= 73535 greg -bash
-                \-+= 73987 greg ruby middleman
+        \-+= 73533 greg iTerm2 --server login -fp greg
+          \-+= 73534 root login -fp greg
+            \-+= 73535 greg -bash
+              \-+= 73987 greg ruby middleman
 
-            <pid> <user> <program> <arguments>
+        <pid> <user> <program> <arguments>
         ```
 
         (`brew install pstree`)
@@ -331,7 +331,7 @@ layout: slides
             like `.bash_profile`
 
         ```
-            \-+= 73535 greg -bash
+        \-+= 73535 greg -bash
         ```
     </script>
 </section>
@@ -344,12 +344,15 @@ layout: slides
             - Spun off the login shell such that the configuration
             is already loaded
 
-        ```
-            \-+= 82172 greg -bash
-                \-+= 85560 greg bash
-                \-+= 85833 greg bash
-                    \-+= 86106 greg bash
+        ```small
+        $ bash
+        $ bash
+        $ bash
 
+        \-+= 82172 greg -bash
+          \-+= 85560 greg bash
+            \-+= 85833 greg bash
+              \-+= 86106 greg bash
         ```
 
     </script>
@@ -395,7 +398,7 @@ layout: slides
         `-rc` means configuration?
 
         It's short for `runcom` which was a configuration tool in an
-        OS precursor to Unix/Linux/MacOS.
+        OS precursor to Unix/Linux/MacOS
     </script>
 </section>
 
@@ -406,9 +409,9 @@ layout: slides
         Just text that a **shell** prints before it waits for your input
 
         ```
-        greg@rascal ~$ # bash
-        rascal%        # zsh
-        C:\>           # cmd.exe
+        greg@rascal ~$
+        rascal%
+        C:\>
         ```
     </script>
 </section>
@@ -422,12 +425,12 @@ layout: slides
 
         rsync -avuzb --exclude '*~' samba:samba/ .
 
-        'rsync'        # argument 0, the executable
-        '-avuzb'       # argument 1
-        '--exclude'    # argument 2
-        '*~'           # argument 3
-        'samba:samba/' # argument 4
-        '.'           # argument 5
+        'rsync'
+        '-avuzb'
+        '--exclude'
+        '*~'
+        'samba:samba/'
+        '.'
         ```
     </script>
 </section>
@@ -536,7 +539,7 @@ layout: slides
     <script type='text/template'>
         `kill -9 %`
 
-        - Signal 9 AKA KILL tells the OS to force-quit the program
+        - Signal 9 force-quits the program
         - `%` is a bash code for the "pid of the last program you suspended"
         - `man kill`
     </script>
@@ -546,6 +549,7 @@ layout: slides
     <script type='text/template'>
         **I ran `psql/irb/pry/node` and I can't get out!**
 
+        - exit, quit, q, mashing escape, nothing works
         - `Control-D` sends the **hangup signal** to an interactive prompt
         program and is the most universal way to exit any prompt
 
@@ -732,7 +736,6 @@ layout: slides
     <script type='text/template'>
         ## Level 3 Magic
 
-        - Configure your OS file extension associations
         - Command-click on filenames and URLs
 
         ![Command Click in iTerm](command-click-iterm.png)
@@ -818,6 +821,6 @@ layout: slides
 
 <section data-markdown=''>
     <script type='text/template'>
-        [gregorymcintyre.com/slides/command-prompt](http://gregorymcintyre.com/slides/command-prompt/#/)
+        [gregorymcintyre.com/slides/command-prompt/](http://gregorymcintyre.com/slides/command-prompt/#/)
     </script>
 </section>
