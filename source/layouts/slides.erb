@@ -25,8 +25,17 @@ document.getElementsByTagName( 'head' )[0].appendChild( link )
 </script>
 
 <style>
- .reveal pre { box-shadow: none !important; font-size: 1em; }
- .reveal pre code { font-weight: normal; }
+ .reveal pre {
+     box-shadow: none;
+     font-size: 1em;
+     display: inline;
+     margin: auto;
+ }
+ .reveal pre code {
+     font-weight: normal;
+     display: inline-block;
+     margin: 1rem;
+ }
  .reveal code { font-weight: bold; }
  .reveal .lang-small { font-size: 0.6em; line-height: 1.2; }
  .reveal h1,
@@ -40,6 +49,14 @@ document.getElementsByTagName( 'head' )[0].appendChild( link )
      font-size: 36px;
      font-weight: normal;
      color: #333;
+ }
+ .reveal img.borderless {
+     box-shadow: none;
+     border: 0;
+ }
+ .reveal ul, .reveal ol {
+     margin-top: 1rem;
+     margin-bottom: 1rem;
  }
 </style>
 

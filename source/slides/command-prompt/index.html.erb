@@ -34,7 +34,7 @@ layout: slides
         I don't know, let's ask it.
 
         ```small
-        man cut   # manual page for cut
+        man cut
         man uniq
         man sort
         man head
@@ -209,11 +209,11 @@ layout: slides
 
 <section>
     <code>$ middleman</code>
-    <img style="border: 0; box-shadow: none" src="term-running-middleman.png" alt="Terminal running middleman">
+    <img class="borderless" src="term-running-middleman.png" alt="Terminal running middleman">
 </section>
 
 <section>
-    <img style="border: 0; box-shadow: none" src="anatomy.svg" alt="Anatomy">
+    <img class="borderless" src="anatomy.svg" alt="Anatomy">
 </section>
 
 <section data-markdown=''>
@@ -265,7 +265,7 @@ layout: slides
     <script type='text/template'>
         ## Emulator?
 
-        ![BIOS](bios.jpg)
+        <img class="borderless" src="bios.jpg" alt="BIOS">
     </script>
 </section>
 
@@ -275,7 +275,7 @@ layout: slides
 
         ```
         Last login: Thu Aug  4 10:40:25 on ttys002
-        -----------------------------------^^^^^^^---
+        -----------------------------------^^^^^^^
         ```
 
         TTY = **tele-typewriter**, a word used for the input/output
@@ -732,6 +732,26 @@ layout: slides
     <script type='text/template'>
         ## Level 3 Magic
 
+        ```small
+        $ cat ~/.inputrc
+
+        # Be quiet
+        set bell-style visible
+
+        # We are using a UTF terminal
+        set convert-meta on
+
+        # Better than Control-R
+        M-n: history-search-forward
+        M-p: history-search-backward
+        ```
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Level 3 Magic
+
         ![Command Click in iTerm](command-click-iterm.png)
     </script>
 </section>
@@ -753,7 +773,7 @@ layout: slides
     <script type='text/template'>
         ## Level 3 Magic
 
-        <img style="border: 0; box-shadow: none" src="command-r-iterm-trick.png" alt="Command-R in iTerm">
+        <img class="borderless" src="command-r-iterm-trick.png" alt="Command-R in iTerm">
     </script>
 </section>
 
@@ -771,16 +791,6 @@ layout: slides
         % rspec `v`<Tab>
         % rspec killer_feature_spec.rb:28
         ```
-    </script>
-</section>
-
-<section data-markdown=''>
-    <script type='text/template'>
-        ## Level 3 Magic
-
-        I've been doing this trick for years with different combinations of
-        editors shells and programming languages and it *still works*
-
     </script>
 </section>
 
