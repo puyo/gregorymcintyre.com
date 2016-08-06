@@ -27,7 +27,8 @@ activate(:blog) { |blog| config_blog(blog, 'poetry') }
 activate(:blog) { |blog| config_blog(blog, 'opinion') }
 activate(:blog) { |blog| config_blog(blog, 'slides') }
 
-activate :livereload
+activate(:livereload) { |config| config.host = '0.0.0.0' }
+
 # activate :relative_assets # too many bugs :-(
 activate :directory_indexes
 activate :syntax, line_numbers: true
