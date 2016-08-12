@@ -5,7 +5,7 @@ Time.zone = 'Sydney'
 
 def config_blog(blog, name)
   blog.day_template = nil
-  blog.layout = name
+  blog.layout = name + '/layout'
   blog.month_template = nil
   blog.name = name
   blog.paginate = true
@@ -15,7 +15,7 @@ def config_blog(blog, name)
   blog.sources = ':title/index.html'
   blog.summary_length = 0
   blog.tag_template = nil
-  cal = name + '/calendar.html'
+  cal = name + '/calendar'
   if Dir['source/' + cal + '*'].any?
     blog.year_link = '{year}.html'
     blog.year_template = cal

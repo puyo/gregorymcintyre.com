@@ -1,9 +1,9 @@
 ---
 pageable: true
 per_page: 20
-layout: poetry
+layout: opinion/layout
 ---
 
-- page_articles.each_with_index do |article, i|
+- page_articles('opinion').each_with_index do |article, i|
   = partial 'article', locals: { article: article } do
     = article.body

@@ -12,7 +12,7 @@ layout: false
   - title = site_title
 %html(lang="en")<>
   %head<>
-    = partial 'header_meta'
+    = partial 'header-meta'
     = stylesheet_link_tag 'site.css'
     = stylesheet_link_tag 'highlight.css'
     %title= title
@@ -28,7 +28,7 @@ layout: false
       .main(role="main")<>
         %ul
           - blog('slides').articles.each_with_index do |a, i|
-            %li= partial 'slides-item', locals: { article: a }
+            %li= partial 'slides/item', locals: { article: a }
 
     = partial 'page_footer'
     = partial 'ga'
