@@ -5,7 +5,6 @@ tags:
 ---
 
 ```poem
-
 Ah, love,
         sister,
 Falling, failing, fragile you.
@@ -27,5 +26,4 @@ What? you demand
 Why, sister you
 Of all people know
 Just how bloody brave we both are!
-
 ```

@@ -3,7 +3,7 @@ title: Constellation
 date: 2016-05-04 13:00 AEST
 ---
 
-```python
+```poem
 My door creaks
 When you go away
 It moans as you leave
