@@ -267,6 +267,7 @@ h1, h2, h3, h4
   font-variant: small-caps
   text-align: center
   text-transform: lowercase
+  margin-top: 4rem
 
   &::before
     $image: 'hr4.svg'
@@ -339,18 +340,27 @@ h1, h2, h3, h4
     +responsive(medium large)
       display: block
 
+header
+  .title
+    margin-top: 0 !important
+    margin-bottom: 0 !important
+  .time
+    color: hsl(0, 0, 50)
+  margin-bottom: 1rem
+
+.article-list
+  padding-left: 0
+  li
+    list-style-type: none
+  margin-bottom: 1rem
+
 .article
   margin-bottom: 4rem
   header
     margin-bottom: 1rem
-    .title
-      margin-top: 0
-      margin-bottom: 0
   h1, h2, h3, h4
     margin-top: 3rem
     margin-bottom: 1rem
-  .time
-    color: hsl(0, 0, 50)
 
   // &:after
   //   $image: 'hr3.png'

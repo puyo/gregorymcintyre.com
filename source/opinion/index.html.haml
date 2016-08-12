@@ -2,6 +2,9 @@
 layout: opinion/layout
 ---
 
-- blog('opinion').articles[0, 5].each_with_index do |article, i|
-  = partial 'article-item', locals: { article: article } do
-    = article.body
+%ul.article-list
+  - blog('opinion').articles.each do |article|
+    %li
+      %header<>
+        %h2.title= link_to article.smart_title, article.url
+        %time.time(pubdate="pubdate")= article.date.strftime('%e %b %Y')
