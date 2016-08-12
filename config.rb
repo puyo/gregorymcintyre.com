@@ -5,7 +5,7 @@ Time.zone = 'Sydney'
 
 def config_blog(blog, name)
   blog.day_template = nil
-  blog.layout = name + '/layout'
+  blog.layout = name + '/_layout'
   blog.month_template = nil
   blog.name = name
   blog.paginate = true
@@ -20,7 +20,6 @@ def config_blog(blog, name)
     blog.year_link = '{year}.html'
     blog.year_template = cal
   end
-  #page '/' + name + '/feed.xml', layout: false
 end
 
 activate(:blog) { |blog| config_blog(blog, 'poetry') }

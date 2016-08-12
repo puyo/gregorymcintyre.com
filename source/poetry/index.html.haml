@@ -1,8 +1,7 @@
 ---
 pageable: true
 per_page: 20
-layout: poetry/layout
-blog: poetry
+layout: poetry/_layout
 ---
 
 - blog('poetry').articles[page_start - 1, per_page].each_with_index do |article, i|
