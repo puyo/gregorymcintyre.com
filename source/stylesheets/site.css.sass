@@ -11,7 +11,7 @@ $dark-purple: #410521
 $purple: lighten(#410521, 10%)
 $dark-pink: lighten($purple, 10%)
 
-$link-color: darken($blue, 60%)
+$link-color: $purple
 $focus-color: lighten(desaturate($blue, 50%), 10%)
 $page-bg-color: white
 
@@ -186,7 +186,7 @@ th, td
 
 a
   text-decoration: none
-  color: $purple
+  color: $link-color
   &:hover
     color: $dark-pink
     text-decoration: underline
@@ -229,9 +229,6 @@ h1, h2, h3, h4
 
 .nav-links
   +clearfix
-  border-width: 0 0 4px 0
-  border-style: solid
-  border-color: $thick-border-color
   .nav-link
     display: block
     float: left
@@ -241,7 +238,7 @@ h1, h2, h3, h4
     &.current, &:hover
       border-color: $thick-border-color
       text-decoration: none
-      color: inherit
+      color: $link-color
 
 .page-title
   margin: 0
@@ -284,10 +281,10 @@ h1, h2, h3, h4
 
 .search-form
   +clearfix
-  border-bottom: 2px solid $charcoal
+  border-top: 4px solid $thick-border-color
+  border-bottom: 2px solid $thick-border-color
   display: block
-  line-height: $gap
-  font-size: 15px
+  margin-top: 1rem
   *
     transition: all 0.1s
 
@@ -298,8 +295,6 @@ h1, h2, h3, h4
 
 .search-input
   +quick-serif
-  font-size: 18px
-  min-height: 30px
   background-color: transparent
   border: 0
   box-sizing: border-box
@@ -319,7 +314,6 @@ h1, h2, h3, h4
 
 .search-button
   +quick-serif
-  font-size: 18px
   opacity: 0
   position: absolute
   background-color: $charcoal
