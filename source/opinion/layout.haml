@@ -1,2 +1,2 @@
-= partial 'blog', locals: locals.merge(blog_name: 'opinion', blog_title: 'Opinions of Gregory McIntyre') do
+= partial 'blog', locals: { name: 'opinion', title: 'Opinions of Gregory McIntyre' } do
   = yield

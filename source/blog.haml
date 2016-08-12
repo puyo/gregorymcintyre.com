@@ -1,18 +1,18 @@
 -# NB: This template is used for all pages within the blog: index pages, calendar pages, and article pages
--# It requires: blog_name
+-# It requires: name, title
 !!!5
-- title = [current_article.try(:smart_title), blog_title].compact.join(' - ')
-- html_title = blog_title.dup
-- html_title.gsub!(/Mc/, 'M<small>c</small>')
-- html_title.gsub!('by', '<small>by</small><br/>')
-- html_title.gsub!('of', '<small>of</small><br/>')
+- meta_title = [current_article.try(:smart_title), title].compact.join(' - ')
+- header_title = title.dup
+- header_title.gsub!(/Mc/, 'M<small>c</small>')
+- header_title.gsub!('by', '<small>by</small><br/>')
+- header_title.gsub!('of', '<small>of</small><br/>')
 - is_blog_index = !is_blog_article?
-- blog = blog(blog_name)
+- blog = blog(name)
 %html(lang="en")<>
   %head<>
-    %title= title
+    %title= meta_title
     %script{src: '//use.edgefonts.net/english-small-caps.js'}
-    %link{href: "/#{blog_name}/feed.xml", rel: 'alternate', title: data.site.title, type: 'application/atom+xml'}
+    %link{href: "/#{name}/feed.xml", rel: 'alternate', title: data.site.title, type: 'application/atom+xml'}
 
     -# Indexing individual year pages just duplicates a lot of info in search results
     - if defined?(page_type) && page_type == 'year'
@@ -22,15 +22,15 @@
     = stylesheet_link_tag 'site'
     = stylesheet_link_tag 'highlight'
 
-  %body{class: blog_name}<>
+  %body{class: name}<>
     .page-header<>
-      %h1.page-title= link_to html_title, blog.options.prefix + '/index.html'
+      %h1.page-title= link_to header_title, blog.options.prefix + '/index.html'
 
-      - if is_blog_index and blog.options.calendar_template
+      - if is_blog_index and blog.options.year_template
         %nav.page-nav(role="navigation")<>
           .nav-links<>
             - blog.articles.group_by {|a| a.date.year }.each do |y, articles|
-              - url = blog_year_path(y, blog_name)
+              - url = blog_year_path(y, name)
               = link_to y, url, class: [(if defined?(year) && year == y then 'current' end), 'year-link nav-link'].compact.join(' ')
 
           = partial 'search'
