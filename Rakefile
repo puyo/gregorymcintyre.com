@@ -1,10 +1,13 @@
-task default: [:upload]
+task default: [:usage]
+
+task :usage do
+  system($PROGRAM_NAME, '-D')
+end
 
 desc 'Upload to gregorymcintyre.com'
 task publish: :build do
   sh 'rsync -rvP --delete build/ gregorymcintyre.com:gregorymcintyre.com/'
 end
-
 
 desc 'Regenerate the static site'
 task :build do
