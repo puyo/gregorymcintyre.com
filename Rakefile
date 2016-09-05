@@ -22,7 +22,7 @@ task :poem do
   include Middleman::Util::UriTemplates
 
   title = ENV['title']
-  if !title or title.empty?
+  if !title || title.empty?
     raise 'Must supply poem title. e.g. rake poem title="One Two Three"'
   end
   date = Time.now.strftime('%Y-%m-%d %H:%M %Z')
