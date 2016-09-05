@@ -45,5 +45,5 @@ date: #{date}
   end
 
   puts path
-  system 'g', path
+  system 'e', path
 end
