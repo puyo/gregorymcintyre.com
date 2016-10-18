@@ -158,6 +158,8 @@ layout: none
           margin-bottom: $gap
 
       .info
+        .info-item
+          clear: both
         .head
           +left-side
           +faded
@@ -231,19 +233,24 @@ layout: none
     .section.vcard
       %h1.name.fn Gregory McIntyre
       .info.personal-details
-        .head Web
-        .value
-          %a.url(href="http://gregorymcintyre.com") http://gregorymcintyre.com
-        .head Mobile
-        .value.tel +61 410 276 442
-        .head Email
-        .value
-          %a.email(href="mailto:greg@gregorymcintyre.com") greg@gregorymcintyre.com
-        .head Source Code
-        .value
-          %a.code(href="http://github.com/puyo/") http://github.com/puyo/
-        .head Location
-        .value.adr Sydney, Australia
+        .info-item
+          .head Web
+          .value
+            %a.url(href="http://gregorymcintyre.com") http://gregorymcintyre.com
+        .info-item
+          .head Mobile
+          .value.tel +61 410 276 442
+        .info-item
+          .head Email
+          .value
+            %a.email(href="mailto:greg@gregorymcintyre.com") greg@gregorymcintyre.com
+        .info-item
+          .head Source Code
+          .value
+            %a.code(href="http://github.com/puyo/") http://github.com/puyo/
+        .info-item
+          .head Location
+          .value.adr Sydney, Australia
 
     .section
       %h2 Career Objective
@@ -305,60 +312,69 @@ layout: none
 
       %h4 Tools of the Trade
       .info
-        .head Ruby
-        .value
-          %p
-            I loved Ruby when we first met around 2001, and then Rails came
-            along. Hello career. Rails, Sinatra, writing web sites with
-            Middleman, spamming APIs with Typhoeus, solving problems with Faye
-            and Redis. The thing I like best about Ruby is how quickly you
-            reach a solution to a problem you're having.
+        .info-item
+          .head Ruby
+          .value
+            %p
+              I loved Ruby when we first met around 2001, and then Rails came
+              along. Hello career. Rails, Sinatra, writing web sites with
+              Middleman, spamming APIs with Typhoeus, solving problems with Faye
+              and Redis. The thing I like best about Ruby is how quickly you
+              reach a solution to a problem you're having.
 
-        .head Frontend JavaScript
-        .value
-          %p
-            ES6, Webpack, AJAX, jQuery, Angular, Ember, Backbone, Mocha, React,
-            Redux, D3, Threejs, Mapbox, Leaflet, Google Maps, Yarn. Two great
-            problems in programming: cache invalidation and setting up a new
-            JavaScript project.
+        .info-item
+          .head Frontend JavaScript
+          .value
+            %p
+              ES6, Webpack, AJAX, jQuery, Angular, Ember, Backbone, Mocha, React,
+              Redux, D3, Threejs, Mapbox, Leaflet, Google Maps, Yarn. Two great
+              problems in programming: cache invalidation and setting up a new
+              JavaScript project.
 
-        .head Backend JavaScript
-        .value
-          %p
-            Node, Gulp, Express, Cuke, Mocha, PM2, Keystone.
+        .info-item
+          .head Backend JavaScript
+          .value
+            %p
+              Node, Gulp, Express, Cuke, Mocha, Nyc, NSP, Eslint, Sequelize,
+              PM2, Keystone, Co and generators and Bluebird promises.
 
-        .head HTML
-        .value
-          %p
-            HTML5, CSS3, SVG, SASS, HAML, Slim, vendor prefixes, shivs,
-            progressive enhancement, mobile first, LiveReload, responsive
-            designs, Android and Mobile Safari, a million IE virtual machines.
+        .info-item
+          .head HTML
+          .value
+            %p
+              HTML5, CSS3, SVG, SASS, HAML, Slim, vendor prefixes, shivs,
+              progressive enhancement, mobile first, LiveReload, responsive
+              designs, Android and Mobile Safari, a million IE virtual machines.
 
-        .head Photoshop
-        .value
-          %p
-            Layers, masks, drop shadow and emboss, save for web and devices,
-            weird arcane keyboard shortcuts. You love it.
+        .info-item
+          .head Photoshop
+          .value
+            %p
+              Layers, masks, drop shadow and emboss, save for web and devices,
+              weird arcane keyboard shortcuts. You love it.
 
-        .head XCode
-        .value
-          %p
-            Interface builder, breakpoints, view controllers, transitions, ARC,
-            developer certificates. Just drag and drop that library in there,
-            a'ite?
+        .info-item
+          .head XCode
+          .value
+            %p
+              Interface builder, breakpoints, view controllers, transitions, ARC,
+              developer certificates. Just drag and drop that library in there,
+              a'ite?
 
-        .head C/C++
-        .value
-          %p
-            An old hobby. Boost, googletest, the rule of three, const
-            correctness, resource management, stack unwinding bugs.
+        .info-item
+          .head C/C++
+          .value
+            %p
+              An old hobby. Boost, googletest, the rule of three, const
+              correctness, resource management, stack unwinding bugs.
 
-        .head Agile and Lean
-        .value
-          %p
-            Say yes to empowered lil teams, red-green-refactor cycles and
-            incrementally releasing to the glow of a pretty green build light.
-            Yes!
+        .info-item
+          .head Agile and Lean
+          .value
+            %p
+              Say yes to empowered lil teams, red-green-refactor cycles and
+              incrementally releasing to the glow of a pretty green build light.
+              Yes!
 
       %p
         Also a random grab bag of things professionally: Java, Python, Perl,
@@ -631,27 +647,36 @@ layout: none
         .reference
           %h3 Gigi Tsang
           .info
-            .head Relationship
-            .value Education Program Producer at General Assembly
-            .head Email
-            .value.email gigi@generalassemb.ly
-            .head Phone
-            .value.tel +61404295729
+            .info-item
+              .head Relationship
+              .value Education Program Producer at General Assembly
+            .info-item
+              .head Email
+              .value.email gigi@generalassemb.ly
+            .info-item
+              .head Phone
+              .value.tel +61404295729
         .reference
           %h3 Trevor Novak
           .info
-            .head Relationship
-            .value Colleague at yourtutor.com.au
-            .head Email
-            .value.email teeerevor@gmail.com
-            .head Phone
-            .value.tel +61409909209
+            .info-item
+              .head Relationship
+              .value Colleague at yourtutor.com.au
+            .info-item
+              .head Email
+              .value.email teeerevor@gmail.com
+            .info-item
+              .head Phone
+              .value.tel +61409909209
         .reference
           %h3 Darren Gray
           .info
-            .head Relationship
-            .value Manager at realestate.com.au
-            .head Email
-            .value.email darren@graymatterit.com
-            .head Phone
-            .value.tel +61412800142
+            .info-item
+              .head Relationship
+              .value Manager at realestate.com.au
+            .info-item
+              .head Email
+              .value.email darren@graymatterit.com
+            .info-item
+              .head Phone
+              .value.tel +61412800142
