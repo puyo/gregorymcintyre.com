@@ -1,0 +1,9 @@
+source :rubygems
+
+gem 'rake'
+gem 'middleman'
+gem 'rb-fsevent'
+gem 'slim'
+gem 'compass-susy-plugin'
+gem 'compass'
+gem 'sass'

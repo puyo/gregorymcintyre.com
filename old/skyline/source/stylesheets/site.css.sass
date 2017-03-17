@@ -1,0 +1,112 @@
+$yellow: #e6db74
+$green: #a6e22e
+$spink: #f92672
+$blue: #66D9EF
+$purple: #AE81FF
+$grey-fg: #F8F8F2
+$orange: #FD971F
+$faded-fg: darken(#BCBCBC, 20)
+$selected: $yellow
+$dark-bg: #1B1D1E
+$light-bg: #293739
+
+$link-color: $blue
+$link-hover-color: $yellow
+$link-focus-color: false
+$link-active-color: false
+$link-visited-color: false
+
+$font-color: #888
+$font-family: "Courier New", Courier, monospace
+$base-font-size: 18px
+$base-line-height: 24px
+
+$heading-color: $spink
+$text-color: $grey-fg
+$background-color: $dark-bg
+
+
+body
+  background-image: url(/images/fade.jpg)
+  width: 720px
+  overflow: auto
+  background-position: top right
+  background-repeat: no-repeat
+  background-attachment: fixed
+  background-color: $background-color
+  color: $text-color
+  font-family: $font-family
+  font-size: $base-font-size
+
+h1, h2, h3, h4, h5, h6
+  &, & a
+    color: $heading-color
+    font-size: 18px
+    font-weight: normal
+    margin-bottom: 10px
+    text-transform: lowercase
+
+a
+  text-decoration: none
+  color: $link-color
+  &:hover
+    color: $link-hover-color
+  &:active
+    color: $link-active-color
+  &:visited
+    color: $link-visited-color
+  &:focus
+    color: $link-focus-color
+
+p
+  margin-bottom: 10px
+
+$padleft: 43px
+
+.info
+  background: url(/images/dotborder.png) repeat-y scroll left center
+  margin-bottom: 85px + 10px
+  margin-left: 100px
+  padding: 140px 20px 20px $padleft
+  top: -20px
+
+  &:after
+    background: url(/images/skylinedots.png) no-repeat scroll left top
+    content: ' '
+    display: block
+    float: left
+    height: 85px
+    margin-left: -$padleft
+    width: 493px
+
+  th
+    color: $faded-fg
+    font-weight: normal
+    text-transform: lowercase
+
+  th, td
+    padding: 0px 20px 10px 0px
+
+@media handheld, only screen and (max-device-width: 480px)
+
+  $mobile-font-size: 42px
+
+  body
+    background-image: radial-gradient($light-bg, $dark-bg)
+    width: auto
+    font-size: $mobile-font-size
+    background-repeat: repeat
+    background-position: fixed
+    font-weight: bold
+
+  h1, h2, h3, h4, h5, h6
+    &, & a
+      font-size: $mobile-font-size
+      font-weight: bold
+
+  .info
+    padding-top: 40px
+    table
+      th, td
+        font-weight: bold
+        font-size: $mobile-font-size
