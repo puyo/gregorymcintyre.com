@@ -360,16 +360,6 @@ date: 2017-05-27 08:00 AEST
 
 <section data-markdown=''>
     <script type='text/template'>
-        ## Pipes and redirects
-
-        - **stdin**: Input (e.g. your keyboard)
-        - **stdout**: The good output
-        - **stderr**: The bad output
-    </script>
-</section>
-
-<section data-markdown=''>
-    <script type='text/template'>
         ## Pipes
 
         Connect the output stream of one program to the input stream of another
@@ -384,9 +374,7 @@ date: 2017-05-27 08:00 AEST
 
         Connect the output stream of a program to a file
 
-        `unicorn > unicorn.log`
-
-        `unicorn 2> unicorn_errors.log`
+        `rails s > rails-output.log`
     </script>
 </section>
 
@@ -407,35 +395,13 @@ date: 2017-05-27 08:00 AEST
         **I ran `rails s` and now I don't have a prompt anymore**
 
         - `Control-C` sends an **interrupt signal** to the currently running program
-        asking it politely to stop
+        asking it to stop
     </script>
 </section>
 
 <section data-markdown=''>
     <script type='text/template'>
-        **My program crashed and won't exit!**
-
-        - `Control-Z` suspends the program and puts you back on the command prompt
-        - This command force quits your program (last resort)
-
-        `kill -9 %`
-    </script>
-</section>
-
-<section data-markdown=''>
-    <script type='text/template'>
-        `kill -9 %`
-
-        - Signal 9 tells the OS to force-quit the program
-        - `%` is a bash variable
-        - Its value is the id of the last program you suspended
-        - `man kill` for more information
-    </script>
-</section>
-
-<section data-markdown=''>
-    <script type='text/template'>
-        **I ran `psql/irb/pry/node` and I can't get out!**
+        **I ran `irb/pry/node` and I can't get out!**
 
         - exit, quit, q, mashing escape, nothing works
         - `Control-D` sends the **hangup signal** to an interactive prompt
@@ -446,7 +412,7 @@ date: 2017-05-27 08:00 AEST
 
 <section data-markdown=''>
     <script type='text/template'>
-        **I press keys and nothing happens or garbage gets printed**
+        **I press keys and nothing happens or garbled text gets printed**
 
         - Some programs print special codes that move the cursor or change
         colour
@@ -492,23 +458,6 @@ date: 2017-05-27 08:00 AEST
 <section data-markdown=''>
     <script type='text/template'>
         ## Nicer Prompts
-
-        ```small
-        red="\[\033[01;31m\]"
-        green="\[\033[01;32m\]"
-        yellow="\[\033[01;33m\]"
-        blue="\[\033[01;34m\]"
-        pink="\[\033[01;35m\]"
-        cyan="\[\033[0;36m\]"
-        gray="\[\033[01;30m\]"
-        reset="\[\033[00m\]"
-        user_and_host='\u@\h'
-        rvm='$([ -f .rvmrc ] && [ $PWD != $HOME ] && echo "" $(~/.rvm/bin/rvm-prompt i v g))'
-        git='$(/usr/bin/ruby -e '\''print `git branch 2> /dev/null`.match(/\*(.+)$/).to_a.last.to_s'\'')'
-        dir=' \w'
-        date='$(date +%T)'
-        PS1="${green}${user_and_host}${cyan}${rvm}${yellow}${git}${blue}${dir}${reset}\n${gray}${date}${reset} \$ "
-        ```
 
         ![Custom prompt](custom-prompt.png)
     </script>
