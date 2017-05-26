@@ -1,0 +1,588 @@
+---
+title: Intro to the Command Prompt
+date: 2017-05-27 08:00 AEST
+---
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Intro to the Command Prompt
+
+        @gregmcintyre 2017
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## The Command Prompt
+
+        - Purpose
+        - Anatomy
+        - Get unstuck
+        - Get happier
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Purpose
+
+        What do I use the command prompt for?
+
+        Let's find out!
+
+        ```small
+        man cut
+        man uniq
+        man sort
+        man head
+        cut -f1,2 -d ' ' ~/.bash_history \
+            | sort | uniq -c | sort -nr | head -n 30
+        ```
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Purpose
+
+        Honest answer time:
+
+        ```small
+        git status
+        ls
+        git add
+        git diff
+        git grep
+        git commit
+        git push
+        cd ..
+        git log
+        git checkout
+        cd
+        npm i
+        git pull
+        git rebase
+        git stash
+        git reset
+        ```
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Purpose
+
+        Mostly: Git
+
+        ```small
+        git status (gs)
+        git add
+        git diff
+        git grep
+        git commit
+        git push
+        git log
+        git checkout
+        git pull
+        git rebase
+        git stash
+        git reset
+        ```
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Purpose
+
+        Frequently: Rails tells me to run a command
+
+        ```
+        rails new myapp
+        rails g model Blog title:string
+        rails console
+        rails db
+        rails s
+        rails routes
+        rails db:setup
+        rails db:migrate
+        ```
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Purpose
+
+        Frequently: Other frameworks tell me to run a command
+
+        ```
+        node .
+        npm start
+        npm watch
+        gulp
+        webpack
+        yo
+        ```
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Purpose
+
+        Less Frequently: Install/remove language packages
+
+        ```
+        bundle init
+        bundle upgrade
+        gem install
+
+        npm init
+        npm install
+        ```
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Purpose
+
+        Less Frequently: Install/remove OS packages
+
+        ```
+        brew update
+        brew upgrade
+        brew install
+
+        apt-get install
+        yum install
+        ```
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Purpose
+
+        Rarely: Deal with it
+
+        ```small
+        git log $(git merge-base master branch)..branch
+
+        cut -f1,2 -d ' ' ~/.bash_history \
+            | sort | uniq -c | sort -nr | head -n 30
+
+        wget -mk http://www.stuff.to/read/on/the/train/
+
+        rsync -rvP myproject/ username@myhost/myproject.com/
+
+        pg_dump --clean -Z 9 app_master | \
+            ssh user@apphost 'zcat | psql -h localhost -U app appdb'
+        ```
+
+    </script>
+</section>
+
+<section>
+    <img class="borderless" src="nyan-cat-deal-with-it.gif" alt="Nyan cat deals with it">
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## The Command Prompt
+
+        - ~~Purpose~~
+        - Anatomy
+        - Get unstuck
+        - Get happier
+
+    </script>
+</section>
+
+<section data-transition="fade-out">
+    <code>$ middleman</code>
+    <img class="borderless" src="term-running-middleman.png" alt="Terminal running middleman">
+</section>
+
+<section data-transition="fade-in">
+    <code>$ middleman</code>
+    <img class="borderless" src="term-running-middelman-hl.png" alt="Terminal running middleman with highlights">
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Terminal Emulator
+
+        - AKA terminal or just "term"
+        - Is itself a graphical application
+        - Runs programs that use text for input & output
+        - By default, runs a **shell**
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Terminal Emulators
+
+        - /Applications/Utilities/Terminal.app
+        - /Applications/iTerm.app
+        - cmd.exe
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Emulator?
+
+        <img class="borderless" src="bios.jpg" alt="BIOS">
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Console?
+
+        - Named after the piece of furniture
+        - Implies a keyboard and a screen of text
+        - Imagine wood veneer and glowing orange text
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Shell?
+
+        - Purpose:
+          - Run other programs
+          - Can think of those other programs as being "inside"
+        - Usually
+          - Print prompt
+          - Wait for you to type a command and press return
+          - Run command (e.g. `rails s`)
+          - Print output (out to terminal), until program exits
+          - Repeat
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Shells
+
+        - sh (Ye Olde Bourne shell)
+          - bash (Bourne**-Again** shell)
+            - zsh (from author Zhong Shao)
+        - cmd.exe (old Windows)
+        - PowerShell.exe (modern Windows)
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## "Inside"
+
+        ```small
+        $ bash
+        $ bash
+        $ bash
+
+        \-+= 85560 greg bash
+          \-+= 85833 greg bash
+            \-+= 86106 greg bash
+        ```
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Command Prompt?
+
+        Just the bit of text that a **shell** prints before it waits for your input
+
+        ```
+        greg@mycomputer ~$
+        mycomputer%
+        C:\>
+        ```
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Commands
+
+        ```small
+        man rsync
+
+        rsync -avuzb --exclude '*~' samba:samba/ .
+
+        'rsync'
+        '-avuzb'
+        '--exclude'
+        '*~'
+        'samba:samba/'
+        '.'
+        ```
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Quoting
+
+        ```
+        cd VirtualBox VMs    # :-(
+        cd 'VirtualBox VMs'  # :-)
+        ```
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Quoting or Escaping
+
+        ```
+        cd 'VirtualBox VMs'
+        cd VirtualBox\ VMs
+        ```
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Pipes and redirects
+
+        - **stdin**: Input (e.g. your keyboard)
+        - **stdout**: The good output
+        - **stderr**: The bad output
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Pipes
+
+        Connect the output stream of one program to the input stream of another
+
+        `cut -f1,2 -d ' ' ~/.bash_history | sort | uniq -c | sort -nr | head -n 30`
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Redirect
+
+        Connect the output stream of a program to a file
+
+        `unicorn > unicorn.log`
+
+        `unicorn 2> unicorn_errors.log`
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## The Command Prompt
+
+        - ~~Purpose~~
+        - ~~Anatomy~~
+        - Get unstuck
+        - Get happier
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        **I ran `rails s` and now I don't have a prompt anymore**
+
+        - `Control-C` sends an **interrupt signal** to the currently running program
+        asking it politely to stop
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        **My program crashed and won't exit!**
+
+        - `Control-Z` suspends the program and puts you back on the command prompt
+        - This command force quits your program (last resort)
+
+        `kill -9 %`
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        `kill -9 %`
+
+        - Signal 9 tells the OS to force-quit the program
+        - `%` is a bash variable
+        - Its value is the id of the last program you suspended
+        - `man kill` for more information
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        **I ran `psql/irb/pry/node` and I can't get out!**
+
+        - exit, quit, q, mashing escape, nothing works
+        - `Control-D` sends the **hangup signal** to an interactive prompt
+        program and is the most universal way to exit any prompt
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        **I press keys and nothing happens or garbage gets printed**
+
+        - Some programs print special codes that move the cursor or change
+        colour
+        - Can leave your terminal in a broken state
+        - Quit your terminal emulator and start a new one, it's OK
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        **Where do I get help?**
+
+        - Read the manual (man = manual, spacebar for next page, q to quit)
+
+            `man wget`
+
+        - Ask a program to print help for you
+
+            `rails --help`
+
+        - Universal solution:
+            - Google "wget command" or "rails command"
+    </script>
+</section>
+
+<section>
+    <img src="xkcd-flowchart.png" alt="XKCD Flowchart">
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## The Command Prompt
+
+        - ~~Purpose~~
+        - ~~Anatomy~~
+        - ~~Get unstuck~~
+        - Get happier
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Nicer Prompts
+
+        ```small
+        red="\[\033[01;31m\]"
+        green="\[\033[01;32m\]"
+        yellow="\[\033[01;33m\]"
+        blue="\[\033[01;34m\]"
+        pink="\[\033[01;35m\]"
+        cyan="\[\033[0;36m\]"
+        gray="\[\033[01;30m\]"
+        reset="\[\033[00m\]"
+        user_and_host='\u@\h'
+        rvm='$([ -f .rvmrc ] && [ $PWD != $HOME ] && echo "" $(~/.rvm/bin/rvm-prompt i v g))'
+        git='$(/usr/bin/ruby -e '\''print `git branch 2> /dev/null`.match(/\*(.+)$/).to_a.last.to_s'\'')'
+        dir=' \w'
+        date='$(date +%T)'
+        PS1="${green}${user_and_host}${cyan}${rvm}${yellow}${git}${blue}${dir}${reset}\n${gray}${date}${reset} \$ "
+        ```
+
+        ![Custom prompt](custom-prompt.png)
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Aliases
+
+        ```
+        echo "alias gs='git status'" >> ~/.bashrc
+        $ gs
+        ```
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Colour
+
+        ```
+        echo "alias ls='ls -ohG'" >> ~/.bashrc
+        ```
+
+        ![Ls Colour](ls-color.png)
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Colour ALL the programs \o/
+
+        `git config --global color.ui true`
+
+        ![Git Colour](git-color.png)
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Most important lesson today
+
+        - Don't panic
+        - Focus on:
+          ```
+          cd
+          cd ..
+          pwd
+          ls
+          ```
+
+        - Keys: Up, Down, Tab
+
+          ```
+          $ atom ind<Tab>
+          $ atom index.html
+          ```
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## The Command Prompt
+
+        - ~~Purpose~~
+        - ~~Anatomy~~
+        - ~~Get unstuck~~
+        - ~~Get happier~~
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        [gregorymcintyre.com/slides/intro-command-prompt/](http://gregorymcintyre.com/slides/intro-command-prompt/#/)
+    </script>
+</section>
