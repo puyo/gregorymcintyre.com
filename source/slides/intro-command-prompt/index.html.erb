@@ -32,10 +32,6 @@ date: 2017-05-27 08:00 AEST
         Let's find out!
 
         ```small
-        man cut
-        man uniq
-        man sort
-        man head
         cut -f1,2 -d ' ' ~/.bash_history \
             | sort | uniq -c | sort -nr | head -n 30
         ```
@@ -78,7 +74,7 @@ date: 2017-05-27 08:00 AEST
         Mostly: Git
 
         ```small
-        git status (gs)
+        git status
         git add
         git diff
         git grep
@@ -119,7 +115,7 @@ date: 2017-05-27 08:00 AEST
     <script type='text/template'>
         ## Purpose
 
-        Frequently: Other frameworks tell me to run a command
+        (Same, but other programming languages)
 
         ```
         node .
@@ -137,7 +133,7 @@ date: 2017-05-27 08:00 AEST
     <script type='text/template'>
         ## Purpose
 
-        Less Frequently: Install/remove language packages
+        Less frequently: Install language packages
 
         ```
         bundle init
@@ -155,45 +151,15 @@ date: 2017-05-27 08:00 AEST
     <script type='text/template'>
         ## Purpose
 
-        Less Frequently: Install/remove OS packages
+        Less frequently: Install applications
 
         ```
-        brew update
-        brew upgrade
         brew install
-
         apt-get install
         yum install
         ```
 
     </script>
-</section>
-
-<section data-markdown=''>
-    <script type='text/template'>
-        ## Purpose
-
-        Rarely: Deal with it
-
-        ```small
-        git log $(git merge-base master branch)..branch
-
-        cut -f1,2 -d ' ' ~/.bash_history \
-            | sort | uniq -c | sort -nr | head -n 30
-
-        wget -mk http://www.stuff.to/read/on/the/train/
-
-        rsync -rvP myproject/ username@myhost/myproject.com/
-
-        pg_dump --clean -Z 9 app_master | \
-            ssh user@apphost 'zcat | psql -h localhost -U app appdb'
-        ```
-
-    </script>
-</section>
-
-<section>
-    <img class="borderless" src="nyan-cat-deal-with-it.gif" alt="Nyan cat deals with it">
 </section>
 
 <section data-markdown=''>
@@ -262,15 +228,21 @@ date: 2017-05-27 08:00 AEST
     <script type='text/template'>
         ## Shell?
 
-        - Purpose:
-          - Run other programs
-          - Can think of those other programs as being "inside"
-        - Usually
-          - Print prompt
-          - Wait for you to type a command and press return
-          - Run command (e.g. `rails s`)
-          - Print output (out to terminal), until program exits
-          - Repeat
+        - A program that runs other programs (like rails!)
+        - Can think of those programs as being "inside" the "shell" program
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Shell?
+
+        - Print prompt
+        - Wait for you to type (e.g. `rails s`, return)
+        - Run command you specified
+        - Print output until command exits
+        - Print prompt
+        - ...
     </script>
 </section>
 
@@ -278,8 +250,8 @@ date: 2017-05-27 08:00 AEST
     <script type='text/template'>
         ## Shells
 
-        - sh (Ye Olde Bourne shell)
-          - bash (Bourne**-Again** shell)
+        - sh (Bourne shell)
+          - bash (improved Bourne**-Again** shell)
             - zsh (from author Zhong Shao)
         - cmd.exe (old Windows)
         - PowerShell.exe (modern Windows)
@@ -288,26 +260,10 @@ date: 2017-05-27 08:00 AEST
 
 <section data-markdown=''>
     <script type='text/template'>
-        ## "Inside"
-
-        ```small
-        $ bash
-        $ bash
-        $ bash
-
-        \-+= 85560 greg bash
-          \-+= 85833 greg bash
-            \-+= 86106 greg bash
-        ```
-
-    </script>
-</section>
-
-<section data-markdown=''>
-    <script type='text/template'>
         ## Command Prompt?
 
-        Just the bit of text that a **shell** prints before it waits for your input
+        - The bit of text that a **shell** prints before it waits for your input
+        - Lots of variety
 
         ```
         greg@mycomputer ~$
@@ -321,48 +277,21 @@ date: 2017-05-27 08:00 AEST
     <script type='text/template'>
         ## Commands
 
-        ```small
-        man rsync
+        ```
+        git log --stat
 
-        rsync -avuzb --exclude '*~' samba:samba/ .
-
-        'rsync'
-        '-avuzb'
-        '--exclude'
-        '*~'
-        'samba:samba/'
-        '.'
+        'git'    <-- program
+        'log'    <-- argument 1
+        '--stat' <-- argument 2
         ```
     </script>
 </section>
 
 <section data-markdown=''>
     <script type='text/template'>
-        ## Quoting
+        ## Pipe
 
-        ```
-        cd VirtualBox VMs    # :-(
-        cd 'VirtualBox VMs'  # :-)
-        ```
-    </script>
-</section>
-
-<section data-markdown=''>
-    <script type='text/template'>
-        ## Quoting or Escaping
-
-        ```
-        cd 'VirtualBox VMs'
-        cd VirtualBox\ VMs
-        ```
-    </script>
-</section>
-
-<section data-markdown=''>
-    <script type='text/template'>
-        ## Pipes
-
-        Connect the output stream of one program to the input stream of another
+        Send the output of one program into another
 
         `cut -f1,2 -d ' ' ~/.bash_history | sort | uniq -c | sort -nr | head -n 30`
     </script>
@@ -372,9 +301,9 @@ date: 2017-05-27 08:00 AEST
     <script type='text/template'>
         ## Redirect
 
-        Connect the output stream of a program to a file
+        Send the output of a program into a file
 
-        `rails s > rails-output.log`
+        `rails db:migrate > rails-migrate.log`
     </script>
 </section>
 
@@ -392,10 +321,32 @@ date: 2017-05-27 08:00 AEST
 
 <section data-markdown=''>
     <script type='text/template'>
+        ### Common problems amongst beginners
+
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Dealing with spaces in file names
+
+        ```
+        $ cd My Documents
+        cd: My: No such file or directory
+        $ cd 'My Documents'
+        $ cd "My Documents"
+        $ cd My\ Documents
+        ```
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
         **I ran `rails s` and now I don't have a prompt anymore**
 
-        - `Control-C` sends an **interrupt signal** to the currently running program
-        asking it to stop
+        - Prompt won't come back until `rails` exits
+        - Open up a new terminal (recommended), or
+        - Press `Control-C` to ask Rails to stop
     </script>
 </section>
 
@@ -404,8 +355,7 @@ date: 2017-05-27 08:00 AEST
         **I ran `irb/pry/node` and I can't get out!**
 
         - exit, quit, q, mashing escape, nothing works
-        - `Control-D` sends the **hangup signal** to an interactive prompt
-        program and is the most universal way to exit any prompt
+        - `Control-D` is the most universal shortcut to exit any prompt
 
     </script>
 </section>
@@ -414,10 +364,9 @@ date: 2017-05-27 08:00 AEST
     <script type='text/template'>
         **I press keys and nothing happens or garbled text gets printed**
 
-        - Some programs print special codes that move the cursor or change
-        colour
+        - Some programs move the cursor or change text colour
         - Can leave your terminal in a broken state
-        - Quit your terminal emulator and start a new one, it's OK
+        - Quit your terminal application and start a new one, it's OK
 
     </script>
 </section>
@@ -498,22 +447,28 @@ date: 2017-05-27 08:00 AEST
 
 <section data-markdown=''>
     <script type='text/template'>
-        ## Most important lesson today
+        ### Don't panic
 
-        - Don't panic
-        - Focus on:
-          ```
+        - Focus on these commands
+
+          ```small
           cd
           cd ..
-          pwd
           ls
           ```
+    </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ### Don't panic
 
         - Keys: Up, Down, Tab
 
-          ```
+          ```small
           $ atom ind<Tab>
           $ atom index.html
+          $ <Up><Up><Up><Down><Down>
           ```
     </script>
 </section>
@@ -528,6 +483,34 @@ date: 2017-05-27 08:00 AEST
         - ~~Get happier~~
 
     </script>
+</section>
+
+<section data-markdown=''>
+    <script type='text/template'>
+        ## Future
+
+        Powerful, repeatable, sharable commands
+
+        ```small
+        git log $(git merge-base master branch)..branch
+
+        cut -f1,2 -d ' ' ~/.bash_history \
+            | sort | uniq -c | sort -nr | head -n 30
+
+        wget -mk http://www.stuff.to/read/on/the/train/
+
+        rsync -rvP myproject/ username@myhost/myproject.com/
+
+        pg_dump --clean -Z 9 app_master | \
+            ssh user@apphost 'zcat | psql -h localhost -U app appdb'
+        ```
+
+    </script>
+</section>
+
+<section>
+    <p>Get lots of work done and feel good</p>
+    <img class="borderless" src="nyan-cat-deal-with-it.gif" alt="Nyan cat deals with it">
 </section>
 
 <section data-markdown=''>
