@@ -1,0 +1,344 @@
+---
+title: Vim Tips
+date: 2017-07-21 09:00 AEST
+theme: solarized
+syntax_theme: atom-one-light
+---
+
+<section data-markdown data-template>
+
+## Vim Tips
+
+[@gregmcintyre](https://twitter.com/gregmcintyre) 2017
+
+</section>
+<section data-markdown data-template>
+
+## Vim Tips
+
+* Beginner
+* Intermediate
+* Advanced
+
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Beginner Vim
+
+```js
+f(world, hello);
+```
+
+---
+
+```vim
+<Right><Right>
+xxxxxihello<Esc>
+<Right><Right><Right>
+xxxxxiworld<Esc>
+```
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Beginner Vim
+
+* `<Right>` = move cursor right
+* `x` = delete character
+* `i` = enter insert mode
+* `<Esc>` = exit insert mode
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Beginner Vim
+
+* Lots of keystrokes (or use the mouse!)
+* Lots of repetition
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Intermediate Vim
+
+```js
+f(world, hello);
+```
+
+---
+
+```vim
+llcwhello<Esc>lllcwworld<Esc>
+```
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Intermediate Vim
+
+```js
+class MyClass {
+  myMethod() {
+    return subRoutine(); // wcwgreeting<Esc>
+  },                     // jjb
+  subRoutine() {         // .
+    return "Hello World";
+  }
+}
+```
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Intermediate Vim
+
+* `h/j/k/l` = move cursor left/down/up/right
+* `c` = change (delete the next cursor movement, enter insert mode)
+* `w` = word (move cursor forward by one word)
+* `j` = move cursor down
+* `b` = move back one word
+* `.` = repeat last "edit"
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Intermediate Vim
+
+* Command + movement = edit!
+* Repeat as necessary
+* Fewer keystrokes
+* Try combinations of commands/movements
+* Command vocabulary
+* Movement vocabulary
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Intermediate Vim
+
+| commands |                               |
+| ----     | ----------------------------- |
+| `c`      | change                        |
+| `d`      | delete (also cut)             |
+| `y`      | copy                          |
+| `p`/`P`  | paste on previous/next line   |
+| `v`/`V`  | select text/line              |
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Intermediate Vim
+
+| motions |                                     |
+| ----    | -----------------------------       |
+| `b`/`w` | prev/next word                      |
+| `{`/`}` | prev/next blank line                |
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Quiz
+
+`{d}`
+
+</textarea>
+</section>
+<section data-markdown data-template>
+
+## Advanced Vim
+
+* Higher level commands
+* Higher level motions
+* Text objects
+* Modeline
+* Plugins
+
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Advanced Vim
+
+| commands |                               |
+| ----     | ----------------------------- |
+| `=`      | indent                        |
+| `==`     | indent current line           |
+| `>`/`<`  | indent/unindent               |
+| `>>`/`<<`| indent/unindent current line  |
+| `gq`     | format text with hard wrap    |
+| `J`      | join (remove newlines)        |
+| `10j`    | repeat j 10 times             |
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Quiz
+
+* `gqq`
+* `V10>`
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Advanced Vim
+
+| motions  |                                   |
+| ----     | -----------------------------     |
+| `fx`     | forward until the next letter "x" |
+| `^`/`$`  | start/end of line                 |
+| `gg`/`G` | start/end of file                 |
+| `?`/`/`  | search back/forwards |
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Quiz
+
+* `gg=G`
+* `d?Quiz<Return>`
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Text Objects
+
+| apply to... |                               |
+| ----        | ----------------------------- |
+| `iw`/`aw`   | word                          |
+| `is`/`as`   | sentence                      |
+| `ip`/`ap`   | paragraph                     |
+| `i"`/`a"`   | double quoted text            |
+| `i(`/`a(`   | text in brackets              |
+| `it`/`at`   | text in HTML tag              |
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Quiz
+
+* `dap`
+* `ci"Hello World<Esc>`
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Modeline
+
+The Vim command prompt
+
+```vim
+:<Tab>
+```
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Modeline
+
+```js
+// :bufdo %s/\<subRoutine\>/newName/gc
+class MyCode {
+  main() {
+    subRoutine(); // y
+  },
+  subRoutine() {  // y
+    return "Yay";
+  }
+} // y/n for other files
+```
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Advanced Vim
+
+```vim
+:bufdo %s/\<subRoutine\>/newName/gc
+```
+
+* `bufdo` = repeat on all open files
+* `%` = select the whole file
+* `s` = substitute using regex
+* `\<` = beginning of a word (regex)
+* `\>` = end of a word (regex)
+* `g` = all occurances on each line
+* `c` = confirmation prompt
+* `:help bufdo`
+* `:help substitute`
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Plugins
+
+* Themes
+* Syntax highlighting
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Plugins
+
+* New text objects
+  * current indent level (`dii`)
+  * comma separated argument (`daa`)
+  * Ruby expression (`dar`)
+* New commands
+  * quote/unquote (`ysiw"`, `ds"`)
+  * toggle comment (`gcar`)
+
+</textarea>
+</section>
+<section data-markdown>
+<textarea data-template>
+
+## Homework
+
+Even if you don't use Vim, what are some "text objects" you work with? What
+"commands" do you run on them?
+
+</textarea>
+</section>
+<section data-markdown data-template>
+
+[gregorymcintyre.com/slides/intro-vim/](http://gregorymcintyre.com/slides/intro-vim/#/)
+
+</section>
