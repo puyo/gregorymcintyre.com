@@ -9,19 +9,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <%= stylesheet_link_tag 'slides/reveal' %>
-<%= stylesheet_link_tag 'slides/theme/beige' %>
-<!-- Theme used for syntax highlighting of code -->
-<%= stylesheet_link_tag 'slides/zenburn' %>
+<% if current_page.data.theme %>
+  <%= stylesheet_link_tag 'slides/theme/' + current_page.data.theme %>
+<% end %>
+<% if current_page.data.syntax_theme %>
+  <%= stylesheet_link_tag 'slides/syntax-theme/' + current_page.data.syntax_theme %>
+<% end %>
+
 <!-- Printing and PDF exports -->
 
 <script>
-var link = document.createElement( 'link' )
-link.rel = 'stylesheet'
-link.type = 'text/css'
-link.href = window.location.search.match( /print-pdf/gi ) ?
-    '/stylesheets/slides/print/pdf.css' :
-    '/stylesheets/slides/print/paper.css'
-document.getElementsByTagName( 'head' )[0].appendChild( link )
+  var matches = /\/$/.exec(window.location.pathname);
+  if (matches === null) {
+    window.location.pathname = window.location.pathname + "/";
+  }
+
+  var link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  link.href = window.location.search.match(/print-pdf/gi)
+    ? "/stylesheets/slides/print/pdf.css"
+    : "/stylesheets/slides/print/paper.css";
+  document.getElementsByTagName("head")[0].appendChild(link);
 </script>
 
 <style>
@@ -35,6 +44,7 @@ document.getElementsByTagName( 'head' )[0].appendChild( link )
      font-weight: normal;
      display: inline-block;
      margin: 1rem;
+     background: transparent !important;
  }
  .reveal code { font-weight: bold; }
  .reveal .lang-small { font-size: 0.6em; line-height: 1.2; }
@@ -77,27 +87,58 @@ document.getElementsByTagName( 'head' )[0].appendChild( link )
 <%= javascript_include_tag 'slides/reveal' %>
 
 <script>
+  // More info https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
 
- // More info https://github.com/hakimel/reveal.js#configuration
- Reveal.initialize({
-     controls: true,
-     progress: true,
-     history: true,
-     center: true,
+    transition: "slide", // none/fade/slide/convex/concave/zoom
 
-     transition: 'slide', // none/fade/slide/convex/concave/zoom
+    // More info https://github.com/hakimel/reveal.js#dependencies
+    dependencies: [
+      // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+      {
+        src: "/javascripts/slides/classList.js",
+        condition: function() {
+          return !document.body.classList;
+        }
+      },
 
-     // More info https://github.com/hakimel/reveal.js#dependencies
-     dependencies: [
-         { src: '/javascripts/slides/classList.js', condition: function() { return !document.body.classList } },
-         { src: '/javascripts/slides/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ) } },
-         { src: '/javascripts/slides/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ) } },
-         { src: '/javascripts/slides/plugin/highlight/highlight.js', condition: function() { return !!document.querySelector( '[data-highlight]' ) }, async: true, callback: function() { hljs.initHighlightingOnLoad() } },
-         { src: '/javascripts/slides/plugin/zoom-js/zoom.js', async: true },
-         { src: '/javascripts/slides/plugin/notes/notes.js', async: true }
-     ]
- })
+      // Interpret Markdown in <section> elements
+      {
+        src: "/javascripts/slides/plugin/markdown/marked.js",
+        condition: function() {
+          return !!document.querySelector("[data-markdown]");
+        }
+      },
+      {
+        src: "/javascripts/slides/plugin/markdown/markdown.js",
+        condition: function() {
+          return !!document.querySelector("[data-markdown]");
+        }
+      },
 
+      // Syntax highlight for <code> elements
+      {
+        src: "/javascripts/slides/plugin/highlight/highlight.js",
+        async: true,
+        condition: function() {
+          return !!document.getElementsByTagName("code");
+        },
+        callback: function() {
+          hljs.initHighlightingOnLoad();
+        }
+      },
+
+      // Zoom in and out with Alt+click
+      { src: "/javascripts/slides/plugin/zoom-js/zoom.js", async: true }
+
+      // Speaker notes
+      // { src: '/javascripts/slides/plugin/notes/notes.js', async: true },
+    ]
+  });
 </script>
 </body>
 </html>
