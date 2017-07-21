@@ -5,14 +5,14 @@ theme: solarized
 syntax_theme: atom-one-light
 ---
 
-<section data-markdown data-template>
+<% markdown_slide do %>
 
-## Vim Tips
+# Vim Tips
 
 [@gregmcintyre](https://twitter.com/gregmcintyre) 2017
 
-</section>
-<section data-markdown data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Vim Tips
 
@@ -20,9 +20,8 @@ syntax_theme: atom-one-light
 * Intermediate
 * Advanced
 
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Beginner Vim
 
@@ -39,10 +38,8 @@ xxxxxihello<Esc>
 xxxxxiworld<Esc>
 ```
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Beginner Vim
 
@@ -51,20 +48,25 @@ xxxxxiworld<Esc>
 * `i` = enter insert mode
 * `<Esc>` = exit insert mode
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Beginner Vim
 
 * Lots of keystrokes (or use the mouse!)
 * Lots of repetition
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
+
+## Vim Tips
+
+* ~~Beginner~~
+* Intermediate
+* Advanced
+
+<% end %>
+<% markdown_slide do %>
 
 ## Intermediate Vim
 
@@ -78,10 +80,8 @@ f(world, hello);
 llcwhello<Esc>lllcwworld<Esc>
 ```
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Intermediate Vim
 
@@ -95,10 +95,9 @@ class MyClass {
   }
 }
 ```
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+
+<% end %>
+<% markdown_slide do %>
 
 ## Intermediate Vim
 
@@ -109,10 +108,8 @@ class MyClass {
 * `b` = move back one word
 * `.` = repeat last "edit"
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Intermediate Vim
 
@@ -123,10 +120,8 @@ class MyClass {
 * Command vocabulary
 * Movement vocabulary
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Intermediate Vim
 
@@ -138,10 +133,8 @@ class MyClass {
 | `p`/`P`  | paste on previous/next line   |
 | `v`/`V`  | select text/line              |
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Intermediate Vim
 
@@ -150,18 +143,24 @@ class MyClass {
 | `b`/`w` | prev/next word                      |
 | `{`/`}` | prev/next blank line                |
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Quiz
 
 `{d}`
 
-</textarea>
-</section>
-<section data-markdown data-template>
+<% end %>
+<% markdown_slide do %>
+
+## Vim Tips
+
+* ~~Beginner~~
+* ~~Intermediate~~
+* Advanced
+
+<% end %>
+<% markdown_slide do %>
 
 ## Advanced Vim
 
@@ -171,9 +170,8 @@ class MyClass {
 * Modeline
 * Plugins
 
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Advanced Vim
 
@@ -187,20 +185,16 @@ class MyClass {
 | `J`      | join (remove newlines)        |
 | `10j`    | repeat j 10 times             |
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Quiz
 
 * `gqq`
 * `V10>`
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Advanced Vim
 
@@ -211,20 +205,16 @@ class MyClass {
 | `gg`/`G` | start/end of file                 |
 | `?`/`/`  | search back/forwards |
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Quiz
 
 * `gg=G`
 * `d?Quiz<Return>`
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Text Objects
 
@@ -237,20 +227,16 @@ class MyClass {
 | `i(`/`a(`   | text in brackets              |
 | `it`/`at`   | text in HTML tag              |
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Quiz
 
 * `dap`
 * `ci"Hello World<Esc>`
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Modeline
 
@@ -260,10 +246,8 @@ The Vim command prompt
 :<Tab>
 ```
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Modeline
 
@@ -279,10 +263,8 @@ class MyCode {
 } // y/n for other files
 ```
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Advanced Vim
 
@@ -300,20 +282,16 @@ class MyCode {
 * `:help bufdo`
 * `:help substitute`
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Plugins
 
 * Themes
 * Syntax highlighting
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Plugins
 
@@ -325,20 +303,17 @@ class MyCode {
   * quote/unquote (`ysiw"`, `ds"`)
   * toggle comment (`gcar`)
 
-</textarea>
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Homework
 
 Even if you don't use Vim, what are some "text objects" you work with? What
 "commands" do you run on them?
 
-</textarea>
-</section>
-<section data-markdown data-template>
+<% end %>
+<% markdown_slide do %>
 
 [gregorymcintyre.com/slides/intro-vim/](http://gregorymcintyre.com/slides/intro-vim/#/)
 
-</section>
+<% end %>
