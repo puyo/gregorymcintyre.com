@@ -156,10 +156,12 @@ class MyClass {
 * Text objects
 * Modeline
 * Plugins
+* Faster Navigation
+* Tool Integration
 
 ====
 
-## Advanced Vim
+## Advanced Commands
 
 | commands |                               |
 | ----     | ----------------------------- |
@@ -181,7 +183,7 @@ class MyClass {
 
 ====
 
-## Advanced Vim
+## Advanced Motions
 
 | motions  |                                   |
 | ----     | -----------------------------     |
@@ -229,7 +231,7 @@ The Vim command prompt
 
 ====
 
-## Modeline
+## Modeline Example
 
 ```js
 // :bufdo %s/\<subRoutine\>/newName/gc
@@ -245,7 +247,7 @@ class MyCode {
 
 ====
 
-## Advanced Vim
+## Modeline Example
 
 ```vim
 :bufdo %s/\<subRoutine\>/newName/gc
@@ -266,31 +268,72 @@ class MyCode {
 ## Plugins
 
 * Themes
-* Syntax highlighting
+* Syntax rules
+* Text objects
+* Commands
+* Other...
 
 ====
 
 ## Plugins
 
 * New text objects
-  * current indent level (`dii`)
-  * comma separated argument (`daa`)
-  * Ruby expression (`dar`)
+  * `dii` = delete everything at current indent level
+  * `daa` = delete a comma separated argument neatly
+  * `dar` = delete a Ruby expression neatly
 
 ====
 
 ## Plugins
 
 * New commands
-  * quote/unquote (`ysiw"`, `ds"`)
-  * toggle comment (`gcar`)
+  * `ysiw"`/`ds"` = quote/unquote word
+  * `gcar` = comment out Ruby expression
 
 ====
 
 ## Quiz
 
-What are some hypothetical "text objects" you work with? What "commands" do you
-run on them?
+* What are some syntactic objects you already work with?
+* What do you do to them?
+
+====
+
+## Faster Navigation
+
+Measure how many seconds you spend finding the right code to edit
+
+====
+
+## Faster Navigation
+
+| method      | time          | questions          |
+| ----        | ---           | ---                |
+| `:NERDTree` | 5-20 seconds  | dir? file? lineno? |
+| `:CtrlP`    | 2-15 seconds  | file? lineno?      |
+| `gf`        | 2-10 seconds  | lineno?            |
+| `:tag`      | 1-3 seconds   | which name?        |
+| `<C-]>`     | <1 second     | -                  |
+
+====
+
+## Tool Integration
+
+```small
+$ cat ~/bin/v
+exec gvim \
+  --remote-expr \
+  "expand('%').':'.line('.')"
+$ v
+/Users/greg/project/spec/models/user_spec.rb:38
+$ bundle exec rspec `v`
+.
+
+Finished in 0.53 seconds (files took 0.11 seconds to load)
+1 example, 0 failures
+```
+
+Any command that takes a filename...
 
 ====
 
