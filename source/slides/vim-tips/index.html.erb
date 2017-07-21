@@ -5,14 +5,14 @@ theme: solarized
 syntax_theme: atom-one-light
 ---
 
-<% markdown_slide do %>
+<section data-markdown data-separator="\n====\n">
+<textarea data-template>
 
 # Vim Tips
 
 [@gregmcintyre](https://twitter.com/gregmcintyre) 2017
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Vim Tips
 
@@ -20,8 +20,7 @@ syntax_theme: atom-one-light
 * Intermediate
 * Advanced
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Beginner Vim
 
@@ -38,8 +37,7 @@ xxxxxihello<Esc>
 xxxxxiworld<Esc>
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Beginner Vim
 
@@ -48,16 +46,14 @@ xxxxxiworld<Esc>
 * `i` = enter insert mode
 * `<Esc>` = exit insert mode
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Beginner Vim
 
 * Lots of keystrokes (or use the mouse!)
 * Lots of repetition
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Vim Tips
 
@@ -65,8 +61,7 @@ xxxxxiworld<Esc>
 * Intermediate
 * Advanced
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Intermediate Vim
 
@@ -80,8 +75,7 @@ f(world, hello);
 wwcwhello<Esc>wwcwworld<Esc>
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Intermediate Vim
 
@@ -89,15 +83,14 @@ wwcwhello<Esc>wwcwworld<Esc>
 class MyClass {
   myMethod() {
     return subRoutine(); // wcwgreeting<Esc>
-  },                     // jjb
+  }                      // jjb
   subRoutine() {         // .
     return "Hello World";
   }
 }
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Intermediate Vim
 
@@ -108,8 +101,7 @@ class MyClass {
 * `b` = move back one word
 * `.` = repeat last "edit"
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Intermediate Vim
 
@@ -120,8 +112,7 @@ class MyClass {
 * Command vocabulary
 * Movement vocabulary
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Intermediate Vim
 
@@ -133,25 +124,22 @@ class MyClass {
 | `p`/`P`  | paste on previous/next line   |
 | `v`/`V`  | select text/line              |
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Intermediate Vim
 
-| motions |                                     |
-| ----    | -----------------------------       |
-| `b`/`w` | prev/next word                      |
-| `{`/`}` | prev/next blank line                |
+| motions |                               |
+| ----    | ----------------------------- |
+| `b`/`w` | prev/next word                |
+| `{`/`}` | prev/next blank line          |
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Quiz
 
 `{d}`
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Vim Tips
 
@@ -159,8 +147,7 @@ class MyClass {
 * ~~Intermediate~~
 * Advanced
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Advanced Vim
 
@@ -170,8 +157,7 @@ class MyClass {
 * Modeline
 * Plugins
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Advanced Vim
 
@@ -185,8 +171,7 @@ class MyClass {
 | `J`      | join (remove newlines)        |
 | `10j`    | repeat j 10 times             |
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Quiz
 
@@ -194,8 +179,7 @@ class MyClass {
 * `gqq`
 * `V10>`
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Advanced Vim
 
@@ -206,16 +190,14 @@ class MyClass {
 | `gg`/`G` | start/end of file                 |
 | `?`/`/`  | search back/forwards |
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Quiz
 
 * `gg=G`
 * `d?Quiz<Return>`
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Text Objects
 
@@ -228,16 +210,14 @@ class MyClass {
 | `i(`/`a(`   | text in brackets              |
 | `it`/`at`   | text in HTML tag              |
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Quiz
 
 * `dap`
 * `ci"Hello World<Esc>`
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Modeline
 
@@ -247,8 +227,7 @@ The Vim command prompt
 :<Tab>
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Modeline
 
@@ -257,15 +236,14 @@ The Vim command prompt
 class MyCode {
   main() {
     subRoutine(); // y
-  },
+  }
   subRoutine() {  // y
     return "Yay";
   }
 } // y/n for other files
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Advanced Vim
 
@@ -283,16 +261,14 @@ class MyCode {
 * `:help bufdo`
 * `:help substitute`
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Plugins
 
 * Themes
 * Syntax highlighting
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Plugins
 
@@ -300,21 +276,25 @@ class MyCode {
   * current indent level (`dii`)
   * comma separated argument (`daa`)
   * Ruby expression (`dar`)
+
+====
+
+## Plugins
+
 * New commands
   * quote/unquote (`ysiw"`, `ds"`)
   * toggle comment (`gcar`)
 
-<% end %>
-<% markdown_slide do %>
+====
 
-## Homework
+## Quiz
 
-Even if you don't use Vim, what are some "text objects" you work with? What
-"commands" do you run on them?
+What are some hypothetical "text objects" you work with? What "commands" do you
+run on them?
 
-<% end %>
-<% markdown_slide do %>
+====
 
 [gregorymcintyre.com/slides/intro-vim/](http://gregorymcintyre.com/slides/intro-vim/#/)
 
-<% end %>
+</textarea>
+</section>
