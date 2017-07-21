@@ -4,14 +4,14 @@ date: 2017-05-27 08:00 AEST
 theme: beige
 ---
 
-<% markdown_slide do %>
+<section data-markdown data-separator="\n====\n">
+<textarea data-template>
 
-## Intro to the Command Prompt
+# Intro to the Command Prompt
 
 [@gregmcintyre](https://twitter.com/gregmcintyre) 2017
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## The Command Prompt
 
@@ -20,8 +20,7 @@ theme: beige
 - Get unstuck
 - Get happier
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Purpose
 
@@ -34,8 +33,7 @@ cut -f1,2 -d ' ' ~/.bash_history \
     | sort | uniq -c | sort -nr | head -n 30
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Purpose
 
@@ -60,8 +58,7 @@ git stash
 git reset
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Purpose
 
@@ -82,9 +79,7 @@ git stash
 git reset
 ```
 
-<% end %>
-
-<% markdown_slide do %>
+====
 
 ## Purpose
 
@@ -101,9 +96,7 @@ rails db:setup
 rails db:migrate
 ```
 
-<% end %>
-
-<% markdown_slide do %>
+====
 
 ## Purpose
 
@@ -118,8 +111,7 @@ webpack
 yo
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Purpose
 
@@ -134,8 +126,7 @@ npm init
 npm install
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Purpose
 
@@ -147,16 +138,14 @@ apt-get install
 yum install
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Purpose
 
 Rarely: Big complex powerful commands that
 take *days* to research and get just right
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Purpose
 
@@ -174,9 +163,7 @@ pg_dump --clean -Z 9 app_master | \
     ssh user@apphost 'zcat | psql -h localhost -U app appdb'
 ```
 
-<% end %>
-
-<% markdown_slide do %>
+====
 
 ## The Command Prompt
 
@@ -185,20 +172,19 @@ pg_dump --clean -Z 9 app_master | \
 - Get unstuck
 - Get happier
 
-<% end %>
-<section data-transition="fade-out">
+====
 
-<code>$ middleman</code>
+<!-- .slide: data-transition="fade-out" -->
+
 <img class="borderless" src="term-running-middleman.png" alt="Terminal running middleman">
 
-</section>
-<section data-transition="fade-in">
+====
 
-<code>$ middleman</code>
+<!-- .slide: data-transition="fade-in" -->
+
 <img class="borderless" src="term-running-middelman-hl.png" alt="Terminal running middleman with highlights">
 
-</section>
-<% markdown_slide do %>
+====
 
 ## Terminal Emulator
 
@@ -207,8 +193,7 @@ pg_dump --clean -Z 9 app_master | \
 - Runs programs that use text for input & output
 - By default, runs a **shell**
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Terminal Emulators
 
@@ -216,15 +201,13 @@ pg_dump --clean -Z 9 app_master | \
 - /Applications/iTerm.app
 - cmd.exe
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Emulator?
 
 <img class="borderless" src="bios.jpg" alt="BIOS">
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Console?
 
@@ -232,16 +215,14 @@ pg_dump --clean -Z 9 app_master | \
 - Implies a keyboard and a screen of text
 - Imagine wood veneer and glowing orange text
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Shell?
 
 - A program that runs other programs (like rails!)
 - Can think of those programs as being "inside" the "shell" program
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Shell?
 
@@ -252,8 +233,7 @@ pg_dump --clean -Z 9 app_master | \
 - Print prompt
 - ...
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Shells
 
@@ -263,8 +243,7 @@ pg_dump --clean -Z 9 app_master | \
 - cmd.exe (old Windows)
 - PowerShell.exe (modern Windows)
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Command Prompt?
 
@@ -277,8 +256,7 @@ mycomputer%
 C:\>
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Commands
 
@@ -290,8 +268,7 @@ git log --stat
 '--stat' <-- argument 2
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Pipe
 
@@ -299,8 +276,7 @@ Send the output of one program into another
 
 `cut -f1,2 -d ' ' ~/.bash_history | sort | uniq -c | sort -nr | head -n 30`
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Redirect
 
@@ -308,8 +284,7 @@ Send the output of a program into a file
 
 `rails db:migrate > rails-migrate.log`
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## The Command Prompt
 
@@ -318,13 +293,11 @@ Send the output of a program into a file
 - Get unstuck
 - Get happier
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ### Common problems amongst beginners
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Dealing with spaces in file names
 
@@ -336,8 +309,7 @@ $ cd "My Documents"
 $ cd My\ Documents
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 **I ran `rails s` and now I don't have a prompt anymore**
 
@@ -345,17 +317,14 @@ $ cd My\ Documents
 - Open up a new terminal (recommended), or
 - Press `Control-C` to ask Rails to stop
 
-<% end %>
-
-<% markdown_slide do %>
+====
 
 **I ran `irb/pry/node` and I can't get out!**
 
 - exit, quit, q, mashing escape, nothing works
 - `Control-D` is the most universal shortcut to exit any prompt
 
-<% end %>
-<% markdown_slide do %>
+====
 
 **I press keys and nothing happens or garbled text gets printed**
 
@@ -363,8 +332,7 @@ $ cd My\ Documents
 - Can leave your terminal in a broken state
 - Quit your terminal application and start a new one, it's OK
 
-<% end %>
-<% markdown_slide do %>
+====
 
 **Where do I get help?**
 
@@ -379,13 +347,11 @@ $ cd My\ Documents
 - Universal solution:
     - Google "wget command" or "rails command"
 
-<% end %>
-<section>
+====
 
 <img src="xkcd-flowchart.png" alt="XKCD Flowchart">
 
-</section>
-<% markdown_slide do %>
+====
 
 ## The Command Prompt
 
@@ -394,15 +360,13 @@ $ cd My\ Documents
 - ~~Get unstuck~~
 - Get happier
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Nicer Prompts
 
 ![Custom prompt](custom-prompt.png)
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Aliases
 
@@ -411,8 +375,7 @@ echo "alias gs='git status'" >> ~/.bashrc
 $ gs
 ```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Colour
 
@@ -422,8 +385,7 @@ echo "alias ls='ls -ohG'" >> ~/.bashrc
 
 ![Ls Colour](ls-color.png)
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## Colour ALL the programs \o/
 
@@ -431,34 +393,31 @@ echo "alias ls='ls -ohG'" >> ~/.bashrc
 
 ![Git Colour](git-color.png)
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ### Don't panic
 
 - Focus on these commands
 
-  ```small
-  cd
-  cd ..
-  ls
-  ```
+```small
+cd
+cd ..
+ls
+```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ### Don't panic
 
 - Keys: Up, Down, Tab
 
-  ```small
-  $ atom ind<Tab>
-  $ atom index.html
-  $ <Up><Up><Up><Down><Down>
-  ```
+```small
+$ atom ind<Tab>
+$ atom index.html
+$ <Up><Up><Up><Down><Down>
+```
 
-<% end %>
-<% markdown_slide do %>
+====
 
 ## The Command Prompt
 
@@ -467,15 +426,15 @@ echo "alias ls='ls -ohG'" >> ~/.bashrc
 - ~~Get unstuck~~
 - ~~Get happier~~
 
-<% end %>
-<section>
+====
 
-<p>Get lots of work done and feel good</p>
+Get lots of work done and feel good
+
 <img class="borderless" src="nyan-cat-deal-with-it.gif" alt="Nyan cat deals with it">
 
-</section>
-<% markdown_slide do %>
+====
 
 [gregorymcintyre.com/slides/intro-command-prompt/](http://gregorymcintyre.com/slides/intro-command-prompt/#/)
 
-<% end %>
+</textarea>
+</section>
