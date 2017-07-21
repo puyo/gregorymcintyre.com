@@ -4,15 +4,15 @@ date: 2016-08-01 20:00 AEST
 theme: beige
 ---
 
-<section data-markdown>
+<% markdown_slide do %>
 
 ## Your frenemy
 # The Command Prompt
 
-[@gregmcintyre](https://twitter.com/gregmcintyre) 2017
+[@gregmcintyre](https://twitter.com/gregmcintyre) 2016
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## The Command Prompt
 
@@ -21,8 +21,8 @@ theme: beige
 - Get unstuck
 - Get happier
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Purpose
 
@@ -39,8 +39,8 @@ cut -f1,2 -d ' ' ~/.bash_history \
     | sort | uniq -c | sort -nr | head -n 30
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Purpose
 
@@ -65,8 +65,8 @@ git stash
 git reset
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Purpose
 
@@ -87,8 +87,8 @@ git stash
 git reset
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Purpose
 
@@ -105,8 +105,8 @@ rails db:setup
 rails db:migrate
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Purpose
 
@@ -122,8 +122,8 @@ sequelize
 deargodwhy
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Purpose
 
@@ -138,8 +138,8 @@ npm init
 npm install
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Purpose
 
@@ -154,8 +154,8 @@ apt-get install
 yum install
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Purpose
 
@@ -175,8 +175,8 @@ pg_dump --clean -Z 9 app_master | \
     ssh user@apphost 'zcat | psql -h localhost -U app appdb'
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## The Command Prompt
 
@@ -185,7 +185,7 @@ pg_dump --clean -Z 9 app_master | \
 - Get unstuck
 - Get happier
 
-</section>
+<% end %>
 <section data-transition="fade-out">
 
 <code>$ middleman</code>
@@ -198,7 +198,7 @@ pg_dump --clean -Z 9 app_master | \
 <img class="borderless" src="term-running-middelman-hl.png" alt="Terminal running middleman with highlights">
 
 </section>
-<section data-markdown>
+<% markdown_slide do %>
 
 `$ pstree`
 
@@ -212,8 +212,8 @@ pg_dump --clean -Z 9 app_master | \
 ```
   (`brew install pstree`)
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Terminal Emulator
 
@@ -222,8 +222,8 @@ pg_dump --clean -Z 9 app_master | \
 - Runs programs that use only text for input & output
 - By default, runs a **shell**
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Terminal Emulators
 
@@ -236,15 +236,15 @@ pg_dump --clean -Z 9 app_master | \
 - xterm
 - rxvt
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Emulator?
 
 <img class="borderless" src="bios.jpg" alt="BIOS">
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## TTY?
 
@@ -256,16 +256,16 @@ Last login: Thu Aug  4 10:40:25 on ttys002
 TTY = **tele-typewriter**, a word used for the input/output
 portion of early computing devices
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Console?
 
 - Named after the piece of furniture
 - Implies a keyboard and a screen of text
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Bash
 
@@ -276,8 +276,8 @@ portion of early computing devices
     - tcsh (TENEX OS version of csh)
 - cmd.exe
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Shell?
 
@@ -288,8 +288,8 @@ portion of early computing devices
     3. Run a program (e.g. `rails s`)
     4. Send output back out to terminal emulator until program exits
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Shell modes
 
@@ -298,8 +298,8 @@ portion of early computing devices
 - Interactive shells
 - Non-interactive shells
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 - **Login Shells**
 
@@ -310,8 +310,8 @@ portion of early computing devices
 \-+= 73535 greg -bash
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 - **Non-Login Shells**
 
@@ -329,8 +329,8 @@ $ bash
       \-+= 86106 greg bash
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 - **Interactive Shells**
 
@@ -342,23 +342,23 @@ $ bash
     - `bash myscript.sh`
     - No prompts, still loads `.bashrc`
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## .bash_profile?
 
 I actually have no idea why it's called that
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## .bashrc?
 
 `bash` is the program and `-rc` is a suffix
 that means configuration.
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## You're bashitting me
 
@@ -367,8 +367,8 @@ that means configuration.
 It's short for `runcom` which was a configuration tool in an
 OS precursor to Unix/Linux/MacOS
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Command Prompt
 
@@ -380,8 +380,8 @@ rascal%
 C:\>
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Commands
 
@@ -398,8 +398,8 @@ rsync -avuzb --exclude '*~' samba:samba/ .
 '.'
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Quoting
 
@@ -407,8 +407,8 @@ rsync -avuzb --exclude '*~' samba:samba/ .
 
 `cd 'VirtualBox VMs'`
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Quoting and Escaping
 
@@ -422,8 +422,8 @@ $ find . -name '*.js' -exec cat {} \;   # quote *
 $ find . -name \*.js -exec cat {} \;    # escape *
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Pipes and redirects
 
@@ -431,8 +431,8 @@ $ find . -name \*.js -exec cat {} \;    # escape *
 - **stdout**: The good news
 - **stderr**: The bad news
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Pipes
 
@@ -440,8 +440,8 @@ Connect the output stream of one program to the input stream of another
 
 `cut -f1,2 -d ' ' ~/.bash_history | sort | uniq -c | sort -nr | head -n 30`
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Redirect
 
@@ -451,8 +451,8 @@ Connect the output stream of a program to a file
 
 `unicorn 2> unicorn_errors.log`
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Redirect to another stream
 
@@ -460,8 +460,8 @@ Send errors into the output stream
 
 `(rspec 2>&1) | less -R`
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## The Command Prompt
 
@@ -470,16 +470,16 @@ Send errors into the output stream
 - Get unstuck
 - Get happier
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 **I ran `rails s` and now I don't have a prompt anymore**
 
 - `Control-C` sends an **interrupt signal** to the currently running program
 asking it politely to stop
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 **What if my program doesn't exit?**
 
@@ -488,8 +488,8 @@ asking it politely to stop
 
 `kill -9 %`
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 `kill -9 %`
 
@@ -497,8 +497,8 @@ asking it politely to stop
 - `%` is a bash code for the "pid of the last program you suspended"
 - `man kill`
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 **I ran `psql/irb/pry/node` and I can't get out!**
 
@@ -506,8 +506,8 @@ asking it politely to stop
 - `Control-D` sends the **hangup signal** to an interactive prompt
 program and is the most universal way to exit any prompt
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 **I press keys and nothing happens or garbage gets printed**
 
@@ -517,8 +517,8 @@ colour
 - Quit your terminal emulator and start a new one
 - Examine `ps ax` output and `kill` anything you don't want running
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 **Where do I get help?**
 
@@ -533,13 +533,13 @@ colour
 - Universal solution:
     - Google "wget command" or "rails command"
 
-</section>
+<% end %>
 <section>
 
-    <img src="xkcd-flowchart.png" alt="XKCD Flowchart">
+<img src="xkcd-flowchart.png" alt="XKCD Flowchart">
 
 </section>
-<section data-markdown>
+<% markdown_slide do %>
 
 ## The Command Prompt
 
@@ -548,8 +548,8 @@ colour
 - ~~Get unstuck~~
 - Get happier
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Nicer Prompts
 
@@ -572,15 +572,15 @@ PS1="${green}${user_and_host}${cyan}${rvm}${yellow}${git}${blue}${dir}${reset}\n
 
 ![Custom prompt](custom-prompt.png)
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Aliases
 
 `echo "alias gs='git status'" >> ~/.profile`
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Colour
 
@@ -588,8 +588,8 @@ PS1="${green}${user_and_host}${cyan}${rvm}${yellow}${git}${blue}${dir}${reset}\n
 
 ![Ls Colour](ls-color.png)
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Colour ALL the programs \o/
 
@@ -597,8 +597,8 @@ PS1="${green}${user_and_host}${cyan}${rvm}${yellow}${git}${blue}${dir}${reset}\n
 
 ![Git Colour](git-color.png)
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Beginner Tips
 
@@ -611,8 +611,8 @@ $ atom ind<Tab>
 $ atom index.html
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Intermediate Tips
 
@@ -620,8 +620,8 @@ $ atom index.html
 - **Control-E**: end of the line 
 - **Alt-Delete**: delete previous word
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Intermediate Tips
 
@@ -630,8 +630,8 @@ LibreOffice, System Preferences, Gnome, KDE, XFCE5, Windows
 
 ![Alt-Delete-Wow](alt-delete-wow.png)
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Intermediate Tips
 
@@ -641,29 +641,29 @@ LibreOffice, System Preferences, Gnome, KDE, XFCE5, Windows
 - **Control-K**: delete to the end of the line
 - **Control-R**: search for a previous command
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Configure Terminal
 
 ![Terminal Meta Key](terminal-option-meta-key.png)
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Configure iTerm
 
 ![iTerm Meta Key](iterm2-option-meta-key.png)
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Configure Terminal/iTerm
 
 Only recommended on US keyboards :-(
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Intermediate Tips
 
@@ -674,8 +674,8 @@ Only recommended on US keyboards :-(
 - Control-S to jump to next newest match
 - Return to run, Esc to cancel
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Advanced Tips
 
@@ -695,16 +695,16 @@ M-n: history-search-forward
 M-p: history-search-backward
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Advanced Tips
 
 ![Open with MacVim](open-with-macvim.png)
 ![Command Click in iTerm](command-click-iterm.png)
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Advanced Tips
 
@@ -720,8 +720,8 @@ myfile.rb:20
 $ rspec `v`
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Advanced Tips
 
@@ -736,16 +736,15 @@ exec emacsclient --eval '
 ' | sed s'/^\"\(.*\)\"$/\1/'
 ```
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## Advanced Tips
 
 <img class="borderless" src="command-r-iterm-trick.png" alt="Command-R in iTerm">
 
-</section>
-<section data-markdown>
-<textarea data-template>
+<% end %>
+<% markdown_slide do %>
 
 ## Advanced Tips
 
@@ -760,10 +759,8 @@ $ rspec killer_feature_spec.rb:28
 % rspec killer_feature_spec.rb:28
 ```
 
-</textarea>
-</section>
-
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 ## The Command Prompt
 
@@ -772,9 +769,9 @@ $ rspec killer_feature_spec.rb:28
 - ~~Get unstuck~~
 - ~~Get happier~~
 
-</section>
-<section data-markdown>
+<% end %>
+<% markdown_slide do %>
 
 [gregorymcintyre.com/slides/command-prompt/](http://gregorymcintyre.com/slides/command-prompt/#/)
 
-</section>
+<% end %>
