@@ -184,17 +184,14 @@ end
 ====
 
 ```elixir
-defmodule YouTube.Web.Controller do
+defmodule YouTube.Web.VideoController do
 
 def index(conn, %{"query" => query}) do
   videos = YouTube.SearchService.search_videos(query)
   render(conn, "index.html", videos: videos)
 end
 
-def create(conn, %{"file" => file}) do
-  # 1. store file in database
-  # 2. render result of uploading
-end
+# ...
 
 end
 ```
