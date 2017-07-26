@@ -104,9 +104,7 @@ end
 
 ```elixir
 def youtube_search(request) do
-  # 1. search results from a database
-  list_of_videos = ...
-  # 2. send back HTML with videos
+  list_of_videos = "SELECT * FROM videos ... "
   send_back "<html> ... videos ... </html>"
 end
 ```
@@ -155,7 +153,7 @@ end
 ====
 <!-- .slide: data-transition="fade-in fade-out" -->
 
-## Pattern!
+## Pattern
 
 ```elixir
 def youtube_search(request) do
@@ -275,7 +273,7 @@ end
 
 ====
 
-## Phoenix Model
+## Phoenix Model (Usage)
 
 ```elixir
 defmodule YouTube do
@@ -356,7 +354,7 @@ This pattern was adapted from desktop applications
 ====
 <!-- .slide: data-transition="fade-in slide-out" -->
 
-## You Can Imagine This
+## Imagine This
 
 <object type="image/svg+xml" data="mvc.svg"></object>
 
