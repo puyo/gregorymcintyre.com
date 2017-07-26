@@ -60,33 +60,30 @@ end
 ====
 
 ```elixir
-def youtube_search(request) do
-  # 1. search results from a database
-  results = query_giant_database(
-    """
-    SELECT *
-    FROM videos
-    WHERE ? IN search_terms
-    """,
-  request.query)
-  # ...
-end
+# 1. search results from a database
+list_of_videos = query_giant_database(
+"SELECT title, href, img_src, ...
+ FROM videos
+ WHERE $query IN search_terms",
+  query: request.query
+)
 ```
 <!-- .element: class="small" -->
 
 ====
 
 ```elixir
-def youtube_search(request) do
-  # ...
-  # 2. send back HTML with results
-  return [
-    "<html><body>",
-    "<ol>",
-    Enum.map(results, fn(r) -> format_video_as_html(r) end),
-    "</ol>",
-    "</body></html>",
-  ]
+# 2. send back HTML with results
+return [
+  "<html><body>",
+  "<ol>",
+  Enum.map(list_of_videos, fn(v) -> video_html(v) end),
+  "</ol>",
+  "</body></html>",
+]
+
+def video_html(video) do
+  # complicated
 end
 ```
 <!-- .element: class="small" -->
@@ -96,7 +93,9 @@ end
 ```elixir
 def youtube_search(request) do
   # 1. search results from a database
+  list_of_videos = ...
   # 2. send back HTML with videos
+  return "<html> ... </html>"
 end
 ```
 
@@ -141,17 +140,17 @@ end
 
 ```elixir
 def youtube_search(request) do
-  result = read_and_write(request)
+  result = talk_with_database(request)
   present(result)
 end
 
 def my_channel(request) do
-  result = read_and_write(request)
+  result = talk_with_database(request)
   present(result)
 end
 
 def subscriptions(request) do
-  result = read_and_write(request)
+  result = talk_with_database(request)
   present(result)
 end
 ```
@@ -185,18 +184,41 @@ end
 ====
 
 ```elixir
-defmodule YouTube.Web.VideoController do
-
-use YouTube.Web, :controller
+defmodule YouTube.Web.Controller do
 
 def index(conn, %{"query" => query}) do
   games = YouTube.SearchService.search_videos(query)
   render(conn, "index.html", videos: videos)
 end
 
+def create(conn, %{"file" => file}) do
+  # 1. store file in database
+  # 2. render result of uploading
+end
+
 end
 ```
 <!-- .element: class="tiny" -->
+
+====
+
+* **Controller**
+  * Functions to handle events (like web requests)
+  * Let you "control" the computer
+* **Model**
+  * Functions to fetch/search/read/write information
+  * Your "model" of the information
+* **View**
+  * Functions to update what you see (e.g. send back HTML)
+  * Your "view" of the information
+
+====
+
+This pattern was adapted from desktop applications
+
+====
+
+<object type="image/svg+xml" data="workstation.svg"></object>
 
 ====
 <!-- .slide: data-transition="slide-in fade-out" -->
