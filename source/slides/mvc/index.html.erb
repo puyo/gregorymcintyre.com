@@ -1,0 +1,205 @@
+---
+title: MVC
+date: 2017-07-24 09:00 AEST
+theme: solarized
+syntax_theme: atom-one-light
+---
+
+<!--
+<style>
+path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: dash 5s linear forwards; }
+
+@keyframes dash {
+  50% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+</style>
+-->
+
+<section data-markdown data-separator="\n====\n">
+  <textarea data-template>
+
+# MVC
+
+[@gregmcintyre](https://twitter.com/gregmcintyre) 2017
+
+<%#
+- Context: Browser/server diagram
+- Purpose of this presentation
+- Zoom into server
+- Visiting a web address is like calling a function
+- Sample functions
+- Identify common pattern
+- Elixir example
+- Summary
+- Thanks Blake
+%>
+
+====
+
+<object type="image/svg+xml" data="browser-server.svg"></object>
+
+====
+
+```elixir
+def youtube_search(query) do
+  # ?
+end
+```
+
+====
+
+```elixir
+def youtube_search(query) do
+  # 1. search results from a database
+  # 2. send back HTML with videos
+end
+```
+<!-- .element: class="small" -->
+
+====
+
+```elixir
+def youtube_search(request) do
+  # 1. search results from a database
+  results = query_giant_database(
+    """
+    SELECT *
+    FROM videos
+    WHERE ? IN search_terms
+    """,
+  request.query)
+  # ...
+end
+```
+<!-- .element: class="small" -->
+
+====
+
+```elixir
+def youtube_search(request) do
+  # ...
+  # 2. send back HTML with results
+  return [
+    "<html><body>",
+    "<ol>",
+    Enum.map(results, fn(r) -> format_video_as_html(r) end),
+    "</ol>",
+    "</body></html>",
+  ]
+end
+```
+<!-- .element: class="tiny" -->
+
+====
+
+```elixir
+def youtube_search(request) do
+  # 1. search results from a database
+  # 2. send back HTML with videos
+end
+```
+
+====
+
+```elixir
+def youtube_search(request) do
+  # 1. search results from a database
+  # 2. send back HTML with videos
+end
+
+def my_channel(request) do
+  # 1. get channel videos from a database
+  # 2. send back HTML with videos
+end
+```
+<!-- .element: class="tiny" -->
+
+====
+<!-- .slide: data-transition="slide-in fade-out" -->
+
+```elixir
+def youtube_search(request) do
+  # 1. search results from a database
+  # 2. send back HTML with videos
+end
+
+def my_channel(request) do
+  # 1. get channel videos from a database
+  # 2. send back HTML with videos
+end
+
+def subscriptions(request) do
+  # 1. get subscription videos from a database
+  # 2. send back HTML with videos
+end
+```
+<!-- .element: class="tiny" -->
+
+====
+<!-- .slide: data-transition="fade-in fade-out" -->
+
+```elixir
+def youtube_search(request) do
+  result = read_and_write(request)
+  present(result)
+end
+
+def my_channel(request) do
+  result = read_and_write(request)
+  present(result)
+end
+
+def subscriptions(request) do
+  result = read_and_write(request)
+  present(result)
+end
+```
+<!-- .element: class="tiny" -->
+
+====
+<!-- .slide: data-transition="fade-in slide-out" -->
+
+```elixir
+defmodule Controller do
+
+def youtube_search(request) do
+  result = Model.search_videos(request)
+  View.present_search(result)
+end
+
+def my_channel(request) do
+  result = Model.get_channel(request)
+  View.present_channel(result)
+end
+
+def subscriptions(request) do
+  result = Model.get_subscriptions(request)
+  View.present_subscriptions(result)
+end
+
+end
+```
+<!-- .element: class="tiny" -->
+
+====
+<!-- .slide: data-transition="slide-in fade-out" -->
+
+<object type="image/svg+xml" data="browser-server.svg"></object>
+
+====
+<!-- .slide: data-transition="fade-in slide-out" -->
+
+<object type="image/svg+xml" data="mvc.svg"></object>
+
+====
+
+[gregorymcintyre.com/slides/mvc/](http://gregorymcintyre.com/slides/mvc/#/)
+
+<small class="wysiwyg-font-size-large">(face icon by <a title="Freepik" href="http://www.freepik.com">Freepik</a> from <a title="Flaticon" href="http://www.flaticon.com">www.flaticon.com</a>)</small>
+
+</textarea>
+</section>
+<%#
+vim: filetype=markdown:spell
+%>
