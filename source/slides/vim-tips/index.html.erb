@@ -151,13 +151,14 @@ class MyClass {
 
 ## Advanced Vim
 
-* Higher level commands
-* Higher level motions
+* Higher level commands & motions
 * Text objects
 * Modeline
 * Plugins
-* Faster Navigation
-* Tool Integration
+* Faster navigation
+* Tool integration
+* Windows/tabs/buffers
+* Learning
 
 ====
 
@@ -277,10 +278,30 @@ class MyCode {
 
 ## Plugins
 
+```vim
+call plug#begin('~/.vim/plugged')
+" ...
+Plug 'elixir-lang/vim-elixir'
+" ...
+call plug#end()
+```
+
+[https://github.com/junegunn/vim-plug]()
+
+====
+
+## Plugins
+
 * New text objects
   * `dii` = delete everything at current indent level
   * `daa` = delete a comma separated argument neatly
   * `dar` = delete a Ruby expression neatly
+
+```vim
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'wellle/targets.vim'
+Plug 'nelstrom/vim-textobj-rubyblock'
+```
 
 ====
 
@@ -289,6 +310,11 @@ class MyCode {
 * New commands
   * `ysiw"`/`ds"` = quote/unquote word
   * `gcar` = comment out Ruby expression
+
+```vim
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+```
 
 ====
 
@@ -317,27 +343,235 @@ Measure how many seconds you spend finding the right code to edit
 
 ====
 
-## Tool Integration
+## Faster Navigation
 
-```small
-$ cat ~/bin/v
-exec gvim \
-  --remote-expr \
-  "expand('%').':'.line('.')"
-$ v
-/Users/greg/project/spec/models/user_spec.rb:38
-$ bundle exec rspec `v`
-.
-
-Finished in 0.53 seconds (files took 0.11 seconds to load)
-1 example, 0 failures
+```vim
+if has("gui_macvim")
+  " D- is Command on Mac
+  nnoremap <D-p> :CtrlP<CR>
+  nnoremap <D-r> :CtrlPMRUFiles<CR>
+  nnoremap <D-b> :CtrlPBuffer<CR>
+endif
 ```
 
-Any command that takes a filename...
+```vim
+Plug 'kien/ctrlp.vim'
+```
 
 ====
 
-[gregorymcintyre.com/slides/intro-vim/](http://gregorymcintyre.com/slides/intro-vim/#/)
+## Faster Navigation (Command-R)
+
+<img class="borderless" src="mru.png" alt=":CtrlP MRU">
+
+====
+
+## Faster Navigation
+
+File in the same directory?
+
+```vim
+cnoremap %/ <C-R>=expand("%:p:h")."/"<CR>
+nnoremap ,e :e
+  \ <C-R>=
+  \ substitute(expand("%:p:h"), ' ', '\\ ', 'g')
+  \ .'/'<CR><BS>/
+```
+<!-- .element: class="small" -->
+
+====
+
+## Faster Navigation (,e)
+
+<img class="borderless" src="comma-e.png" alt=",e">
+
+====
+
+## Faster Navigation
+
+```vim
+Plug 'airblade/vim-rooter'
+```
+
+* `<Command-R>`
+* Select file in another project
+* `:pwd` will always set appropriately
+
+====
+
+## Tools (RSpec, Mix, etc.)
+
+```bash
+$ cat ~/bin/v
+exec gvim  --remote-expr "expand('%').':'.line('.')"
+$ cat ~/bin/vf
+exec gvim  --remote-expr "expand('%')"
+$ v
+/Users/greg/project/spec/models/user_spec.rb:38
+$ vf
+/Users/greg/project/spec/models/user_spec.rb
+```
+<!-- .element: class="small" -->
+
+====
+
+## RSpec
+
+```bash
+$ bundle exec rspec `v`
+.
+
+Finished in 0.53 seconds
+1 example, 0 failures
+```
+
+====
+
+## Mix
+
+```bash
+$ mix test `v`
+
+AppSignal disabled.Including tags: [line: "9"]
+Excluding tags: [:test]
+
+.
+
+Finished in 0.06 seconds
+2 tests, 0 failures, 1 skipped
+
+Randomized with seed 697624
+```
+<!-- .element: class="small" -->
+
+====
+
+## Potentially
+
+```bash
+$ cucumber `v`
+$ mocha `v`
+$ rubocop `vf`
+$ mix credo --read-from-stdin < `vf`
+$ ember test `vf` # :-(
+$ next-cool-tool `v`
+```
+
+====
+
+## Typing \`v\` in iTerm
+
+<img class="borderless" src="iterm-prefs.png" alt="iTerm Preferences">
+
+====
+
+## Typing \`v`
+
+```bash
+$ be rspec <Command-R><Return>
+```
+
+====
+
+## Expanding \`v`
+
+```bash
+$ be rspec <Command-R><C-M-e> # bash
+% be rspec <Command-R><Tab>   # zsh
+```
+
+====
+
+## Windows, Tabs, Buffers
+
+Oh my!
+
+====
+
+## Windows
+
+* `<Command-N>` for a new window (MacVim)
+* I don't use it
+  * Messes with my \`v\` thing
+
+====
+
+## Tabs
+
+* Change buffer in tab = `:e`, `:close`
+* New tab = `:tabedit`, `:tabclose`
+* I don't use it
+  * Too confusing
+
+====
+
+## Buffers
+
+* `:e`, `,e`, `<Command-R>`, `<Command-P>`
+* But I don't use `:b` or `:CtrlPBuffer`
+  * Which files are open?
+  * Too much mental load
+
+====
+
+## Splits
+
+* `:split` or `<C-W>s` or `<C-W>v`
+* Then `<C-W>o`
+* I very rarely use it
+  * Spatial awareness?
+  * Too much mental load
+
+====
+
+## So What DO I Use?
+
+* `C-]` and `:tag <Tab>` when possible
+  * Forget files and directory structures
+  * Huge mental load vanishes
+  * Ultra fast
+
+====
+
+## So What DO I Use?
+
+* `C-O` and `C-I`
+  * Works across files
+  * Forget files and directory structures
+  * Re-opens old files if necessary
+
+====
+
+## So What DO I Use?
+
+* `<Command-P>` or `<Command-R>`
+  * Slower backup plan
+
+====
+
+## How Did I Learn?
+
+* Pair programming
+* Years of incremental improvements
+
+====
+
+## Take Home Messages
+
+* Prefer repeatable edits
+* Get faster incrementally
+* Files and directories are slow
+* Pair program and ask
+  * "Do you know a better way to...?"
+  * "How did you just do that?"
+
+====
+
+[gregorymcintyre.com/slides/vim-tips/](http://gregorymcintyre.com/slides/vim-tips/#/)
 
 </textarea>
 </section>
+
+<%#
+vim: filetype=markdown:spell
+%>
