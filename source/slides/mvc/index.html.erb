@@ -89,7 +89,7 @@ def youtube_search(request) do
   ]
 end
 ```
-<!-- .element: class="tiny" -->
+<!-- .element: class="small" -->
 
 ====
 
@@ -176,6 +176,22 @@ end
 def subscriptions(request) do
   result = Model.get_subscriptions(request)
   View.present_subscriptions(result)
+end
+
+end
+```
+<!-- .element: class="tiny" -->
+
+====
+
+```elixir
+defmodule YouTube.Web.VideoController do
+
+use YouTube.Web, :controller
+
+def index(conn, %{"query" => query}) do
+  games = YouTube.SearchService.search_videos(query)
+  render(conn, "index.html", videos: videos)
 end
 
 end
