@@ -187,7 +187,7 @@ end
 defmodule YouTube.Web.Controller do
 
 def index(conn, %{"query" => query}) do
-  games = YouTube.SearchService.search_videos(query)
+  videos = YouTube.SearchService.search_videos(query)
   render(conn, "index.html", videos: videos)
 end
 
