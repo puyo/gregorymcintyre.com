@@ -37,9 +37,13 @@ path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: dash 5s linea
 
 ====
 
+## The Story So Far
+
 <object type="image/svg+xml" data="browser-server.svg"></object>
 
 ====
+
+## How?
 
 ```elixir
 def youtube_search(query) do
@@ -48,6 +52,8 @@ end
 ```
 
 ====
+
+## First Draft
 
 ```elixir
 def youtube_search(query) do
@@ -58,6 +64,8 @@ end
 <!-- .element: class="small" -->
 
 ====
+
+## 1.
 
 ```elixir
 # 1. search results from a database
@@ -72,34 +80,41 @@ list_of_videos = query_giant_database(
 
 ====
 
+## 2.
+
 ```elixir
 # 2. send back HTML with results
-return [
-  "<html><body>",
-  "<ol>",
-  Enum.map(list_of_videos, fn(v) -> video_html(v) end),
-  "</ol>",
-  "</body></html>",
-]
+send_back "<html><body>"
+send_back "<ol>"
+Enum.each list_of_videos, fn(v) ->
+  send_back video_html(v)
+end
+send_back "</ol>"
+send_back "</body></html>"
 
 def video_html(video) do
-  # complicated
+  return "<video>" # ... complicated
 end
 ```
 <!-- .element: class="small" -->
 
 ====
 
+## Summary
+
 ```elixir
 def youtube_search(request) do
   # 1. search results from a database
   list_of_videos = ...
   # 2. send back HTML with videos
-  return "<html> ... </html>"
+  send_back "<html> ... videos ... </html>"
 end
 ```
+<!-- .element: class="small" -->
 
 ====
+
+## Next
 
 ```elixir
 def youtube_search(request) do
@@ -116,6 +131,8 @@ end
 
 ====
 <!-- .slide: data-transition="slide-in fade-out" -->
+
+## ...Next
 
 ```elixir
 def youtube_search(request) do
@@ -138,20 +155,22 @@ end
 ====
 <!-- .slide: data-transition="fade-in fade-out" -->
 
+## Pattern!
+
 ```elixir
 def youtube_search(request) do
-  result = talk_with_database(request)
-  present(result)
+  # talk with database
+  # send back HTML
 end
 
 def my_channel(request) do
-  result = talk_with_database(request)
-  present(result)
+  # talk with database
+  # send back HTML
 end
 
 def subscriptions(request) do
-  result = talk_with_database(request)
-  present(result)
+  # talk with database
+  # send back HTML
 end
 ```
 <!-- .element: class="tiny" -->
@@ -159,21 +178,23 @@ end
 ====
 <!-- .slide: data-transition="fade-in slide-out" -->
 
+## Group Similar Code Into Modules
+
 ```elixir
 defmodule Controller do
 
 def youtube_search(request) do
-  result = Model.search_videos(request)
+  result = Model.search_videos(request.query)
   View.present_search(result)
 end
 
 def my_channel(request) do
-  result = Model.get_channel(request)
+  result = Model.get_channel_videos(request.user)
   View.present_channel(result)
 end
 
 def subscriptions(request) do
-  result = Model.get_subscriptions(request)
+  result = Model.get_subscription_videos(request.user)
   View.present_subscriptions(result)
 end
 
@@ -182,16 +203,53 @@ end
 <!-- .element: class="tiny" -->
 
 ====
+<!-- .slide: data-transition="fade-in slide-out" -->
+
+## Group All the Database Code
 
 ```elixir
-defmodule YouTube.Web.VideoController do
+# All the database stuff
+defmodule Model do
 
-def index(conn, %{"query" => query}) do
-  videos = YouTube.SearchService.search_videos(query)
-  render(conn, "index.html", videos: videos)
+def search_videos(query) do
+  return query_giant_database(...)
 end
 
-# ...
+def get_channel_videos(user) do
+  return query_giant_database(...)
+end
+
+def get_subscription_videos(user) do
+  return query_giant_database(...)
+end
+
+end
+```
+<!-- .element: class="tiny" -->
+====
+<!-- .slide: data-transition="fade-in slide-out" -->
+
+## Group All the HTML Code
+
+```elixir
+# All the HTML stuff
+defmodule View do
+
+def present_search(list_of_videos) do
+  send_back "<html> ... videos ... </html>"
+end
+
+def present_channel(list_of_videos) do
+  send_back "<html> ... videos ... </html>"
+end
+
+def present_subscriptions(list_of_videos) do
+  send_back "<html> ... videos ... </html>"
+end
+
+def video_html(video) do
+  return "<video>" # ...
+end
 
 end
 ```
@@ -199,31 +257,106 @@ end
 
 ====
 
+## Phoenix Controller
+
+```elixir
+defmodule YouTube.Web.VideoController do
+
+def index(conn, %{"query" => query}) do
+  videos = YouTube.search_videos(query)
+  render(conn, "index.html", videos: videos)
+end
+
+# ...
+
+end
+```
+<!-- .element: class="small" -->
+
+====
+
+## Phoenix Model
+
+```elixir
+defmodule YouTube do
+
+def search_videos(query) do
+  Repo.all(
+    from video in Video,
+    where: query in video.search_terms
+  )
+end
+
+end
+```
+<!-- .element: class="small" -->
+
+====
+
+## Phoenix View (Template)
+
+```erb
+<h2>Listing Videos</h2>
+
+<%%= for video <- @videos do %>
+<div>
+  <h3><%%= video.name %></h3>
+  <div>
+    <span><%%= link "Show", to: video_path(@conn, :show, video) %></span>
+    <span><%%= link "Edit", to: video_path(@conn, :edit, video) %></span>
+    <span><%%= link "Delete", to: video_path(@conn, :delete, video), method: :delete %></span>
+  </div>
+</div>
+<%% end %>
+
+<span><%%= link "New video", to: video_path(@conn, :new) %></span>
+```
+<!-- .element: class="tiny" -->
+
+====
+
+## History
+
 This pattern was adapted from desktop applications
 
 ====
+
+## Each Module Deals With...
 
 <object type="image/svg+xml" data="workstation.svg"></object>
 
 ====
 
-* **Controller**
-  * Functions to handle events (like web requests)
-  * Let you "control" the computer
-* **Model**
-  * Functions to fetch/search/read/write information
-  * Your "model" of the information
-* **View**
-  * Functions to update what you see (e.g. send back HTML)
-  * Your "view" of the information
+## Jargon: Controller
+
+* Functions to handle events (like web requests)
+* Let you "control" the computer
+
+====
+
+## Jargon: Model
+
+* Functions to fetch/search/read/write information
+* Your "model" of the information
+
+====
+
+## Jargon: View
+
+* Functions to update what you see (e.g. send back HTML)
+* Your "view" of the information
 
 ====
 <!-- .slide: data-transition="slide-in fade-out" -->
+
+## Next Time You're Doing This
 
 <object type="image/svg+xml" data="browser-server.svg"></object>
 
 ====
 <!-- .slide: data-transition="fade-in slide-out" -->
+
+## You Can Imagine This
 
 <object type="image/svg+xml" data="mvc.svg"></object>
 
