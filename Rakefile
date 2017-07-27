@@ -47,3 +47,11 @@ date: #{date}
   puts path
   system 'e', path
 end
+
+desc "Run svgo on .inkscape.svg files"
+task :svgo do
+  Dir.glob("**/*.inkscape.svg") do |src_path|
+    dest_path = src_path.sub(".inkscape.svg", ".svg")
+    system("svgo", src_path, "-o", dest_path)
+  end
+end

@@ -1,39 +1,16 @@
 ---
-title: MVC
+title: MVC with Elixir
 date: 2017-07-24 09:00 AEST
 theme: solarized
 syntax_theme: atom-one-light
 ---
 
-<!--
-<style>
-path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: dash 5s linear forwards; }
-
-@keyframes dash {
-  50% { stroke-dashoffset: 1000; }
-  100% { stroke-dashoffset: 0; }
-}
-</style>
--->
-
 <section data-markdown data-separator="\n====\n">
   <textarea data-template>
 
-# MVC
+# MVC with Elixir
 
 [@gregmcintyre](https://twitter.com/gregmcintyre) 2017
-
-<%#
-- Context: Browser/server diagram
-- Purpose of this presentation
-- Zoom into server
-- Visiting a web address is like calling a function
-- Sample functions
-- Identify common pattern
-- Elixir example
-- Summary
-- Thanks Blake
-%>
 
 ====
 
@@ -47,9 +24,23 @@ path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: dash 5s linea
 
 ```elixir
 def youtube_search(query) do
-  # ?
+  # lots of code?
 end
 ```
+
+====
+
+## What is MVC?
+
+A proven way of organising lots of code
+
+====
+
+## This Presentation
+
+1. Try to implement YouTube
+2. Write some messy code
+3. Organise code better with MVC
 
 ====
 
@@ -65,36 +56,28 @@ end
 
 ====
 
-## 1.
+## 1. Search Database
 
 ```elixir
-# 1. search results from a database
-list_of_videos = query_giant_database(
+list_of_videos = query_sql_database(
 "SELECT title, href, img_src, ...
  FROM videos
- WHERE $query IN search_terms",
-  query: request.query
-)
+ WHERE $query IN search_terms")
 ```
 <!-- .element: class="small" -->
 
 ====
 
-## 2.
+## 2. Send Back HTML
 
 ```elixir
-# 2. send back HTML with results
 send_back "<html><body>"
 send_back "<ol>"
 Enum.each list_of_videos, fn(v) ->
-  send_back video_html(v)
+  send_back "<video>#{v}</video>"
 end
 send_back "</ol>"
 send_back "</body></html>"
-
-def video_html(video) do
-  return "<video>" # ... complicated
-end
 ```
 <!-- .element: class="small" -->
 
@@ -104,7 +87,7 @@ end
 
 ```elixir
 def youtube_search(request) do
-  list_of_videos = "SELECT * FROM videos ... "
+  list_of_videos = database("SELECT * FROM videos ... ")
   send_back "<html> ... videos ... </html>"
 end
 ```
@@ -112,40 +95,44 @@ end
 
 ====
 
-## Next
+## It Works, Time for a Break
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sDw1a8yrONo" frameborder="0" allowfullscreen></iframe>
+
+====
+
+## Next Day
 
 ```elixir
-def youtube_search(request) do
-  # 1. search results from a database
-  # 2. send back HTML with videos
-end
-
 def my_channel(request) do
-  # 1. get channel videos from a database
-  # 2. send back HTML with videos
+  list_of_videos = database("
+  SELECT title, href, img_src, ...
+  FROM videos
+  WHERE uploader = $logged_in_user")
+  send_back "<html> ... videos ... </html>"
 end
 ```
-<!-- .element: class="tiny" -->
+<!-- .element: class="small" -->
 
 ====
 <!-- .slide: data-transition="slide-in fade-out" -->
 
-## ...Next
+## ...Next Day
 
 ```elixir
 def youtube_search(request) do
-  # 1. search results from a database
-  # 2. send back HTML with videos
+  list_of_videos = database("... videos WHERE $query IN search_terms")
+  send_back "<html> ... videos ... </html>"
 end
 
 def my_channel(request) do
-  # 1. get channel videos from a database
-  # 2. send back HTML with videos
+  list_of_videos = database("... videos WHERE $logged_in_user_id = uploader_id")
+  send_back "<html> ... videos ... </html>"
 end
 
 def subscriptions(request) do
-  # 1. get subscription videos from a database
-  # 2. send back HTML with videos
+  list_of_videos = database("... videos WHERE $logged_in_user_id IN subscribers")
+  send_back "<html> ... videos ... </html>"
 end
 ```
 <!-- .element: class="tiny" -->
@@ -182,18 +169,18 @@ end
 defmodule Controller do
 
 def youtube_search(request) do
-  result = Model.search_videos(request.query)
-  View.present_search(result)
+  result = Model.get_search_videos(request.query)
+  View.send_search_page(result)
 end
 
 def my_channel(request) do
   result = Model.get_channel_videos(request.user)
-  View.present_channel(result)
+  View.send_channel_page(result)
 end
 
 def subscriptions(request) do
   result = Model.get_subscription_videos(request.user)
-  View.present_subscriptions(result)
+  View.send_subscriptions_page(result)
 end
 
 end
@@ -206,21 +193,16 @@ end
 ## Group All the Database Code
 
 ```elixir
-# All the database stuff
 defmodule Model do
-
-def search_videos(query) do
-  return query_giant_database(...)
-end
-
-def get_channel_videos(user) do
-  return query_giant_database(...)
-end
-
-def get_subscription_videos(user) do
-  return query_giant_database(...)
-end
-
+  def get_search_videos(query) do
+    return query_giant_database(...)
+  end
+  def get_channel_videos(user) do
+    return query_giant_database(...)
+  end
+  def get_subscription_videos(user) do
+    return query_giant_database(...)
+  end
 end
 ```
 <!-- .element: class="tiny" -->
@@ -230,28 +212,34 @@ end
 ## Group All the HTML Code
 
 ```elixir
-# All the HTML stuff
 defmodule View do
-
-def present_search(list_of_videos) do
-  send_back "<html> ... videos ... </html>"
-end
-
-def present_channel(list_of_videos) do
-  send_back "<html> ... videos ... </html>"
-end
-
-def present_subscriptions(list_of_videos) do
-  send_back "<html> ... videos ... </html>"
-end
-
-def video_html(video) do
-  return "<video>" # ...
-end
-
+  def send_search_page(list_of_videos) do
+    send_back header()
+    send_back "<h1>Search Results</h1>"
+    send_back "... #{list_of_videos} ..."
+    send_back footer()
+  end
+  def send_channel_page(list_of_videos) do
+    send_back header()
+    send_back "<h1>My Uploads</h1>"
+    send_back "... #{list_of_videos} ..."
+    send_back footer()
+  end
+  def send_subscriptions_page(list_of_videos) do
+    send_back header()
+    send_back "<h1>Subscriptions</h1>"
+    send_back "... #{list_of_videos} ..."
+    send_back footer()
+  end
 end
 ```
 <!-- .element: class="tiny" -->
+
+====
+
+## Feels Neater, Time for a Reward
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QR8ckM0MDl8" frameborder="0" allowfullscreen></iframe>
 
 ====
 
@@ -273,25 +261,21 @@ end
 
 ====
 
-## Phoenix Model (Usage)
+## Phoenix Service
 
 ```elixir
 defmodule YouTube do
-
-def search_videos(query) do
-  Repo.all(
-    from video in Video,
-    where: query in video.search_terms
-  )
-end
-
+  def search_videos(query) do
+    Repo.all(from video in Video,
+    where: query in video.search_terms)
+  end
 end
 ```
 <!-- .element: class="small" -->
 
 ====
 
-## Phoenix View (Template)
+## Phoenix Template
 
 ```erb
 <h2>Listing Videos</h2>
@@ -313,13 +297,39 @@ end
 
 ====
 
+## Service? Template?
+
+<table>
+<thead>
+<tr>
+<th>MVC Category</th><th>Phoenix Concepts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Controller</td>
+<td>Router, Plugs, Controllers, Channels</td>
+</tr>
+<tr>
+<td>Model</td>
+<td>Apps, Services, Ecto Models</td>
+</tr>
+<tr>
+<td>View</td>
+<td>Views, Templates, HTML, CSS, JavaScript</td>
+</tr>
+</tbody>
+</table>
+
+====
+
 ## History
 
 This pattern was adapted from desktop applications
 
 ====
 
-## Each Module Deals With...
+## Where Do I Put Code That Deals With...
 
 <object type="image/svg+xml" data="workstation.svg"></object>
 
@@ -335,14 +345,14 @@ This pattern was adapted from desktop applications
 ## Jargon: Model
 
 * Functions to fetch/search/read/write information
-* Your "model" of the information
+* Your computer "modelling" of a situation
 
 ====
 
 ## Jargon: View
 
 * Functions to update what you see (e.g. send back HTML)
-* Your "view" of the information
+* Your "view" of the computer modelling
 
 ====
 <!-- .slide: data-transition="slide-in fade-out" -->
@@ -366,7 +376,7 @@ This pattern was adapted from desktop applications
 
 ====
 
-[gregorymcintyre.com/slides/mvc/](http://gregorymcintyre.com/slides/mvc/#/)
+[gregorymcintyre.com/slides/mvc-elixir/](http://gregorymcintyre.com/slides/mvc-elixir/#/)
 
 <small class="wysiwyg-font-size-large">(face icon by <a title="Freepik" href="http://www.freepik.com">Freepik</a> from <a title="Flaticon" href="http://www.flaticon.com">www.flaticon.com</a>)</small>
 
