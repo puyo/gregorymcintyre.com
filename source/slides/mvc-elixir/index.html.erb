@@ -59,10 +59,10 @@ end
 ## 1. Search Database
 
 ```elixir
-list_of_videos = query_sql_database(
-"SELECT title, href, img_src, ...
- FROM videos
- WHERE $query IN search_terms")
+list_of_videos = query_sql_database("
+  SELECT title, href, img_src, ...
+  FROM videos
+  WHERE $query IN search_terms");
 ```
 <!-- .element: class="small" -->
 
@@ -106,9 +106,9 @@ end
 ```elixir
 def my_channel(request) do
   list_of_videos = database("
-  SELECT title, href, img_src, ...
-  FROM videos
-  WHERE uploader = $logged_in_user")
+    SELECT title, href, img_src, ...
+    FROM videos
+    WHERE uploader = $logged_in_user")
   send_back "<html> ... videos ... </html>"
 end
 ```
@@ -168,20 +168,20 @@ end
 ```elixir
 defmodule Controller do
 
-def youtube_search(request) do
-  result = Model.get_search_videos(request.query)
-  View.send_search_page(result)
-end
+  def youtube_search(request) do
+    result = Model.get_search_videos(request.query)
+    View.send_search_page(result)
+  end
 
-def my_channel(request) do
-  result = Model.get_channel_videos(request.user)
-  View.send_channel_page(result)
-end
+  def my_channel(request) do
+    result = Model.get_channel_videos(request.user)
+    View.send_channel_page(result)
+  end
 
-def subscriptions(request) do
-  result = Model.get_subscription_videos(request.user)
-  View.send_subscriptions_page(result)
-end
+  def subscriptions(request) do
+    result = Model.get_subscription_videos(request.user)
+    View.send_subscriptions_page(result)
+  end
 
 end
 ```
@@ -194,15 +194,19 @@ end
 
 ```elixir
 defmodule Model do
+
   def get_search_videos(query) do
     return query_giant_database(...)
   end
+
   def get_channel_videos(user) do
     return query_giant_database(...)
   end
+
   def get_subscription_videos(user) do
     return query_giant_database(...)
   end
+
 end
 ```
 <!-- .element: class="tiny" -->
@@ -248,12 +252,14 @@ end
 ```elixir
 defmodule YouTube.Web.VideoController do
 
-def index(conn, %{"query" => query}) do
-  videos = YouTube.search_videos(query)
-  render(conn, "index.html", videos: videos)
-end
+  # ...
 
-# ...
+  def index(conn, request) do
+    videos = YouTube.search_videos(request.query)
+    render(conn, "index.html", videos: videos)
+  end
+
+  # ...
 
 end
 ```
@@ -265,10 +271,14 @@ end
 
 ```elixir
 defmodule YouTube do
+
   def search_videos(query) do
-    Repo.all(from video in Video,
-    where: query in video.search_terms)
+    Repo.all(
+      from video in Video,
+      where: query in video.search_terms
+    )
   end
+
 end
 ```
 <!-- .element: class="small" -->
@@ -281,17 +291,17 @@ end
 <h2>Listing Videos</h2>
 
 <%%= for video <- @videos do %>
-<div>
-  <h3><%%= video.name %></h3>
   <div>
-    <span><%%= link "Show", to: video_path(@conn, :show, video) %></span>
-    <span><%%= link "Edit", to: video_path(@conn, :edit, video) %></span>
-    <span><%%= link "Delete", to: video_path(@conn, :delete, video), method: :delete %></span>
+    <h3><%%= video.name %></h3>
+    <div>
+      <%%= link "Show", to: video_path(@conn, :show, video) %>
+      <%%= link "Edit", to: video_path(@conn, :edit, video) %>
+      <%%= link "Delete", to: video_path(@conn, :delete, video), method: :delete %>
+    </div>
   </div>
-</div>
 <%% end %>
 
-<span><%%= link "New video", to: video_path(@conn, :new) %></span>
+<p><%%= link "New video", to: video_path(@conn, :new) %></p>
 ```
 <!-- .element: class="tiny" -->
 
