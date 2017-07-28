@@ -62,7 +62,7 @@ end
 list_of_videos = query_sql_database("
   SELECT title, href, img_src, ...
   FROM videos
-  WHERE $query IN search_terms");
+  WHERE $query IN search_terms")
 ```
 <!-- .element: class="small" -->
 
