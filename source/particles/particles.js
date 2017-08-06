@@ -16,8 +16,8 @@ var mx = 0;
 var my = 0;
 
 canvas.addEventListener('mousemove', function(evt) {
-    mx = evt.clientX - x0;
-    my = evt.clientY - y0;
+    mx = evt.clientX;
+    my = evt.clientY;
 })
 
 canvas.width = W;
@@ -37,11 +37,11 @@ function Particle() {
     this.y = Math.random()*H;
 
     // //Lets add random velocity to each particle
-    this.vx = 0.1*(Math.random()*10-5);
-    this.vy = 0.1*(Math.random()*10-5);
+    this.vx = 1.1*(Math.random()*10-5);
+    this.vy = 1.1*(Math.random()*10-5);
 
     this.ax = 0;
-    this.ay = 0.1; // gravity, a bit like 9.8 ms/s^2
+    this.ay = 0; // gravity, a bit like 9.8 ms/s^2
 
     // var speed = Math.sqrt(vx*vx + vy*vy)
 
@@ -85,49 +85,52 @@ function draw() {
         ctx.arc(p.x, p.y, p.radius, Math.PI*2, false);
         ctx.fill();
 
-        var dx = (x0 - p.x)
-        var dy = (y0 - p.y)
+        var dx = (mx - p.x)
+        var dy = (my - p.y)
         var dist = dx*dx + dy*dy
+        var a = Math.atan2(dy, dx)
+        console.log(p.ax, p.ay)
+
+        p.ax = 10000.0*Math.cos(a)/dist;
+        p.ay = 10000.0*Math.sin(a)/dist;
 
         var vscalar = 0.5;
         p.x += vscalar*p.vx;
         p.y += vscalar*p.vy;
 
-//         p.ax = mx;
-//         p.ay = my;
-
         var ascalar = 1.0;
         p.vx += ascalar*p.ax;
         p.vy += ascalar*p.ay;
 
-        var vlim = 5.0; // terminal velocity
+        var vlim = 10.0; // terminal velocity
         if (p.vx < -vlim)
             p.vx = -vlim;
         if (p.vx > vlim)
             p.vx = vlim;
 
         if (p.vy < -vlim)
-            p.vy = vlim;
+            p.vy = -vlim;
         if (p.vy > vlim)
             p.vy = vlim;
 
         //To prevent the balls from moving out of the canvas
-        if (p.x < -50)
-            p.x = W+50;
-        if (p.y < -50)
-            p.y = H+50;
-        if (p.x > W+50)
-            p.x = -50;
-        if (p.y > H+50)
-            p.y = -50;
+        var buf = 5
+        if (p.x < -buf)
+            p.x = W+buf;
+        if (p.y < -buf)
+            p.y = H+buf;
+        if (p.x > W+buf)
+            p.x = -buf;
+        if (p.y > H+buf)
+            p.y = -buf;
 
-        if (p.y > H) {
-            p.vy = -p.vy * 0.80;
-        }
+        // if (p.y > H) {
+        //     p.vy = -p.vy * 0.80;
+        // }
     }
 
-    if (particles.length < 100)
-        particles.push(new Particle());
+    if (particles.length < 50)
+        particles.push(new Particle())
 
     requestAnimationFrame(draw);
 }
