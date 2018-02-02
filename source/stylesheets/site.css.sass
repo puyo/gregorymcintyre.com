@@ -401,7 +401,7 @@ header
   background: image-url($image) 50% 0 no-repeat
   background-size: 200%
 
-.highlight
+div.highlight // not pre.highlight
   +mono
   +box-shadow
   +border-radius
@@ -421,6 +421,8 @@ header
   pre
     white-space: pre
     word-wrap: normal
+    margin: 0
+    background-color: transparent
 
 body
   padding-bottom: 1rem

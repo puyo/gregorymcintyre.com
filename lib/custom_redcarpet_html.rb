@@ -31,8 +31,6 @@ def ensmarten(text)
 end
 
 class CustomRedcarpetHTML < Middleman::Renderers::MiddlemanRedcarpetHTML
-  include Middleman::Syntax::RedcarpetCodeRenderer
-
   def initialize
     @r = Redcarpet::Markdown.new(Middleman::Renderers::MiddlemanRedcarpetHTML, {
       disable_indented_code_blocks: true
@@ -42,14 +40,15 @@ class CustomRedcarpetHTML < Middleman::Renderers::MiddlemanRedcarpetHTML
 
   def block_code(code, language)
     case language
-    when 'poem' then poem(code)
-    when 'prompt' then prompt(code)
-    else super(code, language)
+    when 'poem'
+      poem(ensmarten(code))
+    when 'prompt'
+      prompt(ensmarten(code))
+    when String
+      Middleman::Syntax::Highlighter.highlight(code.chomp, language, {lexer_options: {}})
+    else
+      %(<pre><code>#{code.chomp}</code></pre)
     end
-  end
-
-  def preprocess(text)
-    ensmarten(text)
   end
 
   private
@@ -98,6 +97,26 @@ if __FILE__ == $0
         gh_blockcode: true,
         fenced_code_blocks: true,
       })
+    end
+
+    it "works for no language blocks" do
+      result = @markdown.render %Q{
+```
+Hello my 'pretty'
+```
+}
+      expected = %{<pre><code>Hello my 'pretty'</code></pre}
+      result.must_equal expected
+    end
+
+    it "works for code blocks" do
+      result = @markdown.render %Q{
+```ruby
+puts 'Hello world'
+```
+}
+      expected = %Q{<div class=\"highlight\"><pre class=\" ruby\"><code><span class=\"nb\">puts</span> <span class=\"s1\">'Hello world'</span></code></pre></div>}
+      result.must_equal expected
     end
 
     it "renders a simple poem" do
