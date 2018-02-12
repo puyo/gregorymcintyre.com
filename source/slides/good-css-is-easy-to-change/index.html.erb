@@ -246,7 +246,7 @@ How can we make CSS ~~better~~ easier to change?
 
 ====
 
-## No repetition with SASS variables
+## No repetition with variables
 
 ```scss
 $pale-bg: rgb(214, 245, 255);
@@ -255,6 +255,35 @@ $border-width: 2px;
 .data_rows li {
   background-color: $pale-bg;
   border: $border-width solid $pale-bg;
+}
+```
+
+====
+
+## No repetition with calculations
+
+```scss
+// css
+.container { width: 698px; border: 1px; }
+
+// sass
+$container-border: 1px;
+.container {
+  width: 700px - $container-border;
+  border: $container-border;
+}
+```
+
+====
+
+## No repetition with nesting
+
+```scss
+.my-long-selector { /* ... */ }
+.my-long-selector input { /* ... */ }
+
+.my-long-selector {
+  input { /* ... */ }
 }
 ```
 
@@ -275,10 +304,13 @@ Well, yeah
 ## Concise by preprocessing Bootstrap
 
 ```scss
-input { background-color: $sexy-smoke; }
+// include it
+@import bootstrap;
+// override it
+input { background-color: $sexy-smoke; } 
 ```
 
-In the browser
+Browser
 
 <small>
 <code>
@@ -293,11 +325,12 @@ input { background-color: #eee; } /\* override \*/<br>
 
 ```scss
 $input-bg: $sexy-smoke; // configure it
-@include bootstrap;     // include it
-input { }               // less code here
+@import bootstrap;      // include it
+
+input { }               // simpler
 ```
 
-And easier in the browser
+Browser
 
 <small>
 <code>
