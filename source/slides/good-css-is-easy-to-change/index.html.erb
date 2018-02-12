@@ -1,0 +1,414 @@
+---
+title: Good CSS Is Easy To Change
+date: 2018-02-12 09:00 AEST
+theme: solarized
+syntax_theme: atom-one-light
+---
+
+<section data-markdown data-separator="\n====\n">
+  <textarea data-template>
+
+# Good CSS Is Easy To Change
+
+[@gregmcintyre](https://twitter.com/gregmcintyre) 2018
+
+====
+
+## Ruby, JavaScript, etc.
+
+What is "quality"? What is "good"?
+
+====
+
+## Good code = easy to change
+
+<img src="corey-haines.jpg" alt="Corey Haines">
+
+Corey Haines
+
+====
+
+## Easy to change
+
+* Verifiable
+* Expresses intent
+* No repetition
+* Concise
+
+====
+
+## Verifiable
+
+You can quickly tell that a change you make works
+
+====
+
+## Expresses intent
+
+You can tell what the code is trying to do
+
+====
+
+## No repetition
+
+You only edit one bit of code per logical change you wish to make
+
+====
+
+## Concise
+
+You don't have to read a 100 page manual to get started
+
+====
+
+## What if we applied these to....... CSS?
+
+====
+
+<small>
+  ```css
+  ul.data_rows { padding: 0px 0px 0px 20px; }
+  ul.data_rows li{
+    background: rgb(214, 245, 255)
+      url(/images/friends_icon.png) 10px center no-repeat;
+    overflow: hidden;
+    padding: 10px 10px 10px 50px;
+    margin: 10px 0 10px 10px;
+    border: 2px solid rgb(214, 245, 255);
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+  }
+  ul.data_rows.w635 { width: 660px !important; }
+  ```
+</small>
+
+From a real project
+
+====
+
+<small>
+  ```ruby
+  def style_data_rows(el)
+    el.padding = [0, 0, 0, 20]
+    el.each_item do |item|
+      item.background = [rgb(214, 245, 255),
+        '/images/friends_icon.png', 10, :center, :no_repeat]
+      item.overflow = :hidden
+      item.padding = [10, 10, 10, 50]
+      item.margin = [10, 0, 10, 10]
+      item.border = [2, :solid, rgb(214, 245, 255)]
+      item.border_radius ||= 2
+    end
+    el.width = 660 if el.has_class?('w636')
+  end
+  ```
+</small>
+
+====
+
+## Most projects I've seen
+
+<img  src="quality-chart.png" alt="Quality: Code 80% CSS 20%">
+
+====
+
+# Why?
+
+====
+
+## "CSS is a configuration file"
+
+Can it break
+
+* Purchases? ✔
+* Logging in? ✔
+* Most features you can think of? ✔
+
+Somebody implemented <a href="https://keithclark.co.uk/labs/css-fps/">Doom in CSS</a>.
+
+====
+
+## "Internet Explorer cut me"
+
+<img  src="life-is-pain.gif" alt="Life is pain">
+
+====
+
+## "CSS is graphic design"
+
+<img  src="not-my-job.jpg" alt="Not my job!">
+
+====
+
+## Low morale
+
+<img src="arial-frustrated.png" alt="Arial is frustrated">
+
+====
+
+## How can we make CSS better?
+
+====
+
+## Step 1
+
+How can we make CSS ~~better~~ easier to change?
+
+====
+
+## Review
+
+* Verifiable
+* Expresses intent
+* No repetition
+* Concise
+
+====
+
+## Verifiable
+
+* Good QA
+* Automated tools
+
+====
+
+## Expresses intent
+
+```css
+.page { overflow: hidden; }
+.page article { float: left; }
+.page aside { float: right; }
+```
+
+====
+
+## Express intent with comments
+
+```css
+.page { overflow: hidden; /* clearfix */ }
+.page article { float: left; /* big column */ }
+.page aside { float: right; /* small column */ }
+```
+
+====
+
+## Express intent with OOCSS
+
+<small>
+```html
+<style>
+.column-container { overflow: hidden; }
+.big-column { float: left; }
+.small-column { float: right; }
+</style>
+
+<div class="column-container page">
+  <article class="big-column">
+  </article>
+  <aside class="small-column">
+  </aside>
+</div>
+```
+</small>
+
+====
+
+## Express intent with SASS mixins
+
+<small>
+  ```scss
+  @mixin column-container { @include clearfix; }
+  @mixin big-column { float: left; }
+  @mixin small-column { float: right; }
+
+  .page {
+  @include column-container;
+  article { @include big-column; }
+  aside { @include small-column; }
+  }
+  ```
+</small>
+
+====
+
+## No repetition
+
+```css
+.data_rows li {
+  background-color: rgb(214, 245, 255);
+  border: 2px solid rgb(214, 245, 255);
+     -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+          border-radius: 2px;
+}
+```
+
+====
+
+## No repetition with SASS variables
+
+```scss
+$pale-bg: rgb(214, 245, 255);
+$border-width: 2px;
+
+.data_rows li {
+  background-color: $pale-bg;
+  border: $border-width solid $pale-bg;
+}
+```
+
+====
+
+## Concise
+
+Can we reduce the total amount of CSS?
+
+====
+
+## Concise by removing unused CSS
+
+Well, yeah
+
+====
+
+## Concise by preprocessing Bootstrap
+
+```scss
+input { background-color: $sexy-smoke; }
+```
+
+In the browser
+
+<small>
+<code>
+input { background-color: #eee; } /\* override \*/<br>
+~~input { background-color: #fff; }~~ /\* bootstrap \*/
+</code>
+</small>
+
+====
+
+## Concise by configuring Bootstrap
+
+```scss
+$input-bg: $sexy-smoke; // configure it
+@include bootstrap;     // include it
+input { }               // less code here
+```
+
+And easier in the browser
+
+<small>
+<code>
+input { background-color: #eee; } /\* bootstrap \*/
+</code>
+</small>
+
+====
+
+## Concise by reusing CSS
+
+"NoCSS"
+
+====
+
+## NoCSS, chapter 1
+
+No CSS re-use
+
+<img class="borderless" src="worst.png" alt="">
+
+====
+
+## Introduce baseline CSS
+
+<small>
+```css
+/* Normalize, Bootstrap, Foundation, or Material UI */
+/* Or your own handcrafted job */
+
+/* Built in HTML tags */
+ul { }
+blockquote { }
+article header { }
+
+/* Very re-usable, very focused classes (OOCSS) */
+.text-center { }
+```
+</small>
+
+====
+
+## NoCSS, chapter 2
+
+New baseline
+
+<img class="borderless" src="typical.png" alt="">
+
+====
+
+## Introduce reusable components
+
+```css
+/* .client-calendar {} */
+.calendar { }
+/* .product-list {} */
+.gallery { }
+/* .sales-chart {} */
+.line-chart { }
+```
+
+====
+
+## NoCSS, chapter 3
+
+<img class="borderless" src="ideal.png" alt="">
+
+====
+
+## NoCSS updates
+
+* Add HTML (with the right classes)
+* Add frontend/backend code so it functions
+* It already looks good!
+* ~~Add and update CSS~~
+
+(e.g. when Bootstrap actually works well)
+
+====
+
+# Summary
+
+====
+
+## Just one way to measure "quality"
+
+* Verifiable
+* Expresses intent
+* No repetition
+* Concise
+
+====
+
+<img src="scorecard.png" alt="">
+
+====
+
+## Conclusions
+
+* CSS can suck (plain CSS)
+* Tools and techniques help lots
+* Some effort pays off
+* Don't be a perfectionist
+
+====
+
+[gregorymcintyre.com/slides/good-css-is-easy-to-change/](http://gregorymcintyre.com/slides/good-css-is-easy-to-change/#/)
+
+</textarea>
+</section>
+
+<%#
+vim: filetype=markdown:spell
+%>
