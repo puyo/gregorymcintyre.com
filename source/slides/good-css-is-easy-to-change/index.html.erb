@@ -185,11 +185,13 @@ How can we make CSS ~~better~~ easier to change?
 
 ## Express intent with comments
 
+<small>
 ```css
 .page { overflow: hidden; /* clearfix */ }
 .page article { float: left; /* big column */ }
 .page aside { float: right; /* small column */ }
 ```
+</small>
 
 ====
 
@@ -198,9 +200,9 @@ How can we make CSS ~~better~~ easier to change?
 <small>
 ```html
 <style>
-.column-container { overflow: hidden; }
-.big-column { float: left; }
-.small-column { float: right; }
+  .column-container { overflow: hidden; }
+  .big-column { float: left; }
+  .small-column { float: right; }
 </style>
 
 <div class="column-container page">
@@ -217,17 +219,17 @@ How can we make CSS ~~better~~ easier to change?
 ## Express intent with SASS mixins
 
 <small>
-  ```scss
-  @mixin column-container { @include clearfix; }
-  @mixin big-column { float: left; }
-  @mixin small-column { float: right; }
+```scss
+@mixin column-container { @include clearfix; }
+@mixin big-column { float: left; }
+@mixin small-column { float: right; }
 
-  .page {
-    @include column-container;
-    article { @include big-column; }
-    aside { @include small-column; }
-  }
-  ```
+.page {
+  @include column-container;
+  article { @include big-column; }
+  aside { @include small-column; }
+}
+```
 </small>
 
 ====
