@@ -66,21 +66,21 @@ You don't have to read a 100 page manual to get started
 ====
 
 <small>
-  ```css
-  ul.data_rows { padding: 0px 0px 0px 20px; }
-  ul.data_rows li{
-    background: rgb(214, 245, 255)
-      url(/images/friends_icon.png) 10px center no-repeat;
-    overflow: hidden;
-    padding: 10px 10px 10px 50px;
-    margin: 10px 0 10px 10px;
-    border: 2px solid rgb(214, 245, 255);
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-  }
-  ul.data_rows.w635 { width: 660px !important; }
-  ```
+```css
+ul.data_rows { padding: 0px 0px 0px 20px; }
+ul.data_rows li{
+  background: rgb(214, 245, 255)
+    url(/images/friends_icon.png) 10px center no-repeat;
+  overflow: hidden;
+  padding: 10px 10px 10px 50px;
+  margin: 10px 0 10px 10px;
+  border: 2px solid rgb(214, 245, 255);
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+ul.data_rows.w635 { width: 660px !important; }
+```
 </small>
 
 From a real project
@@ -88,21 +88,21 @@ From a real project
 ====
 
 <small>
-  ```ruby
-  def style_data_rows(el)
-    el.padding = [0, 0, 0, 20]
-    el.each_item do |item|
-      item.background = [rgb(214, 245, 255),
-        '/images/friends_icon.png', 10, :center, :no_repeat]
-      item.overflow = :hidden
-      item.padding = [10, 10, 10, 50]
-      item.margin = [10, 0, 10, 10]
-      item.border = [2, :solid, rgb(214, 245, 255)]
-      item.border_radius = 2
-    end
-    el.width = 660 if el.has_class?('w636')
+```ruby
+def style_data_rows(el)
+  el.padding = [0, 0, 0, 20]
+  el.each_item do |item|
+    item.background = [rgb(214, 245, 255),
+      '/images/friends_icon.png', 10, :center, :no_repeat]
+    item.overflow = :hidden
+    item.padding = [10, 10, 10, 50]
+    item.margin = [10, 0, 10, 10]
+    item.border = [2, :solid, rgb(214, 245, 255)]
+    item.border_radius = 2
   end
-  ```
+  el.width = 660 if el.has_class?('w636')
+end
+```
 </small>
 
 ====
