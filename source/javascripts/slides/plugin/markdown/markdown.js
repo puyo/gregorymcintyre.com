@@ -18,7 +18,7 @@
 }( this, function( marked ) {
 
 	var DEFAULT_SLIDE_SEPARATOR = '^\r?\n---\r?\n$',
-		DEFAULT_NOTES_SEPARATOR = 'note:',
+		DEFAULT_NOTES_SEPARATOR = 'notes?:',
 		DEFAULT_ELEMENT_ATTRIBUTES_SEPARATOR = '\\\.element\\\s*?(.+?)$',
 		DEFAULT_SLIDE_ATTRIBUTES_SEPARATOR = '\\\.slide:\\\s*?(\\\S.+?)$';
 
@@ -40,25 +40,14 @@
 		// restore script end tags
 		text = text.replace( new RegExp( SCRIPT_END_PLACEHOLDER, 'g' ), '</script>' );
 
-		function lineContainsText( line ) {
-			return line.match( /\S+/ )
-		};
+		var leadingWs = text.match( /^\n?(\s*)/ )[1].length,
+			leadingTabs = text.match( /^\n?(\t*)/ )[1].length;
 
-		var lines = text.split(/\n/).filter( lineContainsText );
-
-		if( lines.length === 0 ) {
-			return "";
-		}
-
-		var leadingTabs = lines[0].match( /^(\t*)/ )[1].length;
 		if( leadingTabs > 0 ) {
-			text = text.replace( new RegExp('^\\t{' + leadingTabs + '}', 'm'), '' );
+			text = text.replace( new RegExp('\\n?\\t{' + leadingTabs + '}','g'), '\n' );
 		}
-		else {
-			var leadingWs = lines[0].match( /^(\s*)/ )[1].length;
-			if( leadingWs > 0 ) {
-				text = text.replace( new RegExp('^\\s{' + leadingWs + '}', 'm'), '' );
-			}
+		else if( leadingWs > 1 ) {
+			text = text.replace( new RegExp('\\n? {' + leadingWs + '}', 'g'), '\n' );
 		}
 
 		return text;
