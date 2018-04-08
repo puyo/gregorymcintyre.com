@@ -417,7 +417,7 @@
 		}
 
 		function loadScript( s ) {
-			head.ready( s.src.match( /([\w\d_\-]*)\.?js$|[^\\\/]*$/i )[0], function() {
+			head.ready( s.src.match( /([\w\d_\-]*)\.?js|[^\\\/]*$/i )[0], function() {
 				// Extension may contain callback functions
 				if( typeof s.callback === 'function' ) {
 					s.callback.apply( this );
