@@ -1,0 +1,11 @@
+---
+layout: none
+---
+
+= partial 'blog', locals: { name: 'roleplaying', title: 'Roleplaying' } do
+  %ul.article-list
+    - blog('roleplaying').articles.each do |article|
+      %li
+        %header<>
+          %h2.title= link_to article.smart_title, article.url
+          %time.time(pubdate="pubdate")= article.date.strftime('%e %b %Y')

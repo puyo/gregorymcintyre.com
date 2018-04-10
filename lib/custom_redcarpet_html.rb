@@ -38,20 +38,31 @@ class CustomRedcarpetHTML < Middleman::Renderers::MiddlemanRedcarpetHTML
     super
   end
 
-  def block_code(code, language)
+  def block_code(text, language)
     case language
     when 'poem'
-      poem(ensmarten(code))
+      poem(ensmarten(text))
     when 'prompt'
-      prompt(ensmarten(code))
+      prompt(ensmarten(text))
+    when 'dnd-stats'
+      dnd_stats(text)
     when String
-      Middleman::Syntax::Highlighter.highlight(code.chomp, language, {lexer_options: {}})
+      Middleman::Syntax::Highlighter.highlight(text.chomp, language, {lexer_options: {}})
     else
-      %(<pre><code>#{code.chomp}</code></pre)
+      %(<pre><code>#{text.chomp}</code></pre)
     end
   end
 
   private
+
+  def dnd_stats(text)
+    text.gsub!('---', '<hr>')
+    [
+      '<div class="dnd-stats">',
+      @r.render(text),
+      '</div>',
+    ].join('')
+  end
 
   def prompt(text)
     %{<div class="prompt">#{@r.render(text.strip)}</div>}

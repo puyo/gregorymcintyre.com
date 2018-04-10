@@ -1,0 +1,17 @@
+!!!5
+%html.dnd(lang="en")
+  %head
+    = partial 'header-meta'
+    = stylesheet_link_tag 'site.css'
+    %title= data['site']['title']
+    %script{src: '//use.edgefonts.net/english-small-caps.js'}
+  %body
+    .page-header
+      %h1.page-title
+        - title = current_page.title
+        = link_to(title, '/')
+    .page
+      .main(role="main")
+        = yield
+    = partial 'page_footer'
+    = partial 'ga'

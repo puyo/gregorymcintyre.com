@@ -25,6 +25,7 @@ end
 activate(:blog) { |blog| config_blog(blog, 'poetry') }
 activate(:blog) { |blog| config_blog(blog, 'opinion') }
 activate(:blog) { |blog| config_blog(blog, 'slides') }
+activate(:blog) { |blog| config_blog(blog, 'roleplaying') }
 
 activate(:livereload) { |config| config.host = '0.0.0.0' }
 
