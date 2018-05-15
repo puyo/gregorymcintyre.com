@@ -4,6 +4,11 @@ task :usage do
   system($PROGRAM_NAME, '-D')
 end
 
+desc 'Run on http://localhost:4567'
+task :serve do
+  sh 'bundle exec middleman'
+end
+
 desc 'Upload to gregorymcintyre.com'
 task publish: :build do
   sh 'rsync -rvP --delete build/ gregorymcintyre.com:gregorymcintyre.com/'
