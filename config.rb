@@ -49,3 +49,6 @@ configure :build do
   # activate :minify_javascript # can't handle ES6 classes :-(
   activate :cache_buster
 end
+
+# Disable warnings
+Haml::TempleEngine.disable_option_validator!
