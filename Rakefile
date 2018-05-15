@@ -16,7 +16,7 @@ end
 
 desc 'Regenerate the static site'
 task :build do
-  sh 'middleman build --clean'
+  sh 'bundle exec middleman build --clean'
 end
 
 desc 'Create a new poem. rake poem title="One Two Three"'
