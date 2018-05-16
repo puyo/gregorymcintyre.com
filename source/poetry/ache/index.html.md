@@ -10,9 +10,9 @@ Pick two vowels and use them prominently
 ```
 
 ```poem
-ache me, the way you do
-take me, the way you do
-make me, what you do
+ache me, like you do
+take, what you do
+make, what you do
 from me, your clay
 make me, that way
 you do
