@@ -44,49 +44,61 @@ $border-color: hsl(6, 75%, 35%)
       padding: 0 0.25em
       clip-path: polygon(0% 0%, 100% 50%, 0% 100%)
 
-.dnd-stats
-  p
-    margin-top: 1em
-    margin-bottom: 0
+  .stats
+    p
+      margin-top: 1em
+      margin-bottom: 0
 
-  h2, h3, h4, h5, h6
-    margin: 0
-    color: $bold-text-color
-    font-family: inherit
-    font-weight: bold
+    ul
+      margin: 0
 
-  // byline
-  h1 + p
-    margin-top: 0
-    font-size: 0.9em
+    li
+      list-style-type: none
+      margin: 0
 
-  h2
-    font-family: sans-serif
-    letter-spacing: 1px
-    font-weight: 200
-    padding-top: 12px
+    h1, h2, h3, h4, h5, h6
+      margin-bottom: 0
+      color: $bold-text-color
+      font-family: inherit
+      font-weight: bold
+      column-span: initial
 
-    &:after
-      content: ''
-      display: block
-      height: 1px
-      background-color: $border-color
-      padding: 0 0.25em
+    h2, h3, h4, h5, h6
+      margin-top: 0
 
-  strong
-    color: $bold-text-color
+    // byline
+    h1 + p
+      margin-top: 0
+      font-size: 0.9em
 
-  hr
-    overflow: visible
-    padding: 0
-    border: none
-    height: 5px
-    margin: 0.5em 0
+    h2
+      font-family: sans-serif
+      letter-spacing: 1px
+      font-weight: 200
+      padding-top: 12px
+      border-bottom: 1px solid $border-color
 
-    &:after
-      content: ''
-      display: block
+      /* &:after
+      /*   content: ''
+      /*   display: block
+      /*   height: 1px
+      /*   background-color: $border-color
+      /*   padding: 0 0.25em
+
+    strong
+      color: $bold-text-color
+
+    hr
+      overflow: visible
+      padding: 0
+      border: none
       height: 5px
-      background-color: $border-color
-      padding: 0 0.25em
-      clip-path: polygon(0% 0%, 100% 50%, 0% 100%)
+      margin: 0.5em 0
+
+      &:after
+        content: ''
+        display: block
+        height: 5px
+        background-color: $border-color
+        padding: 0 0.25em
+        -webkit-clip-path: polygon(0% 0%, 100% 50%, 0% 100%)

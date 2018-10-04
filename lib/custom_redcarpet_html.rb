@@ -44,8 +44,6 @@ class CustomRedcarpetHTML < Middleman::Renderers::MiddlemanRedcarpetHTML
       poem(ensmarten(text))
     when 'prompt'
       prompt(ensmarten(text))
-    when 'dnd-stats'
-      dnd_stats(text)
     when String
       Middleman::Syntax::Highlighter.highlight(text.chomp, language, {lexer_options: {}})
     else
@@ -54,15 +52,6 @@ class CustomRedcarpetHTML < Middleman::Renderers::MiddlemanRedcarpetHTML
   end
 
   private
-
-  def dnd_stats(text)
-    text.gsub!('---', '<hr>')
-    [
-      '<div class="dnd-stats">',
-      @r.render(text),
-      '</div>',
-    ].join('')
-  end
 
   def prompt(text)
     %{<div class="prompt">#{@r.render(text.strip)}</div>}
