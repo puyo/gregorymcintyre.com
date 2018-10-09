@@ -5,25 +5,22 @@ tags:
 ---
 
 ```poem
-Ah, love,
-        sister,
-Falling, failing, fragile you.
+Ah, love sister
+Falling, fragile
 You knocked on my door and
-Told me it's been raining.
+Told me it's been raining
 
-Ah, yeah,
-        sister,
-It's been raining here too.
-        And like you
-I know how much it costs a heart to commit
-To ten thousand more rainy days.
+Ah, yeah sister
+It's been raining here too
+And like you
+I know
+How much it costs to commit
+To ten thousand more rainy days
 
-Ah, love,
-        Sister,
-I'm so happy this secret's not strange.
+Ah, sweet sister
+I'm happy this secret's not strange
 What? you demand
-        Pulled back from afar.
-Why, sister you
-Of all people know
-Just how bloody brave we both are!
+Why, sister
+You know
+Just, how we are both so bloody brave
 ```
