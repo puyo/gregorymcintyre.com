@@ -4,8 +4,6 @@ date: 2018-10-10 08:25 AEDT
 ---
 
 ```poem
-it’s OK
-
 struggle to inhale, can’t
 take a full breath, can’t
 stretch, just shallow breaths
