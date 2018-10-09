@@ -8,6 +8,7 @@ require 'middleman-syntax/extension'
 
 def ensmarten(text)
   text
+    .to_s
     .gsub(/```/, '___TRIPLE_TICK___')
     .gsub(/\*\*(.*?)\*\*/, '<strong>\1</strong>')
     .gsub(/\*(.*?)\*/, '<em>\1</em>')
