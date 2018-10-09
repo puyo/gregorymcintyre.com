@@ -3,6 +3,12 @@ title: 1988
 date: 2018-10-10 08:28 AEDT
 ---
 
+```prompt
+1988
+
+-- Harry and Nicola
+```
+
 ```poem
 Looking down
 Clapped out school shoes caked in dirt
