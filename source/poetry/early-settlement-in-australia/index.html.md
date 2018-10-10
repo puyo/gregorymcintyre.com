@@ -24,7 +24,7 @@ In the cupboard next to the thumb tacks
 
 At the Opera House (which I think is grouse) I get lost in a reverie
 But our leader says
-Pride can cool it
+That pride can cool it
 That it’s not even
 Fresh in our memory
 ```
