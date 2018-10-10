@@ -69,17 +69,17 @@ Perched outside in a row
 Like crows
 Outside this church
 For the atheist
-With its pad of
-Salvation scripts
+With its
+Pad of salvation scripts
 
 He’s done
 I’m stitched
 I’m cooked
-Slide me off
-The stove
+Slide me off the stove
 Let me out
 Past naked legs and arms
-My armour at the door
+My armour
+At the door
 Let me out wake me up
 Get me out
 Of this bleak cabaret
