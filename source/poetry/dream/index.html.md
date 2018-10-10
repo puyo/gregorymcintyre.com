@@ -80,7 +80,8 @@ Let me out
 Past naked legs and arms
 My armour
 At the door
+Get away
 Let me out wake me up
-Get me out
-Of this bleak cabaret
+From this bleak
+Cabaret
 ```
