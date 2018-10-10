@@ -27,4 +27,10 @@ But our leader says
 That pride can cool it
 That it’s not even
 Fresh in our memory
+
+Cathy Cathy, to my window come
+Your Heathcliff waits for you
+But if perchance
+You don’t exist
+A substitute will do
 ```
