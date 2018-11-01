@@ -1,4 +1,4 @@
-task default: [:usage]
+task default: [:serve]
 
 task :usage do
   system($PROGRAM_NAME, '-D')
