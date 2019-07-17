@@ -1,0 +1,68 @@
+.gallery
+  height: 100%
+
+  a
+    color: #eee
+
+  +responsive(large)
+    height: 100%
+
+  nav
+    +responsive(large)
+      overflow: scroll
+      height: 100%
+      float: left
+      width: 200px
+
+  .back
+    display: block
+    padding: 0 1em
+    line-height: 40px
+
+  ul
+    padding: 0
+    margin: 0
+    overflow: hidden // clearfix
+
+    +responsive(small medium)
+      display: block
+
+  li
+    padding: 0
+    margin: 0
+
+    +responsive(small medium)
+      display: inline-block
+
+    &.full
+      float: left
+
+      +responsive(small medium)
+        display: none
+
+      img
+        width: 200px
+
+    &.small
+      display: inline-block
+      text-align: center
+
+      +responsive(large)
+        display: none
+
+  .frame
+    overflow: auto
+    height: 100%
+    text-align: center
+
+    .helper
+      display: inline-block
+      height: 100%
+      vertical-align: middle
+
+    img
+      padding: 40px
+      vertical-align: middle
+
+    +responsive(small medium)
+      display: none
