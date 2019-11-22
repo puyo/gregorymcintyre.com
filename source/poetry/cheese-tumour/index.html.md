@@ -1,5 +1,5 @@
 ---
-title: Cheese Tumor
+title: Cheese Tumour
 date: 2010-09-11 20:00 AEST
 ---
 
