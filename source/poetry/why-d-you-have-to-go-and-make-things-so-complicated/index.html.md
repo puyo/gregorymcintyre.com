@@ -4,24 +4,14 @@ date: 2014-01-19 20:00 AEST
 ---
 
 ```poem
-Dear atheists, why
-Do you think the sky
-Is falling
-Cos people
-Dig steeples?
+Dear atheists why, do you think the sky
+Is falling cos people dig steeples?
 It's galling
-Occam's Razor's not cool
-When fools
-Forget
-It's a heuristic tool
-To rate
-Your ideas
-Not hate on your
-Peers
-Even if
-They're God fearing swill
+Occam's Razor's not cool when fools forget
+It's a heuristic tool to rate your ideas
+Not hate on your peers
+Even if they're God fearing swill
 Take a pill
 Please chill
-Don't let bigotry
-Run uphill
+Don't let bigotry run uphill
 ```

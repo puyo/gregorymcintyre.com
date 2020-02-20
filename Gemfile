@@ -5,9 +5,6 @@ gem 'middleman'            # static site generator
 gem 'middleman-blog'       # blogging functionality
 gem 'middleman-livereload' # reloads the web browser when a file changes
 gem 'middleman-syntax'     # syntax highlighting
-gem 'oj'                   # faster JSON
 gem 'pry'                  # debugging
 gem 'rake'                 # convenient build commands
-gem 'rb-fsevent'           # for livereload without polling
 gem 'redcarpet'            # markdown rendering
-gem 'therubyracer'         # faster ExecJS

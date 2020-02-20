@@ -228,7 +228,7 @@ layout: none
 
   %body
     .last-updated
-      Last updated #{Time.now.strftime('%d %B %Y')}
+      Last updated #{Date.iso8601(`git log -n 1 --pretty=format:%aI -- '#{__FILE__}'`).strftime('%d %B %Y')}
 
     .section.vcard
       %h1.name.fn Gregory McIntyre

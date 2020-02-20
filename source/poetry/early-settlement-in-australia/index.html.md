@@ -13,7 +13,7 @@ What the world needs now (have a rant)
 I wouldn’t say no, to a hearth and a home
 But pending a pay rise and then some,
 I may be content
-In this tenament
+In this tenement
 Squeezed for two thirds my income
 
 I could use, a break to relax
