@@ -5,3 +5,5 @@ build
 *~
 .bundle
 .#*
+sync/
+source/gallery/images/

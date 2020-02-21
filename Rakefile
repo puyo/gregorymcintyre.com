@@ -60,3 +60,76 @@ task :svgo do
     system("svgo", src_path, "-o", dest_path)
   end
 end
+
+desc "Fetch drawings"
+task :drawings do
+  require 'yaml'
+  require 'fileutils'
+
+  dest_dir = 'source/gallery/images'
+  thumb_dir = 'source/gallery/images/thumbs'
+  sync_dir = 'sync'
+
+  FileUtils.rm_rf(thumb_dir)
+  FileUtils.rm_rf(dest_dir)
+  FileUtils.mkdir_p(sync_dir)
+  FileUtils.mkdir_p(dest_dir)
+  FileUtils.mkdir_p(thumb_dir)
+
+  records = File.read('lifedrawing_s3_paths.txt').each_line.map do |line|
+    date_str, path = line.split(' ')
+    filename = File.basename(path)
+    sync_path = File.join(sync_dir, filename)
+
+    if !File.exist?(sync_path)
+      puts filename
+      cmd = "aws s3 cp s3://puyofiles/photos/#{path} #{sync_path} --profile puyo"
+      puts cmd
+      system(cmd)
+    end
+
+    require 'digest/sha2'
+    sha = Digest::SHA2.new
+    sha << File.read(sync_path)
+    sha = sha.to_s
+
+    dest_filename = "#{date_str}_#{sha}.jpg"
+    dest_path = File.join(dest_dir, dest_filename)
+    thumb_filename = dest_filename + '.thumb.jpg'
+    thumb_path = File.join(thumb_dir, thumb_filename)
+
+    if !File.exist?(dest_path)
+      cmd = "convert #{sync_path} -auto-orient -thumbnail '2000x2000>' #{dest_path}"
+      puts cmd
+      system(cmd)
+    end
+
+    if !File.exist?(thumb_path)
+      cmd = "convert #{sync_path} -auto-orient -thumbnail 250x90 -unsharp 0x.5 #{thumb_path}"
+      puts cmd
+      system(cmd)
+    end
+
+    {
+      'source_path' => path,
+      'source_filename' => filename,
+      'date_time' => date_str,
+      'dest_filename' => dest_filename,
+      'thumb_filename' => thumb_filename,
+      'sha' => sha,
+    }
+  end
+
+  File.open('data/lifedrawing.yml', 'w') do |f|
+    YAML.dump(records, f)
+  end
+
+  dupes = records.group_by{|r| r['sha'] }.select{|s, rs| rs.size > 1 }
+  if dupes.size > 0
+    puts "DUPES DETECTED:"
+    dupes.each do |sha, dupes|
+      puts ' ' + dupes.map{|d| d['source_path'] }.inspect
+    end
+    puts
+  end
+end
