@@ -58,8 +58,8 @@ $thick-border-color: $charcoal
 +responsive(medium large)
   @font-face
     font-family: 'Gothic'
-    src: url('gothicl-webfont.eot')
-    src: url('gothicl-webfont.eot?#iefix') format("embedded-opentype"), font-url('gothicl-webfont.woff2') format("woff2"), font-url('fonts/gothicl-webfont.woff') format("woff"), font-url('gothicl-webfont.ttf') format("truetype")
+    src: url('../fonts/gothicl-webfont.eot')
+    src: url('../fonts/gothicl-webfont.eot?#iefix') format("embedded-opentype"), font-url('../fonts/gothicl-webfont.woff2') format("woff2"), font-url('../fonts/gothicl-webfont.woff') format("woff"), font-url('../fonts/gothicl-webfont.ttf') format("truetype")
     font-weight: normal
     font-style: normal
 
@@ -167,5 +167,9 @@ html.gallery-page
 // ----------------------------------------------------------------------
 // site
 
-@import gallery
+$lg-path-images: "../../node_modules/lightgallery/src/img"
+$lg-path-fonts: "../../node_modules/lightgallery/src/fonts"
+@import '~lightgallery/src/sass/lightgallery.scss'
+// @import lightgallery-sass
+// @import gallery
 

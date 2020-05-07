@@ -4,55 +4,22 @@ per_page: 5
 layout: gallery
 ---
 
-<script>
-  if (!document.location.href.endsWith("/")) {
-    document.location.replace(document.location.href + "/")
-  }
-</script>
-
-<%
-
-images = [
-  '3566699778_d821ec94dd_b.jpg',
-  '3566701406_f32365d24b_b.jpg',
-  '4391022001_e0aaacc679_b.jpg',
-  '4391022869_64f12f5474_b.jpg',
-  '4391792984_6ded2e53be_b.jpg',
-  '4445233580_5acd86dda3_b.jpg',
-  '4445233812_83335f3db7_b.jpg',
-]
-
-%>
+<%-
+  images = data['lifedrawing'].sort_by{|i| i.dest_filename }.reverse
+-%>
 
 <div class="gallery">
   <nav>
     <a href="../" class="back">Back</a>
-    <ul>
-      <%- (images + images + images).each do |filename| -%>
-        <%- full = "drawings/#{filename}" -%>
-        <%- thumb = "drawings/thumbs/#{filename}" -%>
-        <li class="full"><a class="gallery-nav-link" href="<%= full %>" target="gallery_iframe"><img src="<%= thumb %>"></a></li>
-        <li class="small"><a href="<%= full %>"><img src="<%= thumb %>"></a></li>
+    <div id="lightgallery">
+      <%- images.each do |image| -%>
+        <%- full = "./images/#{image.dest_filename}" -%>
+        <%- thumb = "./images/thumbs/#{image.thumb_filename}" -%>
+        <a href="<%= full %>"><img src="<%= thumb %>"></a>
       <%- end -%>
-    </ul>
+    </div>
   </nav>
   <div class="frame">
     <span class="helper"></span><img id="gallery_image" class="gallery-image" alt="" src="" style="border: none"/>
   </div>
 </div>
-
-<script>
-  if (!document.location.href.endsWith("/")) {
-    document.location.replace(document.location.href + "/")
-  }
-  var links = document.getElementsByClassName("gallery-nav-link")
-  var img = document.getElementById("gallery_image")
-  for (var i = 0; i < links.length; ++i) {
-    links[i].addEventListener("click", function(e) {
-      e.stopPropagation()
-      e.preventDefault()
-      img.src = e.currentTarget.href
-    })
-  }
-  img.src = links[0].href
-</script>
