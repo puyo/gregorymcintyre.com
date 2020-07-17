@@ -12,7 +12,6 @@ module.exports = {
 
   entry: {
     gallery: './source/javascripts/gallery.js',
-    styles: './source/stylesheets/gallery.css.sass',
   },
 
   resolve: {
@@ -22,8 +21,6 @@ module.exports = {
     ],
     alias: {
       jquery: "jquery/src/jquery",
-      "lightgallery-sass": path.resolve(__dirname, "./node_modules/lightgallery/src/sass/lightgallery.scss"),
-      "gallery-sass": path.resolve(__dirname, "./source/stylesheets/gallery.css.sass"),
     },
   },
 
@@ -75,8 +72,10 @@ module.exports = {
           'sass-loader',
         ],
       },
-      // Load plain-ol' vanilla CSS
-      { test: /\.css$/, loader: "style!css" },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'postcss-loader' ]
+      }
     ],
   }
 };

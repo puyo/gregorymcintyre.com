@@ -2,7 +2,7 @@
 // import 'lightslider'
 import 'lightgallery'
 
-import 'gallery-sass'
+import '../stylesheets/gallery.css.sass'
 
 $(document).ready(function() {
   $('#lightgallery').lightGallery();
