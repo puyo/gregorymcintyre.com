@@ -167,6 +167,23 @@ html.gallery-page
 // ----------------------------------------------------------------------
 // site
 
+.gallery
+  padding: 5rem
+  margin: auto
+  text-align: center
+
+  a
+    color: #eee
+
+  .back
+    display: block
+    padding: 0 1em
+    line-height: 40px
+
+  img
+    &:hover
+      opacity: 0.9
+
 $lg-path-images: "../../node_modules/lightgallery/src/img"
 $lg-path-fonts: "../../node_modules/lightgallery/src/fonts"
 @import '~lightgallery/src/sass/lightgallery.scss'

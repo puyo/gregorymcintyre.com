@@ -21,6 +21,9 @@
   "homepage": "https://github.com/puyo/gregorymcintyre.com#readme",
   "dependencies": {
     "jquery": "^3.5.1",
+    "lg-fullscreen": "^1.2.1",
+    "lg-thumbnail": "^1.2.1",
+    "lg-zoom": "^1.2.1",
     "lightgallery": "^1.7.2"
   },
   "devDependencies": {

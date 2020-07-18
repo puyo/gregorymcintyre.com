@@ -15,11 +15,8 @@ layout: gallery
       <%- images.each do |image| -%>
         <%- full = "./images/#{image.dest_filename}" -%>
         <%- thumb = "./images/thumbs/#{image.thumb_filename}" -%>
-        <a href="<%= full %>"><img src="<%= thumb %>"></a>
+        <a href="<%= full %>"><img alt="Gregory McIntyre <%= image.date_time %>" src="<%= thumb %>"></a>
       <%- end -%>
     </div>
   </nav>
-  <div class="frame">
-    <span class="helper"></span><img id="gallery_image" class="gallery-image" alt="" src="" style="border: none"/>
-  </div>
 </div>
