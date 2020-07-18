@@ -1,7 +1,7 @@
 import 'lightgallery'
 import 'lg-thumbnail'
 import 'lg-fullscreen'
-import '../stylesheets/gallery.css.sass'
+import '../stylesheets/_gallery.sass'
 
 $(document).ready(function() {
   $('#lightgallery').lightGallery({
