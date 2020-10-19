@@ -1,0 +1,79 @@
+$blue: hsl(200, 100, 80)
+$pink: hsl(300, 100, 80)
+$faded: hsl(0, 0, 80%)
+$faded-transparent: hsla(0, 0, 0, 0.5)
+$faded-transparent-bg: hsla(0, 0, 0, 0.25)
+$faded-bg: #f8f8f8
+$dark-blue: darken($blue, 50%)
+$dark-dark-blue: darken($blue, 70%)
+$charcoal: hsl(0, 0, 20)
+$dark-purple: #410521
+$purple: lighten(#410521, 10%)
+$dark-pink: lighten($purple, 10%)
+
+$link-color: $purple
+$focus-color: lighten(desaturate($blue, 50%), 10%)
+$page-bg-color: white
+
+$gap: 30px
+$base-font-size: 20px
+$base-line-height: 30px
+$small-font-size: 15px
+$small-line-height: 1.5
+$small-gap: 15px
+$blueprint-grid-columns: 4
+$blueprint-grid-width: 7*$gap
+$blueprint-grid-margin: 3*$gap
+$grid-background-baseline-height: $base-line-height
+$grid-background-baseline-color: hsla(0, 0, 0, 0.1)
+$grid-background-column-color: hsla(0, 0, 0, 0.03)
+$grid-background-column-width: $blueprint-grid-width
+$grid-background-gutter-width: $blueprint-grid-margin
+$grid-background-total-columns: $blueprint-grid-columns
+$main-cols: 3
+$sidebar-cols: 1
+
+$show-grid-backgrounds: true
+
+$responsive-small-width: 580px
+$responsive-medium-width: 1300px
+
+$thick-border-size: 6px
+$thick-border-color: $charcoal
+
+// --------------------------------------------------
+// base
+
+@import normalize
+
+html.gallery-page
+  height: 100%
+
+  body
+    height: 100%
+    background-color: black
+    color: #eee
+
+// ----------------------------------------------------------------------
+// site
+
+.gallery
+  padding: 0 5rem
+  margin: auto
+  text-align: center
+
+  a
+    color: #eee
+
+  .back
+    display: block
+    margin-bottom: 1em
+    line-height: 40px
+
+  img
+    &:hover
+      opacity: 0.9
+
+$lg-path-images: "../../node_modules/lightgallery/src/img"
+$lg-path-fonts: "../../node_modules/lightgallery/src/fonts"
+@import '~lightgallery/src/sass/lightgallery.scss'

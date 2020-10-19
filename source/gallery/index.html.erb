@@ -1,0 +1,21 @@
+---
+title: Drawings by Gregory McIntyre
+pageable: true
+per_page: 5
+layout: gallery
+---
+
+<div class="gallery">
+  <h1><%= current_page.data.title || data['site']['title'] %></h1>
+  <nav>
+    <a href="../" class="back">Back</a>
+  </nav>
+  <div id="lightgallery">
+    <%- images = data['lifedrawing'].sort_by{|i| i.dest_filename }.reverse -%>
+    <%- images.each do |image| -%>
+      <%- full = "./images/#{image.dest_filename}" -%>
+      <%- thumb = "./images/thumbs/#{image.thumb_filename}" -%>
+      <a href="<%= full %>"><img alt="Gregory McIntyre <%= image.date_time %>" src="<%= thumb %>"></a>
+    <%- end -%>
+  </div>
+</div>
