@@ -4,7 +4,7 @@ date: 2020-09-24 11:14 AEDT
 ---
 
 ```prompt
-Nicole: joining your own search party
+Nicole: Joining your own search party
 ```
 
 ```poem
