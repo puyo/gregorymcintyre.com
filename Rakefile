@@ -77,6 +77,8 @@ task :drawings do
   FileUtils.mkdir_p(dest_dir)
   FileUtils.mkdir_p(thumb_dir)
 
+  errors = []
+
   records = File.read('lifedrawing_s3_paths.txt').each_line.map do |line|
     date_str, path = line.split(' ')
     filename = File.basename(path)
@@ -119,6 +121,17 @@ task :drawings do
       'thumb_filename' => thumb_filename,
       'sha' => sha,
     }
+  rescue Errno::ENOENT => e
+    errors << e
+    nil
+  end
+
+  records.compact!
+
+  if errors.any?
+    errors.each do |e|
+      warn e
+    end
   end
 
   File.open('data/lifedrawing.yml', 'w') do |f|
