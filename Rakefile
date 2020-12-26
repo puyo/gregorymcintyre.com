@@ -28,7 +28,8 @@ task :poem do
 
   title = ENV['title']
   if !title || title.empty?
-    raise 'Must supply poem title. e.g. rake poem title="One Two Three"'
+    warn 'Must supply poem title. e.g. rake poem title="One Two Three"'
+    exit 1
   end
   date = Time.now.strftime('%Y-%m-%d %H:%M %Z')
   slug = safe_parameterize(title)
