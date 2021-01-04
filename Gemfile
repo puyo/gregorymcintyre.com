@@ -8,3 +8,4 @@ gem 'middleman-syntax'     # syntax highlighting
 gem 'pry'                  # debugging
 gem 'rake'                 # convenient build commands
 gem 'redcarpet'            # markdown rendering
+gem 'webrick'              # preview mode
