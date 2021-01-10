@@ -19,7 +19,7 @@ $gap: 30px
 $base-font-size: 20px
 $base-line-height: 30px
 $small-font-size: 15px
-$small-line-height: 1.5
+$small-line-height: 20px
 $small-gap: 15px
 $blueprint-grid-columns: 4
 $blueprint-grid-width: 7*$gap
@@ -486,17 +486,21 @@ body
 
 .prompt
   +margined
-  font-size: 18px
+  font-size: 15px
   line-height: 1.3
   font-style: italic
+  +responsive(medium large)
+    font-size: 18px
   p
     margin: 0
 
 .poem
   +margined(2rem)
-  font-size: 18px
+  font-size: 15px
   line-height: 1.3
   white-space: pre-wrap
+  +responsive(medium large)
+    font-size: 18px
   .line
     +hanging-indent
 
