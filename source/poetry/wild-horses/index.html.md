@@ -3,6 +3,10 @@ title: Wild Horses
 date: 2020-12-13 09:51 AEDT
 ---
 
+```prompt
+Harry and Nicola: Strange fruit
+```
+
 ```poem
 Lying around, we talked about our favourite songs
 We watched one with kabuki masks spinning towards the screen

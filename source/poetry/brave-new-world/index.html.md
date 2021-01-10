@@ -3,6 +3,10 @@ title: Brave New World
 date: 2020-12-13 10:01 AEDT
 ---
 
+```prompt
+Harry and Nicola: If I were a bud
+```
+
 ```poem
 the sun rises to set the scene
 I am spread out on the bed obscene
