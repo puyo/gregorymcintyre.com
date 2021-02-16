@@ -100,6 +100,7 @@ task :drawings do
     dest_path = File.join(dest_dir, dest_filename)
     thumb_filename = dest_filename + '.thumb.jpg'
     thumb_path = File.join(thumb_dir, thumb_filename)
+    thumb_w = thumb_h = nil
 
     if !File.exist?(dest_path)
       cmd = "convert #{sync_path} -auto-orient -thumbnail '2000x2000>' #{dest_path}"
@@ -108,9 +109,10 @@ task :drawings do
     end
 
     if !File.exist?(thumb_path)
-      cmd = "convert #{sync_path} -auto-orient -thumbnail 250x90 -unsharp 0x.5 #{thumb_path}"
+      cmd = "convert #{sync_path} -auto-orient -thumbnail 500x200 -unsharp 0x.5 #{thumb_path}"
       puts cmd
       system(cmd)
+      thumb_w, thumb_h = `identify -ping -format '%w %h' #{thumb_path}`.to_s.strip.split(' ')
     end
 
     {
@@ -120,6 +122,8 @@ task :drawings do
       'dest_filename' => dest_filename,
       'thumb_filename' => thumb_filename,
       'sha' => sha,
+      'thumb_width' => thumb_w,
+      'thumb_height' => thumb_h,
     }
   rescue Errno::ENOENT => e
     errors << e
