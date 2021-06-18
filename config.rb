@@ -56,6 +56,6 @@ activate :external_pipeline,
   name: :webpack,
   command: build? ?
     "BUILD_PRODUCTION=1 npx webpack --bail -p" :
-    "BUILD_DEVELOPMENT=1 npx webpack --watch -d --progress --color",
+    "BUILD_DEVELOPMENT=1 npx webpack --watch --devtool source-map --progress --color",
   source: ".tmp/dist",
   latency: 1

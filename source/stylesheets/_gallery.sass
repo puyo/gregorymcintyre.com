@@ -1,12 +1,12 @@
-$blue: hsl(200, 100, 80)
-$pink: hsl(300, 100, 80)
-$faded: hsl(0, 0, 80%)
-$faded-transparent: hsla(0, 0, 0, 0.5)
-$faded-transparent-bg: hsla(0, 0, 0, 0.25)
+$blue: hsl(200, 100%, 80%)
+$pink: hsl(300, 100%, 80%)
+$faded: hsl(0, 0%, 80%)
+$faded-transparent: hsla(0, 0%, 0%, 50%)
+$faded-transparent-bg: hsla(0, 0%, 0%, 25%)
 $faded-bg: #f8f8f8
 $dark-blue: darken($blue, 50%)
 $dark-dark-blue: darken($blue, 70%)
-$charcoal: hsl(0, 0, 20)
+$charcoal: hsl(0, 0%, 20%)
 $dark-purple: #410521
 $purple: lighten(#410521, 10%)
 $dark-pink: lighten($purple, 10%)
@@ -25,8 +25,8 @@ $blueprint-grid-columns: 4
 $blueprint-grid-width: 7*$gap
 $blueprint-grid-margin: 3*$gap
 $grid-background-baseline-height: $base-line-height
-$grid-background-baseline-color: hsla(0, 0, 0, 0.1)
-$grid-background-column-color: hsla(0, 0, 0, 0.03)
+$grid-background-baseline-color: hsla(0, 0%, 0%, 10%)
+$grid-background-column-color: hsla(0, 0%, 0%, 3%)
 $grid-background-column-width: $blueprint-grid-width
 $grid-background-gutter-width: $blueprint-grid-margin
 $grid-background-total-columns: $blueprint-grid-columns
@@ -73,6 +73,9 @@ html.gallery-page
     &:hover
       opacity: 0.95
 
-$lg-path-images: "../../node_modules/lightgallery/src/img"
-$lg-path-fonts: "../../node_modules/lightgallery/src/fonts"
-@import '~lightgallery/src/sass/lightgallery.scss'
+$lg-path-images: "~lightgallery/images"
+$lg-path-fonts: "~lightgallery/fonts"
+@import '~lightgallery/scss/lightgallery.scss'
+@import '~lightgallery/scss/lg-zoom.scss'
+@import '~lightgallery/scss/lg-thumbnail.scss'
+@import '~lightgallery/scss/lg-fullscreen.scss'

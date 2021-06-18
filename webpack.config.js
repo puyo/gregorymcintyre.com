@@ -1,11 +1,20 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const devMode = process.env.BUILD_DEVELOPMENT;
 
-var definePlugin = new webpack.DefinePlugin({
-  __DEVELOPMENT__: JSON.stringify(JSON.parse(process.env.BUILD_DEVELOPMENT || false)),
-  __PRODUCTION__: JSON.stringify(JSON.parse(process.env.BUILD_PRODUCTION || false))
-});
+const plugins = [
+  new MiniCssExtractPlugin({
+    // Options similar to the same options in webpackOptions.output
+    // both options are optional
+    filename: devMode ? '[name].css' : '[name].[contenthash].css',
+    chunkFilename: devMode ? '[id].css' : '[id].[contenthash].css',
+  }),
+];
+if (devMode) {
+  // only enable hot in development
+  plugins.push(new webpack.HotModuleReplacementPlugin());
+}
 
 module.exports = {
   mode: process.env.BUILD_DEVELOPMENT ? 'development' : 'production',
@@ -19,9 +28,6 @@ module.exports = {
       path.join(__dirname, "source/javascripts"),
       "node_modules"
     ],
-    alias: {
-      jquery: "jquery/src/jquery",
-    },
   },
 
   output: {
@@ -29,16 +35,7 @@ module.exports = {
     filename: 'javascripts/[name].js',
   },
 
-  plugins: [
-    // ...
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery",
-    }),
-  ],
-
-  plugins: [new MiniCssExtractPlugin(), definePlugin],
+  plugins: plugins,
 
   module: {
     rules: [
@@ -65,7 +62,6 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               publicPath: '',
-              hmr: process.env.NODE_ENV === 'development',
             },
           },
           'css-loader',
