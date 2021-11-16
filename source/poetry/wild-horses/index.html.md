@@ -4,7 +4,9 @@ date: 2020-12-13 09:51 AEDT
 ---
 
 ```prompt
-Harry and Nicola: Strange fruit
+Strange fruit
+
+-- Harry and Nicola
 ```
 
 ```poem

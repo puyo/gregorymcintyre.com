@@ -4,7 +4,9 @@ date: 2020-12-12 07:41 AEDT
 ---
 
 ```prompt
-Harry and Nicola: focus on an object
+Focus on an object
+
+-- Harry and Nicola
 ```
 
 ```poem

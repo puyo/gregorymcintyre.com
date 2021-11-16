@@ -1,5 +1,5 @@
 ---
-title: it's just water
+title: It's Just Water
 date: 2021-07-28 14:27 AEST
 ---
 

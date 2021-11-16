@@ -6,7 +6,7 @@ date: 2018-05-13 13:26 AEST
 ```prompt
 Pick two vowels and use them prominently
 
-– Harry and Nicola
+-– Harry and Nicola
 ```
 
 ```poem
