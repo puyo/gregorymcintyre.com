@@ -18,7 +18,7 @@ Duty to the last
 We honour your past
 Your squeaky head where he did cleave-ya
 Oh, nondescript mammal
-In your hardened enamel
+In your hard spit enamel
 What even are you? Like, a beaver?
 
 ```
