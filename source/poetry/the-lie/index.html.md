@@ -18,6 +18,7 @@ Did you write your thoughts? my therapist asks
 Did you process and move on?
 
 Yes, I say brightly
+
 I bricked over it all
 I kept all of it, all of it
 I wrote you into my walls
