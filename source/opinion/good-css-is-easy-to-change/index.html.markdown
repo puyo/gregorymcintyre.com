@@ -1,6 +1,6 @@
 ---
 title: Good CSS is Easy to Change
-date: 2015-02-10
+date: 2015-02-10 09:31 AEDT
 tags:
 ---
 
