@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="<%= site.locale %>">
+  <%= render "head", metadata: site.metadata, title: resource.data.title %>
+  <body class="<%= resource.data.layout %> <%= resource.data.page_class %> bg-gradient-to-r to-indigo-500 from-purple-500">
+    <%= render "header", metadata: site.metadata %>
+    <div class="container py-4 bg-white">
+      <%= yield %>
+    </div>
+    <%= render "footer", metadata: site.metadata %>
+  </body>
+</html>

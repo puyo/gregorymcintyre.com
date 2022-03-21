@@ -1,0 +1,718 @@
+---
+title: The Command Prompt
+date: 2016-08-01 20:00 AEST
+theme: beige
+layout: slides
+---
+
+<section data-markdown data-separator="\n====\n">
+<textarea data-template>
+
+## Your frenemy
+# The Command Prompt
+
+[@gregmcintyre](https://twitter.com/gregmcintyre) 2016
+
+====
+
+## The Command Prompt
+
+- Purpose
+- Anatomy
+- Get unstuck
+- Get happier
+
+====
+
+## Purpose
+
+What do I use the command prompt for?
+
+I don't know, let's ask it.
+
+```small
+man cut
+man uniq
+man sort
+man head
+cut -f1,2 -d ' ' ~/.bash_history \
+    | sort | uniq -c | sort -nr | head -n 30
+```
+
+====
+
+## Purpose
+
+Honest answer time:
+
+```small
+git status
+ls
+git add
+git diff
+git grep
+git commit
+git push
+cd ..
+git log
+git checkout
+cd
+npm i
+git pull
+git rebase
+git stash
+git reset
+```
+
+====
+
+## Purpose
+
+Mostly: Git
+
+```small
+git status (gs)
+git add
+git diff
+git grep
+git commit
+git push
+git log
+git checkout
+git pull
+git rebase
+git stash
+git reset
+```
+
+====
+
+## Purpose
+
+Frequently: Development Framework Commands
+
+```
+rails new myapp
+rails g model Blog title:string
+rails console
+rails db
+rails s
+rails routes
+rails db:setup
+rails db:migrate
+```
+
+====
+
+## Purpose
+
+Frequently: Development Framework Commands
+
+```
+node .
+nodemon
+npm start
+gulp
+yo
+sequelize
+deargodwhy
+```
+
+====
+
+## Purpose
+
+Less Frequently: Package Management
+
+```
+bundle init
+bundle upgrade
+gem install
+
+npm init
+npm install
+```
+
+====
+
+## Purpose
+
+Less Frequently: Package Management
+
+```
+brew update
+brew upgrade
+brew install
+
+apt-get install
+yum install
+```
+
+====
+
+## Purpose
+
+Rarely: Deal With It
+
+```small
+git log $(git merge-base master branch)..branch
+
+cut -f1,2 -d ' ' ~/.bash_history \
+    | sort | uniq -c | sort -nr | head -n 30
+
+wget -mk http://www.stuff.to/read/on/the/train/
+
+rsync -rvP myproject/ username@myhost/myproject.com/
+
+pg_dump --clean -Z 9 app_master | \
+    ssh user@apphost 'zcat | psql -h localhost -U app appdb'
+```
+
+====
+
+## The Command Prompt
+
+- ~~Purpose~~
+- Anatomy
+- Get unstuck
+- Get happier
+
+====
+
+<!-- .slide: data-transition="fade-out" -->
+
+<img class="borderless" src="term-running-middleman.png" alt="Terminal running middleman">
+
+====
+
+<!-- .slide: data-transition="fade-in" -->
+
+<img class="borderless" src="term-running-middelman-hl.png" alt="Terminal running middleman with highlights">
+
+====
+
+`$ pstree`
+
+```small
+\-+= 73533 greg iTerm2 --server login -fp greg
+  \-+= 73534 root login -fp greg
+    \-+= 73535 greg -bash
+      \-+= 73987 greg ruby middleman
+
+<pid> <user> <program> <arguments>
+```
+  (`brew install pstree`)
+
+====
+
+## Terminal Emulator
+
+- AKA terminal or just "term"
+- GUI app
+- Runs programs that use only text for input & output
+- By default, runs a **shell**
+
+====
+
+## Terminal Emulators
+
+- Terminal
+- iTerm
+- cmd.exe
+- xfce4-terminal
+- gnome-terminal
+- konsole
+- xterm
+- rxvt
+
+====
+
+## Emulator?
+
+<img class="borderless" src="bios.jpg" alt="BIOS">
+
+====
+
+## TTY?
+
+```
+Last login: Thu Aug  4 10:40:25 on ttys002
+-----------------------------------^^^^^^^
+```
+
+TTY = **tele-typewriter**, a word used for the input/output
+portion of early computing devices
+
+====
+
+## Console?
+
+- Named after the piece of furniture
+- Implies a keyboard and a screen of text
+
+====
+
+## Bash
+
+- sh (Ye Olde Bourne shell)
+    - bash (Bourne**-Again** shell)
+        - zsh (from author Zhong Shao)
+- csh (shell with C language syntax)
+    - tcsh (TENEX OS version of csh)
+- cmd.exe
+
+====
+
+## Shell?
+
+- Have... program pearls... inside of them?
+- Usually
+    1. Print prompt
+    2. Wait for you to type a command
+    3. Run a program (e.g. `rails s`)
+    4. Send output back out to terminal emulator until program exits
+
+====
+
+## Shell modes
+
+- Login shells
+- Non-login shells
+- Interactive shells
+- Non-interactive shells
+
+====
+
+- **Login Shells**
+
+    - Run your terminal emulator app
+    - Loads config from `~/.bash_profile`
+
+```
+\-+= 73535 greg -bash
+```
+
+====
+
+- **Non-Login Shells**
+
+    - Run `bash` at the bash prompt
+    - Loads config from `~/.bashrc`
+
+```small
+$ bash
+$ bash
+$ bash
+
+\-+= 82172 greg -bash
+  \-+= 85560 greg bash
+    \-+= 85833 greg bash
+      \-+= 86106 greg bash
+```
+
+====
+
+- **Interactive Shells**
+
+    - `bash`
+    - Print prompt, read from keyboard, etc.
+
+- **Non-Interactive Shells**
+
+    - `bash myscript.sh`
+    - No prompts, still loads `.bashrc`
+
+====
+
+## .bash_profile?
+
+I actually have no idea why it's called that
+
+====
+
+## .bashrc?
+
+`bash` is the program and `-rc` is a suffix
+that means configuration.
+
+====
+
+## You're bashitting me
+
+`-rc` means configuration?
+
+It's short for `runcom` which was a configuration tool in an
+OS precursor to Unix/Linux/MacOS
+
+====
+
+## Command Prompt
+
+Just text that a **shell** prints before it waits for your input
+
+```
+greg@rascal ~$
+rascal%
+C:\>
+```
+
+====
+
+## Commands
+
+```small
+man rsync
+
+rsync -avuzb --exclude '*~' samba:samba/ .
+
+'rsync'
+'-avuzb'
+'--exclude'
+'*~'
+'samba:samba/'
+'.'
+```
+
+====
+
+## Quoting
+
+`cut -f1,2 -d ' ' ~/.bash_history`
+
+`cd 'VirtualBox VMs'`
+
+====
+
+## Quoting and Escaping
+
+```small
+man find
+$ find . -name *.js -exec cat {} ;      # 1st attempt
+find: -exec: no terminating "" or "+"
+$ find . -name *.js -exec cat {} \;     # escape ;
+find: reveal.js: unknown primary or operator
+$ find . -name '*.js' -exec cat {} \;   # quote *
+$ find . -name \*.js -exec cat {} \;    # escape *
+```
+
+====
+
+## Pipes and redirects
+
+- **stdin**: Input (e.g. your keyboard)
+- **stdout**: The good news
+- **stderr**: The bad news
+
+====
+
+## Pipes
+
+Connect the output stream of one program to the input stream of another
+
+`cut -f1,2 -d ' ' ~/.bash_history | sort | uniq -c | sort -nr | head -n 30`
+
+====
+
+## Redirect
+
+Connect the output stream of a program to a file
+
+`unicorn > unicorn.log`
+
+`unicorn 2> unicorn_errors.log`
+
+====
+
+## Redirect to another stream
+
+Send errors into the output stream
+
+`(rspec 2>&1) | less -R`
+
+====
+
+## The Command Prompt
+
+- ~~Purpose~~
+- ~~Anatomy~~
+- Get unstuck
+- Get happier
+
+====
+
+**I ran `rails s` and now I don't have a prompt anymore**
+
+- `Control-C` sends an **interrupt signal** to the currently running program
+asking it politely to stop
+
+====
+
+**What if my program doesn't exit?**
+
+- `Control-Z` suspends the program and puts you back on the command prompt
+- Then run this
+
+`kill -9 %`
+
+====
+
+`kill -9 %`
+
+- Signal 9 force-quits the program
+- `%` is a bash code for the "pid of the last program you suspended"
+- `man kill`
+
+====
+
+**I ran `psql/irb/pry/node` and I can't get out!**
+
+- exit, quit, q, mashing escape, nothing works
+- `Control-D` sends the **hangup signal** to an interactive prompt
+program and is the most universal way to exit any prompt
+
+====
+
+**I press keys and nothing happens or garbage gets printed**
+
+- Some programs print special codes that move the cursor or change
+colour
+- Interrupting such programs can leave your terminal in a broken state
+- Quit your terminal emulator and start a new one
+- Examine `ps ax` output and `kill` anything you don't want running
+
+====
+
+**Where do I get help?**
+
+- Read the manual (man = manual, spacebar for next page, q to quit)
+
+    `man wget`
+
+- Ask a program to print help for you
+
+    `rails --help`
+
+- Universal solution:
+    - Google "wget command" or "rails command"
+
+====
+
+<img src="xkcd-flowchart.png" alt="XKCD Flowchart">
+
+====
+
+## The Command Prompt
+
+- ~~Purpose~~
+- ~~Anatomy~~
+- ~~Get unstuck~~
+- Get happier
+
+====
+
+## Nicer Prompts
+
+```tiny
+red="\[\033[01;31m\]"
+green="\[\033[01;32m\]"
+yellow="\[\033[01;33m\]"
+blue="\[\033[01;34m\]"
+pink="\[\033[01;35m\]"
+cyan="\[\033[0;36m\]"
+gray="\[\033[01;30m\]"
+reset="\[\033[00m\]"
+user_and_host='\u@\h'
+rvm='$([ -f .rvmrc ] && [ $PWD != $HOME ] && echo "" $(~/.rvm/bin/rvm-prompt i v g))'
+git='$(/usr/bin/ruby -e '\''print `git branch 2> /dev/null`.match(/\*(.+)$/).to_a.last.to_s'\'')'
+dir=' \w'
+date='$(date +%T)'
+PS1="${green}${user_and_host}${cyan}${rvm}${yellow}${git}${blue}${dir}${reset}\n${gray}${date}${reset} \$ "
+```
+
+![Custom prompt](custom-prompt.png)
+
+====
+
+## Aliases
+
+`echo "alias gs='git status'" >> ~/.profile`
+
+====
+
+## Colour
+
+`echo "alias ls='ls -ohG'" >> ~/.profile`
+
+![Ls Colour](ls-color.png)
+
+====
+
+## Colour ALL the programs \o/
+
+`git config --global color.ui true`
+
+![Git Colour](git-color.png)
+
+====
+
+## Beginner Tips
+
+- Don't panic
+- Commands: cd, cd .., pwd, ls
+- Keys: Up, Down, Tab
+
+```
+$ atom ind<Tab>
+$ atom index.html
+```
+
+====
+
+## Intermediate Tips
+
+- **Control-A**: start of the line 
+- **Control-E**: end of the line 
+- **Alt-Delete**: delete previous word
+
+====
+
+## Intermediate Tips
+
+Terminal, Chrome, Sublime, Evernote, Keynote, XCode, Pages,
+LibreOffice, System Preferences, Gnome, KDE, XFCE5, Windows
+
+![Alt-Delete-Wow](alt-delete-wow.png)
+
+====
+
+## Intermediate Tips
+
+- **Alt-B**: move back one word
+- **Alt-F**: move forwards one word
+- **Alt-D**: delete next word
+- **Control-K**: delete to the end of the line
+- **Control-R**: search for a previous command
+
+====
+
+## Configure Terminal
+
+![Terminal Meta Key](terminal-option-meta-key.png)
+
+====
+
+## Configure iTerm
+
+![iTerm Meta Key](iterm2-option-meta-key.png)
+
+====
+
+## Configure Terminal/iTerm
+
+Only recommended on US keyboards :-(
+
+====
+
+## Intermediate Tips
+
+- Search with Control-R
+- Control-R to start
+- Start typing (e.g. type “git r”)
+- Control-R to jump to next oldest match
+- Control-S to jump to next newest match
+- Return to run, Esc to cancel
+
+====
+
+## Advanced Tips
+
+Customise readline
+
+```small
+$ cat ~/.inputrc
+
+# Be quiet
+set bell-style visible
+
+# We are using a UTF terminal
+set convert-meta on
+
+# Better than Control-R
+M-n: history-search-forward
+M-p: history-search-backward
+```
+
+====
+
+## Advanced Tips
+
+![Open with MacVim](open-with-macvim.png)
+![Command Click in iTerm](command-click-iterm.png)
+
+====
+
+## Advanced Tips
+
+```small
+$ cat ~/bin/v
+#!/bin/sh
+
+exec gvim --remote-expr \
+  "expand('%').':'.line('.')"
+
+$ v
+myfile.rb:20
+$ rspec `v`
+```
+
+====
+
+## Advanced Tips
+
+Other editors...
+
+```small
+exec emacsclient --eval '
+  (with-current-buffer
+    (window-buffer (selected-window))
+    (concat
+      (buffer-file-name) ":" (number-to-string (line-number-at-pos))))
+' | sed s'/^\"\(.*\)\"$/\1/'
+```
+
+====
+
+## Advanced Tips
+
+<img class="borderless" src="command-r-iterm-trick.png" alt="Command-R in iTerm">
+
+====
+
+## Advanced Tips
+
+Or you can get bash or zsh to evaluate it...
+
+```
+$ rspec <Command-R>
+$ rspec `v`<Control-Alt-E>
+$ rspec killer_feature_spec.rb:28
+% rspec <Command-R>
+% rspec `v`<Tab>
+% rspec killer_feature_spec.rb:28
+```
+
+====
+
+## The Command Prompt
+
+- ~~Purpose~~
+- ~~Anatomy~~
+- ~~Get unstuck~~
+- ~~Get happier~~
+
+====
+
+[gregorymcintyre.com/slides/command-prompt/](http://gregorymcintyre.com/slides/command-prompt/#/)
+
+</textarea>
+</section>

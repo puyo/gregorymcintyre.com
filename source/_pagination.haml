@@ -1,9 +1,0 @@
-.pagination
-  - if defined?(page_number) && defined?(num_pages)
-    .current-page
-      Page #{page_number} of #{num_pages}
-  %ul.page-links
-    - if next_link
-      %li.next-page-link= link_to 'Older', next_link
-    - if prev_link
-      %li.previous-link.page-link= link_to 'Newer', prev_link

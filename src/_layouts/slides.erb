@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title><%= 'TODO' %></title>
+<meta name="description" content="Gregory McIntyre's Slides for <%= 'TODO' %> Presentation">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="<%= webpack_path :css %>" />
+
+<%# <%= stylesheet_link_tag 'slides/reveal' %1> %>
+<%# <% if current_page.data.theme %1> %>
+<%#   <%= stylesheet_link_tag 'slides/theme/' + current_page.data.theme %1> %>
+<%# <% end %1> %>
+<%# <% if current_page.data.syntax_theme %1> %>
+<%#   <%= stylesheet_link_tag 'slides/syntax-theme/' + current_page.data.syntax_theme %1> %>
+<%# <% end %1> %>
+
+<!-- Printing and PDF exports -->
+
+<script>
+  var matches = /\/$/.exec(window.location.pathname);
+  if (matches === null) {
+    window.location.pathname = window.location.pathname + "/";
+  }
+
+  var link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.type = "text/css";
+  link.href = window.location.search.match(/print-pdf/gi)
+    ? "/stylesheets/slides/print/pdf.css"
+    : "/stylesheets/slides/print/paper.css";
+  document.getElementsByTagName("head")[0].appendChild(link);
+</script>
+
+<style>
+ .reveal pre {
+     box-shadow: none;
+     display: block;
+     font-size: 1em;
+     margin: auto;
+     text-align: center;
+ }
+ .reveal pre code {
+     background: transparent !important;
+     display: inline-block;
+     font-weight: normal;
+     margin: 1rem;
+     text-align: left;
+ }
+ .reveal code { font-weight: bold; }
+ .reveal pre.small, .reveal .lang-small {
+   font-size: 0.7em; line-height: 1.2;
+ }
+ .reveal pre.tiny, .reveal .lang-tiny {
+   font-size: 0.4em; line-height: 1.2;
+ }
+ .reveal img.borderless {
+     box-shadow: none;
+     border: none;
+ }
+ .reveal section img {
+     border: none;
+ }
+ .reveal ul, .reveal ol {
+     margin-top: 1rem;
+     margin-bottom: 1rem;
+ }
+</style>
+
+<!--[if lt IE 9]>
+<%# <%= javascript_include_tag 'slides/html5shiv' %1> %>
+<![endif]-->
+
+</head>
+
+<body>
+<div class="reveal">
+<div class="slides">
+<%= yield %>
+</div> <!-- .slides -->
+</div> <!-- .reveal -->
+
+<%# <%= javascript_include_tag 'slides/head.min' %1> %>
+<%# <%= javascript_include_tag 'slides/reveal' %1> %>
+
+<script>
+  // More info https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    transition: "slide", // none/fade/slide/convex/concave/zoom
+
+    // More info https://github.com/hakimel/reveal.js#dependencies
+    dependencies: [
+      // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+      {
+        src: "/javascripts/slides/classList.js",
+        condition: function() {
+          return !document.body.classList;
+        }
+      },
+
+      // Interpret Markdown in <section> elements
+      {
+        src: "/javascripts/slides/plugin/markdown/marked.js",
+        condition: function() {
+          return !!document.querySelector("[data-markdown]");
+        }
+      },
+      {
+        src: "/javascripts/slides/plugin/markdown/markdown.js",
+        condition: function() {
+          return !!document.querySelector("[data-markdown]");
+        }
+      },
+
+      // Syntax highlight for <code> elements
+      {
+        src: "/javascripts/slides/plugin/highlight/highlight.js",
+        async: true,
+        condition: function() {
+          return !!document.getElementsByTagName("code");
+        },
+        callback: function() {
+          hljs.initHighlightingOnLoad();
+        }
+      },
+
+      // Zoom in and out with Alt+click
+      { src: "/javascripts/slides/plugin/zoom-js/zoom.js", async: true }
+
+      // Speaker notes
+      // { src: '/javascripts/slides/plugin/notes/notes.js', async: true },
+    ]
+  });
+</script>
+</body>
+</html>
+

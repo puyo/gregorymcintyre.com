@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="<%= site.locale %>">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <% metadata = site.metadata; title = resource.data.title %>
+    <% resource_title = strip_html(strip_newlines(title)) %>
+    <title><% if resource_title != "Index" %><%= resource_title %> | <%= metadata.title %><% else %><%= metadata.title %>: <%= metadata.tagline %><% end %></title>
+    <meta name="description" content="<%= metadata.description %>" />
+    <%= live_reload_dev_js %>
+  </head>
+  <body class="<%= resource.data.layout %> <%= resource.data.page_class %>">
+    <%= yield %>
+  </body>
+</html>
