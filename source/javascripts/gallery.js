@@ -14,8 +14,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
   lg(el, {
     plugins: [lgThumbnail, lgFs, lgHash],
     thumbnail: true,
-    thumbWidth: 100,
-    thumbContHeight: 160,
+    thumbWidth: 200,
+    thumbHeight: 200,
+    thumbContHeight: 200,
     fullScreen: true,
   });
 });

@@ -68,62 +68,38 @@ task :drawings do
   require 'fileutils'
 
   dest_dir = 'source/gallery/images'
-  thumb_dir = 'source/gallery/images/thumbs'
-  sync_dir = 'sync'
 
-  FileUtils.rm_rf(thumb_dir)
-  FileUtils.rm_rf(dest_dir)
-  FileUtils.mkdir_p(sync_dir)
   FileUtils.mkdir_p(dest_dir)
-  FileUtils.mkdir_p(thumb_dir)
 
   errors = []
 
-  records = File.read('lifedrawing_s3_paths.txt').each_line.map do |line|
-    date_str, path = line.split(' ')
+  # cmd = "aws s3 cp s3://puyofiles/gallery/ #{dest_dir} --profile puyo"
+  # puts cmd
+  # system(cmd)
+
+  image_paths = Dir.glob(File.join(dest_dir, '*.*')).reject{|path| path.end_with?('thumb.jpg') }
+
+  records = image_paths.map do |path|
     filename = File.basename(path)
-    sync_path = File.join(sync_dir, filename)
-
-    if !File.exist?(sync_path)
-      puts filename
-      cmd = "aws s3 cp s3://puyofiles/photos/#{path} #{sync_path} --profile puyo"
-      puts cmd
-      system(cmd)
-    end
-
-    require 'digest/sha2'
-    sha = Digest::SHA2.new
-    sha << File.read(sync_path)
-    sha = sha.to_s
-
-    dest_filename = "#{date_str}_#{sha}.jpg"
-    dest_path = File.join(dest_dir, dest_filename)
-    thumb_filename = dest_filename + '.thumb.jpg'
-    thumb_path = File.join(thumb_dir, thumb_filename)
+    puts filename
+    date_str = filename.match(/^(\d\d\d\d-\d\d-\d\d)/).captures.first
+    thumb_filename = File.basename(filename, File.extname(path)) + '.thumb.jpg'
+    thumb_path = File.join(dest_dir, thumb_filename)
     thumb_w = thumb_h = nil
 
-    if !File.exist?(dest_path)
-      cmd = "convert #{sync_path} -auto-orient -thumbnail '2000x2000>' #{dest_path}"
-      puts cmd
-      system(cmd)
-    end
-
     if !File.exist?(thumb_path)
-      cmd = "convert #{sync_path} -auto-orient -thumbnail 500x200 -unsharp 0x.5 #{thumb_path}"
+      cmd = "convert #{path} -auto-orient -thumbnail 500x200 -unsharp 0x.5 #{thumb_path}"
       puts cmd
       system(cmd)
-      thumb_w, thumb_h = `identify -ping -format '%w %h' #{thumb_path}`.to_s.strip.split(' ')
     end
+    thumb_w, thumb_h = `identify -ping -format '%w %h' #{thumb_path}`.to_s.strip.split(' ')
 
     {
-      'source_path' => path,
-      'source_filename' => filename,
       'date_time' => date_str,
-      'dest_filename' => dest_filename,
+      'filename' => filename,
       'thumb_filename' => thumb_filename,
-      'sha' => sha,
-      'thumb_width' => thumb_w,
-      'thumb_height' => thumb_h,
+      'thumb_width' => thumb_w.to_i,
+      'thumb_height' => thumb_h.to_i,
     }
   rescue Errno::ENOENT => e
     errors << e
@@ -131,6 +107,8 @@ task :drawings do
   end
 
   records.compact!
+
+  records.sort_by!{|r| r['date_time'] }
 
   if errors.any?
     errors.each do |e|
@@ -140,14 +118,5 @@ task :drawings do
 
   File.open('data/lifedrawing.yml', 'w') do |f|
     YAML.dump(records, f)
-  end
-
-  dupes = records.group_by{|r| r['sha'] }.select{|s, rs| rs.size > 1 }
-  if dupes.size > 0
-    puts "DUPES DETECTED:"
-    dupes.each do |sha, dupes|
-      puts ' ' + dupes.map{|d| d['source_path'] }.inspect
-    end
-    puts
   end
 end
