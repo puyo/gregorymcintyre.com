@@ -42,6 +42,10 @@ $thick-border-size: 6px
 $thick-border-color: $charcoal
 
 // --------------------------------------------------
+
+@import responsive
+
+// --------------------------------------------------
 // base
 
 @import normalize
@@ -58,8 +62,10 @@ html.gallery-page
 // site
 
 .gallery
-  padding: 5rem
   margin: auto
+  padding: 0.5rem
+  +responsive(medium large)
+    padding: 5rem
 
   h1
     margin: 0
