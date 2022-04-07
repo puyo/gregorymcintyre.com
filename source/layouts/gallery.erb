@@ -1,11 +1,13 @@
 <!doctype html>
 <html class="gallery-page">
   <head>
+    <% title = current_page.data.title || data['site']['title'] %>
     <meta charset="utf-8">
+    <title><%= title %></title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><%= current_page.data.title || data['site']['title'] %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="<%= title %>" />
+    <meta property="og:image" content="<%= asset_url('images/gallery-og-image.jpg') %>" />
     <%= stylesheet_link_tag "gallery" %>
     <%= javascript_include_tag "gallery" %>
   </head>
