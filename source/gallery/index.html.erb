@@ -11,7 +11,7 @@ layout: gallery
     <a href="../" class="back">Back</a>
   </nav>
   <div id="lightgallery">
-    <%- images = data['lifedrawing'].sort_by{|i| i.date_time }.reverse -%>
+    <%- images = data['lifedrawing'].sort_by{|i| i.filename }.reverse -%>
     <%- images.each do |image| -%>
       <%- full = "./images/#{image.filename}" -%>
       <%- thumb = "./images/#{image.thumb_filename}" -%>
