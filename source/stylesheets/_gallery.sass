@@ -64,10 +64,6 @@ html.gallery-page
 
 .gallery
   margin: auto
-  padding: 0
-
-  +responsive(large)
-    padding: 1rem
 
   #lightgallery
     display: flex
@@ -82,18 +78,13 @@ html.gallery-page
     padding: 1rem
     font-size: 1.2em
 
-    +responsive(large)
+    +responsive(medium large)
       font-size: 2em
-      padding: 0
 
   .back
     display: block
     margin-bottom: 1em
-    line-height: 40px
     padding: 0 1rem
-
-    +responsive(large)
-      padding: 0
 
   img
     display: block
