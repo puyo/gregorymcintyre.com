@@ -55,32 +55,56 @@ html.gallery-page
 
   body
     height: 100%
-    background-color: black
-    color: #eee
+    background-color: white
+    color: black
+    -moz-osx-font-smoothing: grayscale
 
 // ----------------------------------------------------------------------
 // site
 
 .gallery
   margin: auto
-  padding: 0.5rem
-  +responsive(medium large)
-    padding: 5rem
+  padding: 0
+
+  +responsive(large)
+    padding: 1rem
+
+  #lightgallery
+    display: flex
+    flex-flow: row wrap
+
+    & > a
+      display: block
+      flex-grow: 1
 
   h1
     margin: 0
+    padding: 1rem
+    font-size: 1.2em
 
-  a
-    color: #eee
+    +responsive(large)
+      font-size: 2em
+      padding: 0
 
   .back
     display: block
     margin-bottom: 1em
     line-height: 40px
+    padding: 0 1rem
+
+    +responsive(large)
+      padding: 0
 
   img
+    display: block
+    width: 100%
+    height: auto
+
     &:hover
       opacity: 0.95
+
+    +responsive(small)
+      width: 50vw
 
 $lg-path-images: "~lightgallery/images"
 $lg-path-fonts: "~lightgallery/fonts"
