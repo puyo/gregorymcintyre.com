@@ -121,40 +121,41 @@ layout: none
 
       .info
         .info-item
-          @media only screen and (min-width: $small-width)
+          @media (min-width: $small-width)
             display: table-row
         .head
           +faded
-          @media only screen and (min-width: $small-width)
+          @media (min-width: $small-width)
             width: $left-size
             display: table-cell
             vertical-align: top
             padding-right: $gap
         .value
-          @media only screen and (min-width: $small-width)
+          @media (min-width: $small-width)
             display: table-cell
             vertical-align: top
 
       .times-and-description
-        @media only screen and (min-width: $small-width)
+        @media (min-width: $small-width)
           display: table-row
         .times
           +faded
-          @media only screen and (min-width: $small-width)
+          @media (min-width: $small-width)
             width: $left-size
             display: table-cell
             vertical-align: top
             padding-right: $gap
           .from, .to
-            display: block
-            @media only screen and (max-width: $small-width)
+            @media screen
+              display: block
+            @media (max-width: $small-width)
               display: inline
         .description
-          @media only screen and (min-width: $small-width)
+          @media (min-width: $small-width)
             display: table-cell
             vertical-align: top
 
-      @media only screen and (max-width: $small-width)
+      @media (max-width: $small-width)
         .personal-details .head
           display: none
 
