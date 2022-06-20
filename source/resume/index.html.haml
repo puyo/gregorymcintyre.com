@@ -1,7 +1,7 @@
 ---
 layout: none
 ---
--# vim: ts=2: sw=2
+-# vim: ts=2 sw=2 spell
 !!!5
 %html(lang="en")
   %head
@@ -52,8 +52,6 @@ layout: none
 
       =print-heading
         @media print
-          border-left: 8px double black
-          padding-left: 8px
           font-variant: small-caps
           font-size: 18px
 
@@ -122,15 +120,16 @@ layout: none
           &:hover
             color: $dark-blue
 
-      p, h1, h2, h3, h4, h5, h6
+      p
         margin: $gap 0
-        padding: 0
         @media print
           margin: $print-gap 0
       h1
         font-size: 24px
+        margin-top: 2*$gap
       h2
         font-size: 18px
+        margin-top: 2*$gap
       h1, h2
         +rainbow-heading
         +print-heading
@@ -146,12 +145,8 @@ layout: none
         line-height: $gap
         @media screen
           font-weight: bold
-        @media print
-          position: absolute
-          top: 25px
-          right: 0
 
-      .section
+      section
         +rainbow-heading-container
         clear: both
         @media print
@@ -195,17 +190,14 @@ layout: none
             @media screen
               border-left: 8px solid $light-faded
               padding-left: 10px
-              margin-left: -18px
+              margin-left: -$gap
             @media print
               font-style: italic
-            .attribution
+            cite
               margin-top: -$gap/2
-              @media screen
-                font-weight: bold
-              @media print
-                font-style: normal
-                &:before
-                  content: '\2014'
+              font-style: normal
+              &:before
+                content: '\2014'
 
 
       .references
@@ -221,488 +213,488 @@ layout: none
             margin-left: 120px
 
       @media print
-        p, .job, .qualification, .recommendation, .reference
+        p, .job, .qualification, .recommendation, .reference, .info-item
           page-break-inside: avoid
 
   -# --------------------------------------------------
 
   %body
-    .last-updated
-      Last updated #{Date.iso8601(`git log -n 1 --pretty=format:%aI -- '#{__FILE__}'`).strftime('%d %B %Y')}
+    %article
+      %header
+        .last-updated
+          #{Date.iso8601(`git log -n 1 --pretty=format:%aI -- '#{__FILE__}'`).strftime('%d %B %Y')}
 
-    .section.vcard
-      %h1.name.fn Gregory McIntyre
-      .info.personal-details
-        .info-item
-          .head Web
-          .value
-            %a.url(href="http://gregorymcintyre.com") http://gregorymcintyre.com
-        .info-item
-          .head Mobile
-          .value.tel +61 410 276 442
-        .info-item
-          .head Email
-          .value
-            %a.email(href="mailto:greg@gregorymcintyre.com") greg@gregorymcintyre.com
-        .info-item
-          .head Source Code
-          .value
-            %a.code(href="http://github.com/puyo/") http://github.com/puyo/
-        .info-item
-          .head Location
-          .value.adr Sydney, Australia
-
-    .section
-      %h2 Career Objective
-      %p
-        I create useful software with teams of skilled, hard working, good
-        natured professionals. It's the bread and butter stuff of my career and
-        it doesn't seem to get old.
-      %p
-        I also love teaching, tutoring, mentoring and instructing. I've found
-        myself getting involved at Rails Camp, Elixir Camp, CampJS, Rails Girls,
-        InstallFest, Development Hub, Python Study Group, C/C++ Study Group, and
-        General Assembly.
-
-    .section
-      %h2 Skills
-      %p
-        I've worn various job hats in small businesses. Let's see. Programmer,
-        release manager, trainer, project manager, systems administrator,
-        software architect, lead developer, company secretary, director,
-        adult education instructor.
-      %p
-        It has been great fun trying my hand at all these different
-        roles, but I feel old now thanks.
-
-      %h3 Instruction and Mentoring
-      %p
-        Senior developer roles tend to involve this skill and it's never
-        formally trained so I took advantage of training and practice at
-        General Assembly to further develop myself in this area. Boy did
-        I learn a lot. It was very humbling. I improved a lot as measured
-        by my NPS score.
-
-      %h3 Development and Design
-      %p
-        Programming was my feeder passion. Late nights staring at a glowing
-        screen, taking joy in the touch of creation. Since then I've
-        consolidated my skill through university training, corporate training,
-        team work, and constant self education.
-      %p
-        I don't claim to be great at design and I hold a deep respect for those
-        who are. I can do a little and I'd love to learn more.
-
-      %h3 Management and Team Building
-      %p
-        I read a stack of managerial books once that inspired an interest in
-        this challenging role. Let me throw around some words I like. Meaning,
-        purpose, autonomy, productivity, efficiency, effectiveness, failure,
-        validation, expectations, visibility, empowerment, simplicity, energy
-        levels, exercise plans.
-
-      %h3 Software Architecture and Design
-      %p
-        I've helped architect telephone billing systems, media rich web
-        applications, content management systems, office control systems and
-        social mobile applications. I've jointly conducted and recorded user
-        interviews. I really like meeting the customers and clients who benefit
-        from the software I write, before and after they use it. I strive for
-        consensus and clarity, clear priorities, and decision making that is
-        deeply grounded, empirical and pragmatic.
-
-      %h4 Tools of the Trade
-      .info
-        .info-item
-          .head Ruby
-          .value
-            %p
-              I loved Ruby when we first met around 2001, and then Rails came
-              along. Hello career. Rails, Sinatra, writing web sites with
-              Middleman, spamming APIs with Typhoeus, solving problems with Faye
-              and Redis. The thing I like best about Ruby is how quickly you
-              reach a solution to a problem you're having.
-
-        .info-item
-          .head Elixir
-          .value
-            %p
-              A lot of Ruby devs are learning Elixir because it's got a familiar
-              syntax, nice immutable data structures, powerful pattern matching,
-              a built in way to grow and distribute load, and attractive
-              performance characteristics for web development. I've used it
-              professionally since 2017.
-
-        .info-item
-          .head Frontend JavaScript
-          .value
-            %p
-              ES6, Webpack, AJAX, jQuery, Angular, Ember, Backbone, Mocha, React,
-              Redux, D3, Threejs, Mapbox, Leaflet, Google Maps, Yarn. Two great
-              problems in programming: cache invalidation and setting up a new
-              JavaScript project.
-
-        .info-item
-          .head Backend JavaScript
-          .value
-            %p
-              Node, Gulp, Express, Cuke, Mocha, Nyc, NSP, Eslint, Sequelize,
-              PM2, Keystone, Co and generators and Bluebird promises.
-
-        .info-item
-          .head HTML
-          .value
-            %p
-              HTML5, CSS, SVG, SASS, HAML, Slim, vendor prefixes, shivs,
-              progressive enhancement, mobile first, LiveReload, responsive
-              designs, Android and Mobile Safari, a million IE virtual machines.
-
-        .info-item
-          .head Photoshop
-          .value
-            %p
-              Layers, masks, drop shadow and emboss, save for web and devices,
-              weird arcane keyboard shortcuts. You love it.
-
-        .info-item
-          .head XCode
-          .value
-            %p
-              Interface builder, breakpoints, view controllers, transitions, ARC,
-              developer certificates. Just drag and drop that library in there,
-              a'ite?
-
-        .info-item
-          .head C/C++
-          .value
-            %p
-              An old hobby. Boost, googletest, the rule of three, const
-              correctness, resource management, stack unwinding bugs.
-
-        .info-item
-          .head Agile and Lean
-          .value
-            %p
-              Say yes to empowered lil teams, red-green-refactor cycles and
-              incrementally releasing to the glow of a pretty green build light.
-              Yes!
-
-      %p
-        Also a random grab bag of things professionally: Java, Python, Perl,
-        assembly, Git, Bash, Vim, Emacs, Spacemacs, etc.
-
-    .section
-      %h2 Employment
-      .jobs
-
-        .job
-          %h3.job-name Senior Developer at Blake eLearning
-          .job-times
-            %span.from May 2017
-          .job-description
-            %p
-              Blake eLearning runs popular websites like <a
-              href="https://readingeggs.com.au">readingeggs.com.au</a> with
-              programs and games to help kids build their early reading and
-              mathematics skills.
-            %p
-              At Blake, I get to code Elixir and work with a large
-              service-oriented architecture in a professional setting. I also
-              get to make use of my Rails, JavaScript and CSS skills like
-              some kind of unicorn.
-            %p We are a bunch of nerds and I feel like I fit in.
-
-        .job
-          %h3.job-name Senior Developer at Small Multiples
-          .job-times
-            %span.from February 2016
-            %span.to to October 2016
-          .job-description
-            %p
-              Small Multiples is a small Sydney agency specialising in datavis.
-              I dove in and taught myself Node and worked on 100% JavaScript
-              projects for Transport NSW, The Australian, The Department of
-              Education and Training among others.
-            %p
-              I learned a lot about Node, ES6, Express, Ava, Mocha, D3, Leaflet,
-              Google Maps, Mapbox, React, Redux, PM2 and Keystone DMS. I wrote
-              and managed Ansible based AWS deployments and some Git based
-              Heroku ones too.
-
-        .job
-          %h3.job-name Technical Instructor at General Assembly
-          .job-times
-            %span.from September 2015
-            %span.to to December 2015
-          .job-description
-            %p
-              I worked full time for three months teaching a class of adults
-              web development from scratch. We used JavaScript and Ruby and
-              included a lot of group projects.
-            %p
-              My time was spent explaining tricky concepts to people, lesson
-              planning, and assisting, advising and mentoring students.
-
-        .job
-          %h3.job-name Contracted Developer at Shippit Pty Ltd
-          .job-times
-            July 2015
-          .job-description
-            %p
-              I learned how barcodes and data matrixes work and the Ruby and C
-              libraries that produce them. I liaised with AusPost to implement
-              parcel labelling to meet their requirements. I helped advise the
-              start up business on hiring and technology. I built out some
-              Rails administrative features.
-
-        .job
-          %h3.job-name Software Engineer at yourtutor.com.au
-          .job-times
-            %span.from October 2012
-            %span.to to February 2015
-          .job-description
-            %p
-              I helped stabilise and expand a web based online tutoring platform
-              for school students. It's pretty cool that it all works straight
-              out of a web site with live chat and interactive drawing, even all
-              the way back in time to IE8.
-            %p
-              I used a lot of AWS, Ansible, Socket.IO, EventMachine, Redis,
-              CoffeeScript and of course Rails.
-            %p
-              I also did some design and UX things like travelling and
-              interviewing clients, watching students use iPads, writing up nice
-              summaries, sketching and presenting.
-
-        .job
-          %h3.job-name Developer at Protein One
-          .job-times
-            %span.from March 2012
-            %span.to to October 2012
-          .job-description
-            %p
-              I hooked up with this cool little design studio where I helped
-              build Wordpress sites for small businesses and an interactive
-              children's lit application for iOS called Dandelion.
-
-        .job
-          %h3.job-name Director at We Are Brand New
-          .job-times
-            %span.from November 2011
-            %span.to to March 2012
-          .job-description
-            %p
-              I teamed up with a few friends to start a business that specialises
-              in building early stage ideas for interactive web based products,
-              from concept through to release candidates, including UX, IA,
-              branding, design, rapid prototyping and iterative
-              improvement. Control freaks I guess.
-            %p
-              I learned about client liaison, business structuring, accounting,
-              branding, marketing, business planning, Sencha Touch, Backbone.js,
-              Spine, CoffeeScript and PhoneGap.
-
-        .job
-          %h3.job-name Senior Software Developer for REA Group
-          .job-times
-            %span.from February 2010
-            %span.to to October 2011
-          .job-description
-            %p
-              I helped interview and build an agile team and lead it to produce
-              HubStudio, a real estate agency focused white labelled DIY web site
-              CMS written in Ruby on Rails.
-            %p
-              ThoughtWorkers and some fantastic REA developers from Melbourne
-              trained us on a complete agile software development process
-              including card walls, pair programming, red-green-refactor cycles,
-              CI servers, BDD and incremental delivery.
-
-        .job
-          %h3.job-name Software Developer for Snepo Research
-          .job-times
-            %span.from September 2009
-            %span.to to October 2009
-          .job-description
-            %p
-              I finished off a RoR Facebook/Bebo app, completing the feature set,
-              fixing outstanding issues, and deploying it for the client. I
-              rewrote some back end functionality to make it simpler and more
-              reliable.
-
-        .job
-          %h3.job-name Software Engineer for TileFile
-          .job-times
-            %span.from May 2005
-            %span.to to April 2009
-          .job-description
-            %p
-              I helped build a start up company from humble beginnings sub-letting
-              in a cramped space to a multi-million dollar company sporting some
-              superstar developers of the Sydney web community.
-            %p
-              I designed and developed multimedia rich web applications. I coded
-              Rails, Python, ActionScript, architected, interviewed and helped
-              manage the team.
-
-        .job
-          %h3.job-name Software Engineer for Symbio Networks
-          .job-times
-            %span.from March 2004
-            %span.to to March 2005
-          .job-description
-            %p
-              I designed and developed billing software for telephone switches. I
-              improved a telephone record transfer system. I worked in a team of
-              5-6 developers and 2 systems testers with languages such as PHP,
-              Java, Ruby, C, WSDL, Bash script and SQL.
-            %p
-              I also managed the source code management system and build
-              procedure for all the company's projects.
-
-        .job
-          %h3.job-name Lab Supervisor for UNSW CSE
-          .job-times
-            %span.from Feb 2003
-            %span.to to June 2003
-          .job-description
-            %p
-              I co-supervised two lab classes of around 20 students each. I also
-              ran a popular after hours consultation for students having
-              difficulties with C++ or Python. I gave a lecture introducing Ruby
-              to Python programmers.
-
-    .section
-      %h2 Education
-      .qualifications
-        .qualification
-          %h3.qualification-name Bachelor of Engineering (Software Engineering)
-          .qualification-times 1999 to 2004
-          .qualification-description
-            %p
-              I started at ANU and finished at UNSW with second class honours
-              first division, whatever that means. I loved AI, distributed
-              systems, 3D graphics and algorithms.
-        .qualification
-          %h3.qualification-name Year 12 Certificate, Narrabundah College, ACT
-          .qualification-times 1997 to 1998
-          .qualification-description
-            %p
-              University Admission Index 97.8, Best in Computing Studies. That's
-              right. Best.
-
-    .section
-      %h2 Interests
-      %p
-        I love spending time with my kids, hacking on my own code, reading
-        awful self help books, drawing pictures that are relevant to those
-        around me, writing poetry and stories at night time in proximity to
-        others who are doing likewise, playing computer games that require
-        perseverance and skill, life drawing, hanging out in swamps, incidental
-        cycling, trying to be witty online, and using Oxford commas.
-
-    .section
-      %h2 Praise
-      .recommendations
-        .recommendation
-          %blockquote
-            %p
-              Greg is the best developer I have worked with.
-            %p.attribution
-              Sharon Gray, Production Manager, 2012
-
-        .recommendation
-          %blockquote
-            %p
-              I worked in Greg's team while he was the lead developer for the server
-              development team. Greg was very approachable, open to discussion,
-              passionate about technology, and I was impressed with his knowledge and
-              intelligence. He will be an asset to any technology company.
-            %p.attribution
-              Fiona Lim, Senior Programmer, 2010
-
-        .recommendation
-          %blockquote
-            %p
-              Greg's attention to detail makes him an excellent addition to any
-              team. I was always impressed with his ideas and code, making my
-              life easier as a sysad to release the software. His extra effort to
-              ensure code made it to production bug free didn't go unnoticed.
-            %p.attribution
-              Jenny Gordon, Senior Systems Administrator, 2010
-
-        .recommendation
-          %blockquote
-            %p
-              Greg was the one who got me started on one of the most important tools I employ
-              nowadays on most of my jobs: Ruby. Sharing insights with him early when I was
-              still learning the language pushed me forward to learn more.
-            %p
-              Apart from that, he's an excellent person to work with. As his
-              coworker I had a really enjoyable time, at times cooperating, and
-              at times reporting to Greg directly.
-            %p.attribution
-              Julio Cesar Ody, Senior Systems Engineer, 2010
-
-        .recommendation
-          %blockquote
-            %p
-              Greg is an exceptional Software Engineer and Manager. He is smart, open to new
-              ideas and technologies and has a talent for understanding issues and
-              requirements and stating them in concise and clear language.
-            %p
-              Greg's code is wonderful. He is a programmer who knows his trade
-              and produces software of outstanding quality. Greg was a pleasure
-              to work with and I would thoroughly recommend him.
-            %p.attribution
-              Sara Falamaki, Software Engineer, 2010
-
-        .recommendation
-          %blockquote
-            %p
-              While working with Greg I was ever impressed with his approach to software
-              development. Beyond being one of the sharpest engineers I have met, Greg was
-              always able to convey complex problems to any audience. He always demonstrated
-              great patience with his peers and was an excellent mentor to those around him.
-            %p.attribution
-              Simon Rodwell, Lead Flash Developer, 2010
-
-    .section
-      %h2 References
-      .references
-        .reference
-          %h3 Gigi Tsang
-          .info
+      %section
+        .vcard
+          %h1.name.fn Gregory McIntyre
+          .info.personal-details
             .info-item
-              .head Relationship
-              .value Education Program Producer at General Assembly
+              .head Web
+              .value
+                %a.url(href="http://gregorymcintyre.com") http://gregorymcintyre.com
+            .info-item
+              .head Mobile
+              .value.tel +61 410 276 442
             .info-item
               .head Email
-              .value.email gigi@generalassemb.ly
+              .value
+                %a.email(href="mailto:greg@gregorymcintyre.com") greg@gregorymcintyre.com
             .info-item
-              .head Phone
-              .value.tel +61404295729
-        .reference
-          %h3 Trevor Novak
-          .info
+              .head Source Code
+              .value
+                %a.code(href="http://github.com/puyo/") http://github.com/puyo/
             .info-item
-              .head Relationship
-              .value Colleague at yourtutor.com.au
-            .info-item
-              .head Email
-              .value.email teeerevor@gmail.com
-            .info-item
-              .head Phone
-              .value.tel +61409909209
-        .reference
-          %h3 Darren Gray
-          .info
-            .info-item
-              .head Relationship
-              .value Manager at realestate.com.au
-            .info-item
-              .head Email
-              .value.email darren@graymatterit.com
-            .info-item
-              .head Phone
-              .value.tel +61412800142
+              .head Location
+              .value.adr Sydney, Australia
+
+      %section
+        %h2 Career Objective
+        %p
+          I create useful software with teams of skilled professionals. It's
+          the bread and butter stuff of my career and it doesn't seem to get
+          old. I'd like to continue to do that for the foreseeable future.
+        %p
+          I also love teaching, tutoring, mentoring and instructing. I've been
+          involved at Rails Camp, Elixir Camp, CampJS, Rails Girls, InstallFest,
+          Development Hub, Python Study Group, C/C++ Study Group, and General
+          Assembly.
+        %p
+          I am not available to live anywhere except Sydney as I have
+          a young family, however I am experienced at working remotely.
+
+      %section
+        %h2 Skills
+        %p
+          I've worn various job hats in small businesses. Programmer, release
+          manager, trainer, project manager, systems administrator, software
+          architect, lead developer, company secretary, director, adult education
+          instructor.
+        %p
+          It has been great fun trying my hand at all these different
+          roles, and now I feel old, thanks.
+
+        %h3 Software Development
+        %p
+          Coding was my feeder passion. Late nights staring at a glowing screen,
+          taking joy in the touch of creation. Since then I've consolidated my
+          skill through university training, corporate training, team work, and
+          constant self education. I practice writing code that is extremely
+          clear, consistent with what's around it, type checked and automatically
+          tested, reliable, and maintainable.
+
+        %h3 Instruction and Mentoring
+        %p
+          Senior developer roles involve this skill yet it's never formally
+          trained, so I took advantage of training and practice at General
+          Assembly to further develop myself in this area. Boy did I learn a lot.
+          It was very humbling. I improved a lot as measured by my NPS score.
+
+        %h3 Management and Team Building
+        %p
+          I've had some experience on and off in this challenging role throughout
+          my career. As I grow more experienced and confident over the years, I
+          find the prospect of nurturing and motivating a team of clever cookies
+          more appealing, and one day I know I will take this career path.
+
+        %h3 Solutions Design, Software Architecture and UX Design
+        %p
+          I've helped architect telephone billing systems, media rich web
+          applications, content management systems, office control systems and
+          social mobile applications. I've jointly conducted and recorded user
+          interviews. I love meeting customers who benefit from the software I
+          write, before and after they use it. I strive for consensus and
+          clarity, clear priorities, and decision making that is deeply grounded,
+          empirical and pragmatic, and iterative processes that produce good
+          tools for the people who have to use them.
+
+        %h4 Tools of the Trade
+        .info
+          .info-item
+            .head Ruby on Rails
+            .value
+              %p
+                I loved Ruby when I first found it around 2001, and then Rails
+                came along. Hello career. Whipping up web sites, APIs and static
+                sites, spamming APIs, munging data, solving problems. The thing I
+                like best about Ruby is how quickly you reach a solution to a
+                problem you're having. It's still the best "problem solving"
+                language I know. It works so well as glue between other systems,
+                a shell script replacement, or a workhorse for processing text
+                or other data.
+
+          .info-item
+            .head Elixir and Phoenix
+            .value
+              %p
+                A lot of programmers are picking up Elixir because it's got a
+                great syntax, immutable data structures, pattern matching, mature
+                tools, and attractive performance characteristics for web
+                development. If I started a new web service tomorrow, I'd start
+                it in Elixir and Phoenix without any reservations. I've used it
+                professionally since 2017.
+
+          .info-item
+            .head Frontend JavaScript
+            .value
+              %p
+                ECMAScript, esbuild, Webpack, AJAX, jQuery, Angular, Ember,
+                Backbone, Mocha, React, Redux, D3, Three.js, Mapbox, Leaflet,
+                Google Maps, Yarn. Two great problems in programming: cache
+                invalidation and setting up a new JavaScript project.
+
+          .info-item
+            .head Backend JavaScript
+            .value
+              %p
+                Node, Gulp, Express, Cuke, Mocha, Nyc, NSP, Eslint, Sequelize,
+                PM2, Keystone, Co and generators and Bluebird promises.
+
+          .info-item
+            .head HTML
+            .value
+              %p
+                HTML5, CSS, SVG, SASS, vendor prefixes, progressive enhancement,
+                mobile first, LiveReload, responsive designs, Android and Mobile
+                Safari, virtual machines, BrowserStack.
+
+          .info-item
+            .head Photoshop
+            .value
+              %p
+                Layers, masks, drop shadow and emboss, pixel alignment, save for
+                web and devices, weird arcane keyboard shortcuts.
+
+          .info-item
+            .head XCode
+            .value
+              %p
+                Interface builder, breakpoints, view controllers, transitions,
+                ARC, developer certificates. Drag and drop that library in there
+                and statically link it.
+
+          .info-item
+            .head C/C++
+            .value
+              %p
+                An old hobby. Boost, googletest, the rule of three, const
+                correctness, resource management, stack unwinding bugs, the ABI,
+                compile to assembler and stare at it in awe.
+
+          .info-item
+            .head Agile and Lean
+            .value
+              %p
+                Empowered little teams, red-green-refactor cycles, incrementally
+                releasing to the glow of a pretty green build light.
+
+        %p
+          Other things used professionally: Java, Python, Perl, assembly, Git,
+          Bash, Vim, Emacs, Spacemacs, MS Code, too many things to list really.
+
+      %section
+        %h2 Employment
+        .jobs
+
+          .job
+            %h3.job-name Senior Developer at 3P Learning nee Blake eLearning
+            .job-times
+              %span.from May 2017
+              %span.to to present
+            .job-description
+              %p
+                I code Elixir, Ruby, Bash, JavaScript, TypeScript, HTML/CSS, and
+                work with a large service-oriented architecture in a professional
+                setting, keeping popular educational web sites such as Reading
+                Eggs running smoothly and expanding, and adding new products and
+                services to the company's catalogue.
+
+          .job
+            %h3.job-name Senior Developer at Small Multiples
+            .job-times
+              %span.from February 2016
+              %span.to to October 2016
+            .job-description
+              %p
+                Small Multiples is a small Sydney agency specialising in data
+                visualisation. I dove in and taught myself Node and worked on
+                100% JavaScript projects for Transport NSW, The Australian, The
+                Department of Education and Training among others.
+              %p
+                I learned a lot about Node, ES6, Express, Ava, Mocha, D3, Leaflet,
+                Google Maps, Mapbox, React, Redux, PM2 and Keystone DMS. I wrote
+                and managed Ansible based AWS deployments and some Git based
+                Heroku ones too.
+
+          .job
+            %h3.job-name Technical Instructor at General Assembly
+            .job-times
+              %span.from September 2015
+              %span.to to December 2015
+            .job-description
+              %p
+                I worked full time for three months teaching a class of adults
+                web development from scratch. We used JavaScript and Ruby and
+                included a lot of group projects.
+              %p
+                My time was spent explaining tricky concepts to people, lesson
+                planning, and assisting, advising and mentoring students.
+
+          .job
+            %h3.job-name Contracted Developer at Shippit Pty Ltd
+            .job-times
+              July 2015
+            .job-description
+              %p
+                I learned how barcodes and data matrices work and the Ruby and C
+                libraries that produce them. I liaised with AusPost to implement
+                parcel labelling to meet their requirements. I helped advise the
+                start up business on hiring and technology. I built out some
+                Rails administrative features.
+
+          .job
+            %h3.job-name Software Engineer at Studiosity nee YourTutor
+            .job-times
+              %span.from October 2012
+              %span.to to February 2015
+            .job-description
+              %p
+                I helped stabilise and expand a web based online tutoring platform
+                for school students. It's pretty cool that it all works straight
+                out of a web site with live chat and interactive drawing, even all
+                the way back in time to IE8.
+              %p
+                I used a lot of AWS, Ansible, Socket.IO, EventMachine, Redis,
+                CoffeeScript and of course Rails.
+              %p
+                I also did some design and UX things like travelling and
+                interviewing clients, watching students use iPads, writing up nice
+                summaries, sketching and presenting.
+
+          .job
+            %h3.job-name Developer at Protein One
+            .job-times
+              %span.from March 2012
+              %span.to to October 2012
+            .job-description
+              %p
+                I hooked up with this cool little design studio where I helped
+                build WordPress sites for small businesses and an interactive
+                children's lit application for iOS called Dandelion.
+
+          .job
+            %h3.job-name Director at We Are Brand New
+            .job-times
+              %span.from November 2011
+              %span.to to March 2012
+            .job-description
+              %p
+                I teamed up with a few friends to start a business that specialises
+                in building early stage ideas for interactive web based products,
+                from concept through to release candidates, including UX, IA,
+                branding, design, rapid prototyping and iterative
+                improvement. Control freaks I guess.
+              %p
+                I learned about client liaison, business structuring, accounting,
+                branding, marketing, business planning, Sencha Touch, Backbone.js,
+                Spine, CoffeeScript and PhoneGap.
+
+          .job
+            %h3.job-name Senior Software Developer for REA Group
+            .job-times
+              %span.from February 2010
+              %span.to to October 2011
+            .job-description
+              %p
+                I helped interview and build an agile team and lead it to produce
+                HubStudio, a real estate agency focused white labelled DIY web site
+                CMS written in Ruby on Rails.
+              %p
+                ThoughtWorkers and some fantastic REA developers from Melbourne
+                trained us on a complete agile software development process
+                including card walls, pair programming, red-green-refactor cycles,
+                CI servers, BDD and incremental delivery.
+
+          .job
+            %h3.job-name Software Developer for Snepo Research
+            .job-times
+              %span.from September 2009
+              %span.to to October 2009
+            .job-description
+              Ruby on Rails, Facebook/Bebo API integration
+
+          .job
+            %h3.job-name Software Engineer for TileFile
+            .job-times
+              %span.from May 2005
+              %span.to to April 2009
+            .job-description
+              Python, Rails, ActionScript, interviewing and managing the team
+
+          .job
+            %h3.job-name Software Engineer for Symbio Networks
+            .job-times
+              %span.from March 2004
+              %span.to to March 2005
+            .job-description
+              PHP, Java, Ruby, C, WSDL, Bash, SQL, dependency build tools
+
+          .job
+            %h3.job-name Lab Supervisor for UNSW CSE
+            .job-times
+              %span.from Feb 2003
+              %span.to to June 2003
+            .job-description
+              C++, Python, Ruby
+
+      %section
+        %h2 Education
+        .qualifications
+
+          .qualification
+            %h3.qualification-name Bachelor of Engineering (Software Engineering)
+            .qualification-times 1999 to 2004
+            .qualification-description
+              %p
+                I started at ANU and finished at UNSW with second class honours
+                first division (whatever that means). I loved AI, distributed
+                systems, 3D graphics and algorithms.
+
+          .qualification
+            %h3.qualification-name Year 12 Certificate, Narrabundah College, ACT
+            .qualification-times 1997 to 1998
+            .qualification-description
+              %p
+                University Admission Index 97.8, Best in Computing Studies.
+
+      %section
+        %h2 Interests
+        %p
+          I love spending time with my kids, hacking on my own code, learning
+          languages, roller skating, going to drama classes, reading sometimes
+          awful self help books, drawing pictures of people, writing poetry and
+          stories while sitting around a fireplace, playing computer games that
+          require perseverance and skill, life drawing, hanging out in swamps,
+          commuting via bicycle, trying to be witty online, and using Oxford commas.
+
+      %section
+        %h2 Praise
+        .recommendations
+          .recommendation
+            %blockquote
+              %p
+                Greg is extremely capable and knowledgeable. He has a deep
+                understanding of many of our more complex systems, and is very
+                good at thinking about difficult architectural problems and ways
+                that we could be doing things better and smarter.
+              %p
+                Greg produces work of an exceptionally high standard. He is
+                passionate about code quality, and about keeping systems as
+                simple as possible and easy to understand for others (or our
+                future selves). I always know that if Greg is working on
+                something, it is in safe hands.
+              %p
+                Greg is friendly and approachable. He is great at explaining
+                things to others and is a pleasure to collaborate with on
+                projects.
+              %cite
+                Alastair Pharo, Engineering Team Lead and Manager at 3P Learning, 2022
+
+          .recommendation
+            %blockquote
+              %p
+                Greg is the best developer I have worked with.
+              %cite
+                Sharon Gray, Production Manager, 2012
+
+          .recommendation
+            %blockquote
+              %p
+                I worked in Greg's team while he was the lead developer for the server
+                development team. Greg was very approachable, open to discussion,
+                passionate about technology, and I was impressed with his knowledge and
+                intelligence. He will be an asset to any technology company.
+              %cite
+                Fiona Lim, Senior Programmer, 2010
+
+          .recommendation
+            %blockquote
+              %p
+                Greg's attention to detail makes him an excellent addition to any
+                team. I was always impressed with his ideas and code, making my
+                life easier as a sysad to release the software. His extra effort to
+                ensure code made it to production bug free didn't go unnoticed.
+              %cite
+                Jenny Gordon, Senior Systems Administrator, 2010
+
+          .recommendation
+            %blockquote
+              %p
+                Greg was the one who got me started on one of the most important tools I employ
+                nowadays on most of my jobs: Ruby. Sharing insights with him early when I was
+                still learning the language pushed me forward to learn more.
+              %p
+                Apart from that, he's an excellent person to work with. As his
+                co-worker I had a really enjoyable time, at times cooperating, and
+                at times reporting to Greg directly.
+              %cite
+                Julio Cesar Ody, Senior Systems Engineer, 2010
+
+          .recommendation
+            %blockquote
+              %p
+                Greg is an exceptional Software Engineer and Manager. He is smart, open to new
+                ideas and technologies and has a talent for understanding issues and
+                requirements and stating them in concise and clear language.
+              %p
+                Greg's code is wonderful. He is a programmer who knows his trade
+                and produces software of outstanding quality. Greg was a pleasure
+                to work with and I would thoroughly recommend him.
+              %cite
+                Sara Falamaki, Senior Software Engineer, 2010
+
+          .recommendation
+            %blockquote
+              %p
+                While working with Greg I was ever impressed with his approach to software
+                development. Beyond being one of the sharpest engineers I have met, Greg was
+                always able to convey complex problems to any audience. He always demonstrated
+                great patience with his peers and was an excellent mentor to those around him.
+              %cite
+                Simon Rodwell, Lead Frontend Developer, 2010
+
+      %section
+        %h2 References
+        .references
+
+          .reference
+            %h3 Alastair Pharo
+            .info
+              .info-item
+                .head Relationship
+                .value Engineering Team Lead and Manager at 3P Learning
+              .info-item
+                .head Contact
+                .value.email me@asph.dev
+
+          .reference
+            %h3 Andrea Lau
+            .info
+              .info-item
+                .head Relationship
+                .value Co-Founder and Manager at Small Multiples
+              .info-item
+                .head Contact
+                .value.email andrea@small.mu
+
+          .reference
+            %h3 Gigi Tsang
+            .info
+              .info-item
+                .head Relationship
+                .value Education Program Producer at General Assembly
+              .info-item
+                .head Email
+                .value.email gigi@generalassemb.ly
+              .info-item
+                .head Phone
+                .value.tel +61404295729
