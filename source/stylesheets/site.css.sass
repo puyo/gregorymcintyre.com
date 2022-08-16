@@ -90,9 +90,10 @@ $thick-border-color: $charcoal
 =heading-font
   &, a
     text-decoration: none
-    font-family: english-small-caps, 'Adobe Garamod Pro', Times, serif
+    font-family: english-small-caps, 'Century Schoolbook L', 'Adobe Garamod Pro', Times, serif
     font-variant: small-caps
-    font-weight: normal
+    font-style: normal
+    font-weight: 400
     .wf-loading &
       visibility: hidden
 
@@ -252,14 +253,9 @@ h1, h2, h3, h4
     font-weight: bold
     margin-bottom: 0
     margin-left: -0.1em
-    small
-      +responsive(medium large)
-        font-weight: bold
     sup
       font-size: 50%
       top: -0.5em
-      +responsive(medium large)
-        font-weight: bold
 
 .page-footer
   +my-container
