@@ -14,4 +14,11 @@
   }
 }
 
+html, body {
+  font-family: comicshanns2;
+}
 
+@font-face {
+  font-family: 'comicshanns2';
+  src: url('/fonts/comicshanns2.ttf');
+}

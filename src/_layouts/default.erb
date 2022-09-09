@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="<%= site.locale %>">
+<html lang="<%= site.locale %>" class="dark">
   <%= render "head", metadata: site.metadata, title: resource.data.title %>
-  <body class="<%= resource.data.layout %> <%= resource.data.page_class %> bg-gradient-to-r to-indigo-500 from-purple-500">
+  <body class="<%= resource.data.layout %> <%= resource.data.page_class %> relative w-full h-full antialiased dark:text-gray-600 dark:bg-gray-900 text-xl">
+    <!-- bg-gradient-to-r to-indigo-500 from-purple-500 -->
     <%= render "header", metadata: site.metadata %>
-    <div class="container py-4 bg-white">
+    <div class="container">
       <%= yield %>
     </div>
     <%= render "footer", metadata: site.metadata %>
